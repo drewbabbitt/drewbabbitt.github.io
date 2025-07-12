@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drew Babbitt - Personal Website</title>
+    <title>Mr. Babbitt - Faith. Family. Technology.</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -13,11 +13,12 @@
         <nav class="nav">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <h1>Drew Babbitt</h1>
+                    <h1>Mr. Babbitt</h1>
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#resume" class="nav-link">Resume</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -31,128 +32,223 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="home" class="hero">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+            </div>
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Welcome to My Website</h1>
-                    <p class="hero-subtitle">I'm a developer passionate about creating amazing digital experiences</p>
+                    <h1 class="hero-title">Faith. Family. Technology.</h1>
+                    <p class="hero-subtitle">Empowering small businesses through secure, modern IT solutions.</p>
                     <div class="hero-buttons">
                         <a href="#about" class="btn btn-primary">Learn More</a>
                         <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="hero-placeholder">
-                        <i class="fas fa-code"></i>
+                <div class="hero-profile">
+                    <div class="profile-image">
+                        <i class="fas fa-user-circle"></i>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Personal Introduction -->
         <section id="about" class="about">
             <div class="container">
-                <h2 class="section-title">About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Hello! I'm Drew Babbitt, a passionate developer who loves building innovative solutions and creating meaningful digital experiences.</p>
-                        <p>I specialize in modern web technologies and enjoy working on projects that make a difference. When I'm not coding, you can find me exploring new technologies, contributing to open source, or sharing knowledge with the community.</p>
-                        <div class="skills">
-                            <h3>Skills & Technologies</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">JavaScript</span>
-                                <span class="skill-tag">React</span>
-                                <span class="skill-tag">Node.js</span>
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">Git</span>
-                                <span class="skill-tag">HTML/CSS</span>
-                            </div>
+                        <h2 class="section-title">Welcome, Friend!</h2>
+                        <p class="welcome-message">
+                            I'm Mr. Babbitt—a tech enthusiast, sales engineer, and cybersecurity learner with a deep love for community and service. 
+                            When I'm not helping small businesses secure their digital future, you'll find me with my family, studying for my next certification, 
+                            or sharing insights about ethical technology solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biography Section -->
+        <section class="biography">
+            <div class="container">
+                <h2 class="section-title">My Story</h2>
+                <div class="bio-content">
+                    <div class="bio-text">
+                        <p>
+                            As a <strong>Sales Engineer & Technical Account Manager</strong>, I bridge the gap between complex technology solutions and real business needs. 
+                            My passion for cybersecurity drives me to continuously learn and grow, with a personal goal to earn CompTIA A+ and Network+ certifications within the next year.
+                        </p>
+                        <p>
+                            My background in outside sales and business development has taught me the art of walking into businesses and building genuine relationships. 
+                            I believe in ethical tech, client education, and fostering long-term partnerships that benefit everyone involved.
+                        </p>
+                        <p>
+                            At my core, I'm driven by faith, family values, and a commitment to continuous growth. 
+                            Every solution I recommend is built on the foundation of trust, security, and genuine care for my clients' success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripture Section -->
+        <section class="scripture">
+            <div class="container">
+                <div class="scripture-card">
+                    <div class="scripture-icon">
+                        <i class="fas fa-cross"></i>
+                    </div>
+                    <h3>Today's Scripture</h3>
+                    <blockquote>
+                        "I can do all things through Christ who strengthens me."
+                    </blockquote>
+                    <cite>— Philippians 4:13</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote">
+            <div class="container">
+                <div class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <blockquote>
+                        "Success is not final, failure is not fatal: It is the courage to continue that counts."
+                    </blockquote>
+                    <cite>— Winston Churchill</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="resume">
+            <div class="container">
+                <h2 class="section-title">Career Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Sales Engineer & Technical Account Manager</h3>
+                            <p class="timeline-date">Present</p>
+                            <p>Bridging technology solutions with business needs, specializing in managed IT services and cybersecurity solutions for small businesses.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Outside Sales & Business Development</h3>
+                            <p class="timeline-date">Previous Experience</p>
+                            <p>Built relationships through direct business outreach, understanding client pain points and delivering tailored solutions.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Future Goals: CompTIA Certifications</h3>
+                            <p class="timeline-date">2024-2025</p>
+                            <p>Working towards CompTIA A+ and Network+ certifications to strengthen technical foundation and better serve clients.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="projects">
             <div class="container">
-                <h2 class="section-title">Projects</h2>
+                <h2 class="section-title">Current Projects & Case Studies</h2>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-laptop-code"></i>
+                        <div class="project-icon">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="project-content">
-                            <h3>Project One</h3>
-                            <p>A modern web application built with React and Node.js. Features include user authentication, real-time updates, and responsive design.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            </div>
+                        <h3>MSP Client Security Assessments</h3>
+                        <p>Comprehensive security evaluations for small business clients, identifying vulnerabilities and implementing protective measures.</p>
+                        <div class="project-tags">
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">Risk Assessment</span>
                         </div>
                     </div>
                     <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-mobile-alt"></i>
+                        <div class="project-icon">
+                            <i class="fas fa-robot"></i>
                         </div>
-                        <div class="project-content">
-                            <h3>Project Two</h3>
-                            <p>A mobile-first responsive website with modern animations and optimized performance for the best user experience.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            </div>
+                        <h3>AI-Powered Marketing Automations</h3>
+                        <p>RSS to social content engine that streamlines content creation and distribution for small business marketing.</p>
+                        <div class="project-tags">
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">Marketing</span>
                         </div>
                     </div>
                     <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-database"></i>
+                        <div class="project-icon">
+                            <i class="fas fa-cloud"></i>
                         </div>
-                        <div class="project-content">
-                            <h3>Project Three</h3>
-                            <p>A full-stack application with database integration, API development, and comprehensive testing suite.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            </div>
+                        <h3>CloudRadial Integrations</h3>
+                        <p>Seamless integration solutions for CloudRadial platform, enhancing client onboarding and service delivery systems.</p>
+                        <div class="project-tags">
+                            <span class="tag">Integration</span>
+                            <span class="tag">Cloud</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Cybersecurity Education & Social Campaigns</h3>
+                        <p>Educational content and social media campaigns focused on cybersecurity awareness for small business owners.</p>
+                        <div class="project-tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">Social Media</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
+                <h2 class="section-title">Let's Work Together</h2>
                 <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Let's Connect</h3>
-                        <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
-                        <div class="contact-links">
-                            <a href="mailto:your.email@example.com" class="contact-link">
+                    <div class="contact-options">
+                        <div class="contact-option">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>Book a Call</h3>
+                            <p>Schedule a consultation to discuss your IT needs</p>
+                            <a href="#" class="btn btn-primary">Schedule Now</a>
+                        </div>
+                        <div class="contact-option">
+                            <div class="contact-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <h3>Download Resume</h3>
+                            <p>Get a copy of my professional background</p>
+                            <a href="#" class="btn btn-secondary">Download PDF</a>
+                        </div>
+                        <div class="contact-option">
+                            <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
-                                your.email@example.com
-                            </a>
-                            <a href="https://github.com/drewbabbitt" class="contact-link">
-                                <i class="fab fa-github"></i>
-                                GitHub
-                            </a>
-                            <a href="https://linkedin.com/in/drewbabbitt" class="contact-link">
+                            </div>
+                            <h3>Send an Email</h3>
+                            <p>Reach out directly for collaboration opportunities</p>
+                            <a href="mailto:contact@mrbabbitt.com" class="btn btn-primary">Email Me</a>
+                        </div>
+                        <div class="contact-option">
+                            <div class="contact-icon">
                                 <i class="fab fa-linkedin"></i>
-                                LinkedIn
-                            </a>
+                            </div>
+                            <h3>Visit LinkedIn</h3>
+                            <p>Connect with me professionally</p>
+                            <a href="https://linkedin.com/in/mrbabbitt" class="btn btn-secondary">Connect</a>
                         </div>
                     </div>
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
                 </div>
             </div>
         </section>
@@ -160,7 +256,19 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Drew Babbitt. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-mission">
+                    <h3>Building secure, resilient, and ethical tech systems—one business at a time.</h3>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Mr. Babbitt. All rights reserved.</p>
+                </div>
+            </div>
         </div>
     </footer>
 

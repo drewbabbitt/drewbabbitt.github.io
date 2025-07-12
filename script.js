@@ -43,6 +43,89 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Scripture and Quote Rotation
+const scriptures = [
+    {
+        verse: "I can do all things through Christ who strengthens me.",
+        reference: "Philippians 4:13"
+    },
+    {
+        verse: "Trust in the Lord with all your heart and lean not on your own understanding.",
+        reference: "Proverbs 3:5"
+    },
+    {
+        verse: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.",
+        reference: "Jeremiah 29:11"
+    },
+    {
+        verse: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.",
+        reference: "Joshua 1:9"
+    },
+    {
+        verse: "The Lord is my strength and my shield; my heart trusts in him, and he helps me.",
+        reference: "Psalm 28:7"
+    }
+];
+
+const quotes = [
+    {
+        quote: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+        author: "Winston Churchill"
+    },
+    {
+        quote: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+    },
+    {
+        quote: "Innovation distinguishes between a leader and a follower.",
+        author: "Steve Jobs"
+    },
+    {
+        quote: "The future belongs to those who believe in the beauty of their dreams.",
+        author: "Eleanor Roosevelt"
+    },
+    {
+        quote: "Technology is best when it brings people together.",
+        author: "Matt Mullenweg"
+    }
+];
+
+// Function to update scripture
+function updateScripture() {
+    const scriptureCard = document.querySelector('.scripture-card');
+    if (scriptureCard) {
+        const randomScripture = scriptures[Math.floor(Math.random() * scriptures.length)];
+        const blockquote = scriptureCard.querySelector('blockquote');
+        const cite = scriptureCard.querySelector('cite');
+        
+        blockquote.textContent = `"${randomScripture.verse}"`;
+        cite.textContent = `— ${randomScripture.reference}`;
+    }
+}
+
+// Function to update quote
+function updateQuote() {
+    const quoteCard = document.querySelector('.quote-card');
+    if (quoteCard) {
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        const blockquote = quoteCard.querySelector('blockquote');
+        const cite = quoteCard.querySelector('cite');
+        
+        blockquote.textContent = `"${randomQuote.quote}"`;
+        cite.textContent = `— ${randomQuote.author}`;
+    }
+}
+
+// Update scripture and quote on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateScripture();
+    updateQuote();
+    
+    // Update every 24 hours (86400000 milliseconds)
+    setInterval(updateScripture, 86400000);
+    setInterval(updateQuote, 86400000);
+});
+
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
@@ -60,55 +143,13 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.skill-tag, .project-card');
+    const animatedElements = document.querySelectorAll('.project-card, .contact-option, .timeline-item');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         observer.observe(el);
     });
 });
-
-// Contact form handling
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-        
-        // Basic validation
-        if (!name || !email || !message) {
-            alert('Please fill in all fields');
-            return;
-        }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address');
-            return;
-        }
-        
-        // Simulate form submission (replace with actual form handling)
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
-        
-        // Simulate API call
-        setTimeout(() => {
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }, 2000);
-    });
-}
 
 // Add loading animation for page
 window.addEventListener('load', () => {
@@ -125,7 +166,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Typing effect for hero title (optional enhancement)
+// Typing effect for hero title
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
@@ -170,7 +211,7 @@ const createScrollProgress = () => {
         left: 0;
         width: 0%;
         height: 3px;
-        background: linear-gradient(90deg, #2563eb, #667eea);
+        background: linear-gradient(90deg, #ea580c, #3b82f6);
         z-index: 1001;
         transition: width 0.1s ease;
     `;
@@ -197,11 +238,107 @@ document.addEventListener('keydown', (e) => {
 // Add focus management for accessibility
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('focus', () => {
-        link.style.outline = '2px solid #2563eb';
+        link.style.outline = '2px solid #ea580c';
         link.style.outlineOffset = '2px';
     });
     
     link.addEventListener('blur', () => {
         link.style.outline = 'none';
     });
-}); 
+});
+
+// Add click-to-copy functionality for contact information
+document.querySelectorAll('.contact-option a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // Add a subtle click effect
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = 'scale(1)';
+        }, 150);
+    });
+});
+
+// Add smooth reveal animation for timeline items
+const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateX(0)';
+        }
+    });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.timeline-item').forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateX(-50px)';
+    item.style.transition = 'all 0.6s ease';
+    timelineObserver.observe(item);
+});
+
+// Add counter animation for statistics (if needed in the future)
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    function updateCounter() {
+        start += increment;
+        if (start < target) {
+            element.textContent = Math.floor(start);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    }
+    
+    updateCounter();
+}
+
+// Add smooth scroll behavior for all internal links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Add loading state for buttons
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', function() {
+        if (this.classList.contains('btn-primary') || this.classList.contains('btn-secondary')) {
+            const originalText = this.textContent;
+            this.textContent = 'Loading...';
+            this.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.pointerEvents = 'auto';
+            }, 2000);
+        }
+    });
+});
+
+// Add responsive image loading (for future use)
+function preloadImages() {
+    const images = [
+        // Add image URLs here when available
+    ];
+    
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// Initialize image preloading
+document.addEventListener('DOMContentLoaded', preloadImages); 
