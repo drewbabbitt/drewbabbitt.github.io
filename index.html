@@ -1,0 +1,3178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Drew Babbitt - Automation Architect & n8n Specialist. Building intelligent workflow automation solutions for businesses. Based in El Dorado Hills, CA.">
+    <meta name="keywords" content="automation, n8n, workflow automation, API integration, Drew Babbitt, Drew B IT, El Dorado Hills">
+    <meta name="author" content="Drew Babbitt">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Drew Babbitt - Automation Architect">
+    <meta property="og:description" content="Faith. Family. Technology. Building intelligent automation solutions that transform business operations.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./headshot.jpeg">
+    
+    <title>Drew Babbitt - Automation Architect | n8n Specialist | Drew B IT</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- NAVIGATION BAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="#hero">
+                <span class="logo-text">Drew Babbitt</span>
+                <span class="logo-tagline">Drew B IT</span>
+            </a>
+        </div>
+        
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#biography" class="nav-link">My Journey</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link nav-link-cta">Get In Touch</a></li>
+        </ul>
+    </div>
+</nav>
+<div style="height: 80px;"></div>
+<!-- HERO SECTION -->
+<section id="hero" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-profile">
+            <img src="headshot.jpeg" alt="Drew Babbitt - Automation Architect" class="profile-image">
+        </div>
+        <h1 class="hero-title">
+            <span class="hero-name">Drew Babbitt</span>
+            <span class="hero-tagline">Faith. Family. Technology.</span>
+        </h1>
+        <div class="hero-roles">
+            <p class="role-primary">Automation Architect & n8n Specialist</p>
+            <p class="role-secondary">Building intelligent workflows that save time and drive results</p>
+        </div>
+        <div class="hero-companies">
+            <span class="company-badge">Automation Lead @ Spark Alliance</span>
+            <span class="company-divider">•</span>
+            <span class="company-badge">Founder @ Drew B IT</span>
+        </div>
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+            <a href="#services" class="btn btn-secondary">Explore Services</a>
+        </div>
+        <div class="hero-expo-banner">
+            <i class="fas fa-calendar-check"></i>
+            <span>Meet me at the <strong>Central Valley Business Expo</strong></span>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</section>
+
+<!-- Additional Hero CSS -->
+<style>
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%);
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(234, 88, 12, 0.1) 0%, transparent 50%);
+    animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-profile {
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+    animation: fadeIn 1s ease-out 0.2s both;
+}
+
+.hero-title {
+    margin-bottom: 1.5rem;
+}
+
+.hero-name {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.hero-tagline {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    opacity: 0.95;
+    animation: fadeIn 1s ease-out 0.4s both;
+}
+
+.hero-roles {
+    margin-bottom: 1.5rem;
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.role-primary {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.role-secondary {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.hero-companies {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    animation: fadeIn 1s ease-out 0.6s both;
+}
+
+.company-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.company-divider {
+    opacity: 0.6;
+    font-size: 0.8rem;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    animation: fadeIn 1s ease-out 0.7s both;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--accent-orange);
+    color: white;
+    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.4);
+}
+
+.btn-primary:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(234, 88, 12, 0.6);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.hero-expo-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(234, 88, 12, 0.9);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    animation: fadeIn 1s ease-out 0.8s both, bounce 2s ease-in-out 2s infinite;
+    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.hero-expo-banner i {
+    font-size: 1.2rem;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    animation: fadeIn 1s ease-out 1s both;
+}
+
+.scroll-indicator span {
+    width: 2px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    animation: scrollPulse 1.5s ease-in-out infinite;
+}
+
+.scroll-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.scroll-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero-name {
+        font-size: 2.5rem;
+    }
+    
+    .hero-tagline {
+        font-size: 1.2rem;
+    }
+    
+    .role-primary {
+        font-size: 1.2rem;
+    }
+    
+    .role-secondary {
+        font-size: 1rem;
+    }
+    
+    .profile-image {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .hero-companies {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .company-divider {
+        display: none;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+</style>
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Welcome</h2>
+            <div class="section-divider"></div>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p class="about-intro">
+                    Hi, I'm Drew. Thanks for stopping by.
+                </p>
+                
+                <p>
+                    I believe technology should work <em>for</em> people, not the other way around. That's why I've dedicated my career to building intelligent automation solutions that free businesses from repetitive tasks and let them focus on what truly matters—serving their customers and growing their impact.
+                </p>
+                
+                <p>
+                    As Automation Lead at <strong>Spark Alliance</strong>, I architect workflows using n8n that connect disparate systems, eliminate manual data entry, and create seamless experiences for both teams and clients. Every automation I build is designed with three principles: reliability, scalability, and simplicity.
+                </p>
+                
+                <p>
+                    Through my consulting practice, <strong>Drew B IT</strong>, I help small and medium-sized businesses discover their automation potential. Whether it's connecting your CRM to your project management tools, building custom reporting dashboards, or creating AI-powered workflows, I translate complex technical possibilities into practical business solutions.
+                </p>
+                
+                <p>
+                    Beyond the code and workflows, I'm a father of two amazing daughters, a fitness enthusiast working through my own comeback story, and someone who approaches every challenge with faith and determination. I'm currently pursuing my CompTIA A+ certification because I believe in continuous growth—both professionally and personally.
+                </p>
+                
+                <p class="about-closing">
+                    If you're wrestling with manual processes, drowning in spreadsheets, or just know there's got to be a better way—<strong>let's talk</strong>. I'd love to learn about your business and explore how automation could transform your daily operations.
+                </p>
+            </div>
+            
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Automation Workflows</h3>
+                    <p>Building intelligent processes that connect systems and eliminate manual work</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>API Integrations</h3>
+                    <p>Seamlessly connecting platforms like HaloPSA, CloudRadial, Microsoft, and Google</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Solutions</h3>
+                    <p>Leveraging artificial intelligence to make your workflows smarter and more adaptive</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Creating professional websites that showcase your business and drive conversions</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-stats">
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Person Team at Spark Alliance</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Automation Workflows Built</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Hours Saved for Clients</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section CSS -->
+<style>
+.about-section {
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, #f8fafc 0%, white 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--accent-orange), var(--secondary-blue));
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.about-intro {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    margin-bottom: 1.25rem;
+}
+
+.about-text em {
+    font-style: italic;
+    color: var(--accent-orange);
+}
+
+.about-text strong {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.about-closing {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(234, 88, 12, 0.05) 100%);
+    border-left: 4px solid var(--accent-orange);
+    border-radius: 0 8px 8px 0;
+    margin-top: 2rem;
+}
+
+.about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.highlight-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+.highlight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-blue);
+}
+
+.highlight-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.highlight-card h3 {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.highlight-card p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.about-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%);
+    border-radius: 16px;
+    color: white;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--accent-orange);
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .about-text {
+        font-size: 1rem;
+    }
+    
+    .about-intro {
+        font-size: 1.3rem;
+    }
+    
+    .about-closing {
+        font-size: 1.1rem;
+        padding: 1.25rem;
+    }
+    
+    .about-stats {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .stat-divider {
+        width: 60px;
+        height: 1px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+</style>
+<!-- BIOGRAPHY SECTION -->
+<section id="biography" class="biography-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">My Journey</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">From stay-at-home parent to automation architect—building solutions that matter</p>
+        </div>
+        
+        <div class="biography-content">
+            <div class="bio-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="bio-chapter">
+                    <div class="chapter-marker">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="chapter-content">
+                        <h3 class="chapter-title">The Foundation</h3>
+                        <p class="chapter-period">Early Career & Family Years</p>
+                        <p class="chapter-text">
+                            My journey into technology didn't follow the traditional path. After establishing myself in IT and networking, I made the choice many parents consider but few follow through on—I became a stay-at-home parent to be present for my daughters during their formative years. Those years taught me patience, creative problem-solving, and the importance of systems that actually work in the real world.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bio-chapter">
+                    <div class="chapter-marker">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="chapter-content">
+                        <h3 class="chapter-title">The Opportunity</h3>
+                        <p class="chapter-period">Career Expo & Spark Alliance</p>
+                        <p class="chapter-text">
+                            At a career expo, I met John, who would become my boss at Spark Alliance. He saw potential in someone who could think differently about automation and integration. What started as an opportunity became a laboratory for innovation. At Spark Alliance, a nimble four-person team providing networking, security, VoIP, and IT services, I found my calling: building automation workflows that eliminate the friction in business operations.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bio-chapter">
+                    <div class="chapter-marker">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="chapter-content">
+                        <h3 class="chapter-title">The Expertise</h3>
+                        <p class="chapter-period">Mastering n8n & Enterprise Integrations</p>
+                        <p class="chapter-text">
+                            As Automation Lead, I dove deep into n8n—an incredibly powerful workflow automation platform that most businesses don't know exists. I built integrations connecting HaloPSA (our PSA platform), CloudRadial (client portal), Microsoft Teams, Google Workspace, and countless other business systems. Each integration solved real problems: automatic ticket routing, client onboarding workflows, PCI compliance assessments, backup monitoring, and security report generation.
+                        </p>
+                        <div class="tech-badges">
+                            <span class="tech-badge">n8n Workflows</span>
+                            <span class="tech-badge">HaloPSA</span>
+                            <span class="tech-badge">CloudRadial</span>
+                            <span class="tech-badge">Microsoft APIs</span>
+                            <span class="tech-badge">Google APIs</span>
+                            <span class="tech-badge">Acronis</span>
+                            <span class="tech-badge">API Integration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-chapter">
+                    <div class="chapter-marker">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="chapter-content">
+                        <h3 class="chapter-title">The Vision</h3>
+                        <p class="chapter-period">Drew B IT & Beyond</p>
+                        <p class="chapter-text">
+                            The more I automated at Spark Alliance, the more I realized every small business faces these same challenges. That's why I launched <strong>Drew B IT</strong>—to bring enterprise-grade automation to businesses that can't afford full IT departments but desperately need efficient systems. I'm preparing to showcase these services at the Central Valley Business Expo, where I'll demonstrate how automation isn't just for the Fortune 500.
+                        </p>
+                        <p class="chapter-text">
+                            I'm also pursuing CompTIA A+ certification because I believe in building a complete understanding of technology from the ground up. Whether it's hardware troubleshooting or cloud API integration, every layer of the stack matters when you're architecting reliable solutions.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bio-chapter current">
+                    <div class="chapter-marker">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="chapter-content">
+                        <h3 class="chapter-title">Today & Tomorrow</h3>
+                        <p class="chapter-period">Current Focus</p>
+                        <p class="chapter-text">
+                            Today, I split my time between driving automation innovation at Spark Alliance and building client relationships through Drew B IT. I'm working on projects ranging from sophisticated workflow orchestrations to straightforward website rebuilds—each one designed to remove friction and create value.
+                        </p>
+                        <p class="chapter-text">
+                            Beyond work, I'm rebuilding my physical fitness after a knee injury, co-parenting two incredible daughters, and learning what it means to show up authentically in all areas of life. Faith guides my decisions, family motivates my efforts, and technology provides the platform to make a meaningful impact.
+                        </p>
+                        <div class="current-pursuits">
+                            <div class="pursuit-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Pursuing CompTIA A+ Core 1</span>
+                            </div>
+                            <div class="pursuit-item">
+                                <i class="fas fa-store"></i>
+                                <span>Preparing for Central Valley Business Expo</span>
+                            </div>
+                            <div class="pursuit-item">
+                                <i class="fas fa-dumbbell"></i>
+                                <span>Committed to fitness & personal growth</span>
+                            </div>
+                            <div class="pursuit-item">
+                                <i class="fas fa-heart"></i>
+                                <span>Present father & continuous learner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bio-values">
+                <h3 class="values-title">What Drives Me</h3>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🙏</div>
+                        <h4>Faith</h4>
+                        <p>Approaching every challenge with integrity, humility, and the belief that we're called to serve others well</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">👨‍👧‍👧</div>
+                        <h4>Family</h4>
+                        <p>Being present for what matters most—my daughters see a father who works hard and shows up authentically</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⚡</div>
+                        <h4>Excellence</h4>
+                        <p>Building solutions that work reliably, scale elegantly, and truly solve the problems they're meant to address</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h4>Growth</h4>
+                        <p>Continuously learning, whether through certification studies, fitness comebacks, or honest self-reflection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Biography Section CSS -->
+<style>
+.biography-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.biography-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+.bio-timeline {
+    position: relative;
+    padding-left: 4rem;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 1.5rem;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--secondary-blue), var(--accent-orange));
+}
+
+.bio-chapter {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+}
+
+.bio-chapter:last-child {
+    margin-bottom: 0;
+}
+
+.chapter-marker {
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+    z-index: 2;
+}
+
+.bio-chapter.current .chapter-marker {
+    background: linear-gradient(135deg, var(--accent-orange), #dc2626);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3); }
+    50% { box-shadow: 0 4px 20px rgba(234, 88, 12, 0.5); }
+}
+
+.chapter-content {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--secondary-blue);
+    transition: all 0.3s ease;
+}
+
+.bio-chapter.current .chapter-content {
+    border-left-color: var(--accent-orange);
+    background: linear-gradient(135deg, rgba(234, 88, 12, 0.05), rgba(30, 58, 138, 0.05));
+}
+
+.chapter-content:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.chapter-title {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.chapter-period {
+    font-size: 0.9rem;
+    color: var(--accent-orange);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.chapter-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.chapter-text:last-child {
+    margin-bottom: 0;
+}
+
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.tech-badge {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.current-pursuits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.pursuit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.pursuit-item i {
+    color: var(--accent-orange);
+    font-size: 1.1rem;
+}
+
+.bio-values {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+}
+
+.values-title {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.values-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.value-card {
+    background: linear-gradient(135deg, #f8fafc 0%, white 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid rgba(30, 58, 138, 0.1);
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    border-color: var(--secondary-blue);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.value-card h4 {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+    .biography-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .bio-values {
+        position: static;
+        margin-top: 3rem;
+    }
+    
+    .current-pursuits {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .bio-timeline {
+        padding-left: 2.5rem;
+    }
+    
+    .timeline-line {
+        left: 1rem;
+    }
+    
+    .chapter-marker {
+        left: -2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+    
+    .chapter-content {
+        padding: 1.5rem;
+    }
+    
+    .chapter-title {
+        font-size: 1.3rem;
+    }
+    
+    .tech-badges {
+        gap: 0.4rem;
+    }
+    
+    .tech-badge {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.75rem;
+    }
+}
+</style>
+<!-- SERVICES SECTION -->
+<section id="services" class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">What I Can Do for Your Business</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Enterprise-grade automation and integration services for growing businesses</p>
+        </div>
+        
+        <div class="services-intro">
+            <p>
+                Every business has repetitive tasks draining their team's time and energy. I specialize in identifying these bottlenecks and building automated workflows that run reliably in the background, freeing your team to focus on high-value work.
+            </p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Workflow Automation -->
+            <div class="service-card featured">
+                <div class="service-badge">Most Popular</div>
+                <div class="service-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3 class="service-title">Workflow Automation</h3>
+                <p class="service-description">
+                    Build intelligent automation workflows using n8n to connect your business systems and eliminate manual processes. From simple task automation to complex multi-system orchestrations.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Custom n8n workflow development</li>
+                    <li><i class="fas fa-check"></i> Process mapping & optimization</li>
+                    <li><i class="fas fa-check"></i> Data transformation & routing</li>
+                    <li><i class="fas fa-check"></i> Scheduled & triggered automation</li>
+                    <li><i class="fas fa-check"></i> Error handling & monitoring</li>
+                </ul>
+                <div class="service-examples">
+                    <strong>Example Use Cases:</strong>
+                    <span>Automatic ticket routing</span>
+                    <span>Client onboarding workflows</span>
+                    <span>Report generation & distribution</span>
+                    <span>Data synchronization</span>
+                </div>
+                <a href="#contact" class="service-cta">Start Automating</a>
+            </div>
+            
+            <!-- API Integration -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <h3 class="service-title">API Integration Services</h3>
+                <p class="service-description">
+                    Connect disparate business platforms so they work together seamlessly. I specialize in integrating CRMs, project management tools, communication platforms, and custom systems.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> HaloPSA & other PSA platforms</li>
+                    <li><i class="fas fa-check"></i> CloudRadial client portals</li>
+                    <li><i class="fas fa-check"></i> Microsoft 365 & Teams</li>
+                    <li><i class="fas fa-check"></i> Google Workspace integration</li>
+                    <li><i class="fas fa-check"></i> Custom REST API development</li>
+                </ul>
+                <div class="service-examples">
+                    <strong>Example Integrations:</strong>
+                    <span>CRM to project management</span>
+                    <span>Backup monitoring alerts</span>
+                    <span>Client portal automation</span>
+                    <span>Bi-directional data sync</span>
+                </div>
+                <a href="#contact" class="service-cta">Connect Your Systems</a>
+            </div>
+            
+            <!-- AI-Powered Solutions -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="service-title">AI-Powered Automation</h3>
+                <p class="service-description">
+                    Leverage artificial intelligence to make your workflows smarter. From intelligent document processing to automated content generation and decision-making systems.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Document analysis & extraction</li>
+                    <li><i class="fas fa-check"></i> Automated content generation</li>
+                    <li><i class="fas fa-check"></i> Intelligent routing & categorization</li>
+                    <li><i class="fas fa-check"></i> Natural language processing</li>
+                    <li><i class="fas fa-check"></i> AI-assisted decision workflows</li>
+                </ul>
+                <div class="service-examples">
+                    <strong>Example Applications:</strong>
+                    <span>Smart email classification</span>
+                    <span>Document summarization</span>
+                    <span>Automated responses</span>
+                    <span>Sentiment analysis</span>
+                </div>
+                <a href="#contact" class="service-cta">Explore AI Solutions</a>
+            </div>
+            
+            <!-- Web Development -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="service-title">Web Development</h3>
+                <p class="service-description">
+                    Professional websites that showcase your business and convert visitors into customers. Modern, responsive designs built with performance and SEO in mind.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Custom website design & development</li>
+                    <li><i class="fas fa-check"></i> Mobile-first responsive layouts</li>
+                    <li><i class="fas fa-check"></i> SEO optimization</li>
+                    <li><i class="fas fa-check"></i> Content management integration</li>
+                    <li><i class="fas fa-check"></i> Performance optimization</li>
+                </ul>
+                <div class="service-examples">
+                    <strong>Website Types:</strong>
+                    <span>Business websites</span>
+                    <span>Landing pages</span>
+                    <span>Client portals</span>
+                    <span>E-commerce sites</span>
+                </div>
+                <a href="#contact" class="service-cta">Build Your Website</a>
+            </div>
+            
+            <!-- Business Process Consulting -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="service-title">Process Optimization Consulting</h3>
+                <p class="service-description">
+                    Not sure where to start? I'll analyze your current workflows, identify automation opportunities, and create a roadmap for improving efficiency across your organization.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Workflow assessment & mapping</li>
+                    <li><i class="fas fa-check"></i> Automation opportunity identification</li>
+                    <li><i class="fas fa-check"></i> ROI analysis & prioritization</li>
+                    <li><i class="fas fa-check"></i> Implementation roadmap creation</li>
+                    <li><i class="fas fa-check"></i> Training & documentation</li>
+                </ul>
+                <div class="service-examples">
+                    <strong>Deliverables:</strong>
+                    <span>Process maps</span>
+                    <span>Automation opportunities report</span>
+                    <span>Implementation timeline</span>
+                    <span>ROI projections</span>
+                </div>
+                <a href="#contact" class="service-cta">Get Assessment</a>
+            </div>
+            
+            <!-- IT Support & Maintenance -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="service-title">Automation Support & Maintenance</h3>
+                <p class="service-description">
+                    Keep your workflows running smoothly with ongoing support, monitoring, and optimization. I'll ensure your automations stay reliable as your business grows and changes.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Proactive monitoring & alerts</li>
+                    <li><i class="fas fa-check"></i> Regular health checks</li>
+                    <li><i class="fas fa-check"></i> Bug fixes & troubleshooting</li>
+                    <li><i class="fas fa-check"></i> Workflow optimization</li>
+                    <li><i class="fas fa-check"></i> Documentation updates</li>
+                </ul>
+                <div class="service-examples">
+                    <strong>Support Options:</strong>
+                    <span>Monthly retainer</span>
+                    <span>On-demand support</span>
+                    <span>Emergency fixes</span>
+                    <span>Quarterly reviews</span>
+                </div>
+                <a href="#contact" class="service-cta">Discuss Support</a>
+            </div>
+        </div>
+        
+        <div class="services-cta">
+            <div class="cta-content">
+                <h3>Ready to Transform Your Business Operations?</h3>
+                <p>Let's discuss your automation needs and explore how I can help streamline your workflows.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary btn-lg">Schedule Free Consultation</a>
+                    <a href="#projects" class="btn btn-secondary btn-lg">View My Work</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="services-trust">
+            <div class="trust-item">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <strong>Reliable Solutions</strong>
+                    <p>Built for stability and tested thoroughly</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-graduation-cap"></i>
+                <div>
+                    <strong>Expert Knowledge</strong>
+                    <p>Years of experience with enterprise systems</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-handshake"></i>
+                <div>
+                    <strong>Personal Service</strong>
+                    <p>Direct access to me throughout the project</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-sync-alt"></i>
+                <div>
+                    <strong>Ongoing Support</strong>
+                    <p>I'm here after implementation too</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section CSS -->
+<style>
+.services-section {
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, white 0%, #f8fafc 100%);
+}
+
+.services-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--secondary-blue);
+}
+
+.service-card.featured {
+    border-color: var(--accent-orange);
+    background: linear-gradient(135deg, rgba(234, 88, 12, 0.02) 0%, white 100%);
+}
+
+.service-badge {
+    position: absolute;
+    top: -12px;
+    right: 2rem;
+    background: var(--accent-orange);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.service-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.service-card.featured .service-icon {
+    background: linear-gradient(135deg, var(--accent-orange), #dc2626);
+}
+
+.service-title {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.service-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.service-features li {
+    padding: 0.5rem 0;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+}
+
+.service-features i {
+    color: var(--accent-orange);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.service-examples {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.service-examples strong {
+    display: block;
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.service-examples span {
+    display: inline-block;
+    background: white;
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    margin: 0.25rem 0.25rem 0.25rem 0;
+    border: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+.service-cta {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.service-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+
+.service-card.featured .service-cta {
+    background: linear-gradient(135deg, var(--accent-orange), #dc2626);
+}
+
+.services-cta {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.services-cta h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.services-cta p {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-lg {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.services-trust {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.trust-item {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.trust-item i {
+    font-size: 2rem;
+    color: var(--accent-orange);
+    flex-shrink: 0;
+}
+
+.trust-item strong {
+    display: block;
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.trust-item p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-cta {
+        padding: 2rem 1.5rem;
+    }
+    
+    .services-cta h3 {
+        font-size: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-lg {
+        padding: 1rem 2rem;
+    }
+    
+    .services-trust {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+<!-- PROJECTS SECTION -->
+<section id="projects" class="projects-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Real Solutions, Real Results</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Automation projects that have transformed how businesses operate</p>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- Project 1: HaloPSA Integration Suite -->
+            <div class="project-card featured">
+                <div class="project-badge">Featured Project</div>
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">HaloPSA Integration Suite</h3>
+                        <p class="project-type">Enterprise Workflow Orchestration</p>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Comprehensive automation ecosystem connecting HaloPSA (Professional Services Automation platform) with multiple business systems. Eliminated manual data entry and created seamless workflows across the entire service delivery lifecycle.
+                </p>
+                <div class="project-challenge">
+                    <strong>The Challenge:</strong>
+                    <p>Spark Alliance needed to reduce manual ticket management, automate client onboarding, and create real-time notifications for the team without overwhelming them with noise.</p>
+                </div>
+                <div class="project-solution">
+                    <strong>The Solution:</strong>
+                    <ul>
+                        <li>Automated ticket routing based on priority, client, and issue type</li>
+                        <li>Client onboarding workflow that creates accounts, sends welcome emails, and sets up initial services</li>
+                        <li>Microsoft Teams integration for intelligent notifications</li>
+                        <li>Custom reporting workflows that generate and distribute client reports</li>
+                        <li>PCI compliance assessment automation</li>
+                    </ul>
+                </div>
+                <div class="project-impact">
+                    <div class="impact-stat">
+                        <div class="stat-value">15+</div>
+                        <div class="stat-label">Workflows</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">20hrs</div>
+                        <div class="stat-label">Saved Weekly</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Automation Rate</div>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">n8n</span>
+                    <span class="tech-tag">HaloPSA API</span>
+                    <span class="tech-tag">Microsoft Teams</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Webhooks</span>
+                </div>
+            </div>
+            
+            <!-- Project 2: Acronis Tenant Monitoring -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">Acronis Backup Monitoring System</h3>
+                        <p class="project-type">Proactive Monitoring & Alerting</p>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Real-time monitoring system for Acronis backup tenants that proactively alerts the team to failed backups, quota issues, and system health problems before they impact clients.
+                </p>
+                <div class="project-challenge">
+                    <strong>The Challenge:</strong>
+                    <p>Manual checking of backup statuses was time-consuming and reactive. Problems were often discovered only when clients reported them.</p>
+                </div>
+                <div class="project-solution">
+                    <strong>The Solution:</strong>
+                    <ul>
+                        <li>Automated polling of Acronis tenant status every 4 hours</li>
+                        <li>Intelligent alerting that filters noise and highlights critical issues</li>
+                        <li>Microsoft Teams notifications with actionable information</li>
+                        <li>Automated ticket creation in HaloPSA for failed backups</li>
+                        <li>Historical tracking and trend analysis</li>
+                    </ul>
+                </div>
+                <div class="project-impact">
+                    <div class="impact-stat">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Monitoring</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">5min</div>
+                        <div class="stat-label">Detection Time</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">Zero</div>
+                        <div class="stat-label">Missed Failures</div>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">n8n</span>
+                    <span class="tech-tag">Acronis API</span>
+                    <span class="tech-tag">Scheduled Tasks</span>
+                    <span class="tech-tag">Data Processing</span>
+                </div>
+            </div>
+            
+            <!-- Project 3: CloudRadial Client Portal Automation -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">CloudRadial Portal Automations</h3>
+                        <p class="project-type">Client Experience Enhancement</p>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Automated workflows that keep client portals updated with relevant information, generate customized reports, and ensure clients have visibility into their IT services without manual intervention.
+                </p>
+                <div class="project-challenge">
+                    <strong>The Challenge:</strong>
+                    <p>Client portals required constant manual updates. Information was stale, and generating custom reports took hours away from billable work.</p>
+                </div>
+                <div class="project-solution">
+                    <strong>The Solution:</strong>
+                    <ul>
+                        <li>Automated synchronization of service data from HaloPSA to CloudRadial</li>
+                        <li>Custom report generation based on client-specific needs</li>
+                        <li>Automated publishing of security assessments and compliance documentation</li>
+                        <li>Real-time status updates for ongoing projects</li>
+                    </ul>
+                </div>
+                <div class="project-impact">
+                    <div class="impact-stat">
+                        <div class="stat-value">12hrs</div>
+                        <div class="stat-label">Saved Monthly</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">Real-time</div>
+                        <div class="stat-label">Data Sync</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">↑ 40%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">n8n</span>
+                    <span class="tech-tag">CloudRadial API</span>
+                    <span class="tech-tag">HaloPSA Integration</span>
+                    <span class="tech-tag">Report Generation</span>
+                </div>
+            </div>
+            
+            <!-- Project 4: Security Assessment Report Generator -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-file-shield"></i>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">Automated Security Assessment Reports</h3>
+                        <p class="project-type">Document Generation & Compliance</p>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Transform security assessment data into professional, branded reports automatically. What used to take 2-3 hours of manual formatting now happens in minutes with consistent quality.
+                </p>
+                <div class="project-challenge">
+                    <strong>The Challenge:</strong>
+                    <p>Security assessments generated raw data that required significant manual effort to format into client-ready reports. Inconsistent formatting and errors were common.</p>
+                </div>
+                <div class="project-solution">
+                    <strong>The Solution:</strong>
+                    <ul>
+                        <li>Workflow that ingests assessment scan results</li>
+                        <li>Automated categorization and prioritization of findings</li>
+                        <li>Template-based report generation with company branding</li>
+                        <li>Automatic distribution to stakeholders</li>
+                        <li>Follow-up task creation in HaloPSA</li>
+                    </ul>
+                </div>
+                <div class="project-impact">
+                    <div class="impact-stat">
+                        <div class="stat-value">90%</div>
+                        <div class="stat-label">Time Reduction</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Consistency</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">Same Day</div>
+                        <div class="stat-label">Delivery</div>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">n8n</span>
+                    <span class="tech-tag">Document Generation</span>
+                    <span class="tech-tag">Data Processing</span>
+                    <span class="tech-tag">PDF Creation</span>
+                </div>
+            </div>
+            
+            <!-- Project 5: VoIP Assessment Workflow -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">VoIP Assessment Digitization</h3>
+                        <p class="project-type">Process Digitization & Workflow</p>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Transformed paper-based VoIP assessment process into digital workflow with automated data collection, analysis, and proposal generation.
+                </p>
+                <div class="project-challenge">
+                    <strong>The Challenge:</strong>
+                    <p>VoIP assessments relied on manual data collection, paper forms, and time-consuming analysis before proposals could be created.</p>
+                </div>
+                <div class="project-solution">
+                    <strong>The Solution:</strong>
+                    <ul>
+                        <li>Digital forms that capture assessment data</li>
+                        <li>Automated analysis of phone system requirements</li>
+                        <li>Intelligent pricing calculations based on usage patterns</li>
+                        <li>Automated proposal generation</li>
+                        <li>Integration with CRM for follow-up tracking</li>
+                    </ul>
+                </div>
+                <div class="project-impact">
+                    <div class="impact-stat">
+                        <div class="stat-value">75%</div>
+                        <div class="stat-label">Faster Proposals</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">Paper-free</div>
+                        <div class="stat-label">Process</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">↑ 25%</div>
+                        <div class="stat-label">Close Rate</div>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">n8n</span>
+                    <span class="tech-tag">Forms</span>
+                    <span class="tech-tag">Calculations</span>
+                    <span class="tech-tag">Document Generation</span>
+                </div>
+            </div>
+            
+            <!-- Project 6: Client Website Rebuilds -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">Client Website Modernization</h3>
+                        <p class="project-type">Web Development & Design</p>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Rebuilt outdated client websites with modern, responsive designs, improved SEO, and integrated analytics to help businesses establish stronger online presences.
+                </p>
+                <div class="project-challenge">
+                    <strong>The Challenge:</strong>
+                    <p>Clients had websites that looked dated, performed poorly on mobile devices, and weren't generating leads or conversions.</p>
+                </div>
+                <div class="project-solution">
+                    <strong>The Solution:</strong>
+                    <ul>
+                        <li>Modern, mobile-first responsive designs</li>
+                        <li>Performance optimization for fast loading</li>
+                        <li>SEO best practices implementation</li>
+                        <li>Clear calls-to-action and conversion optimization</li>
+                        <li>Easy-to-update content management</li>
+                    </ul>
+                </div>
+                <div class="project-impact">
+                    <div class="impact-stat">
+                        <div class="stat-value">↑ 200%</div>
+                        <div class="stat-label">Mobile Traffic</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">3x</div>
+                        <div class="stat-label">Page Speed</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-value">↑ 150%</div>
+                        <div class="stat-label">Lead Generation</div>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Responsive Design</span>
+                    <span class="tech-tag">SEO</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="projects-cta">
+            <h3>Want to See Your Business Transform?</h3>
+            <p>Every project starts with understanding your unique challenges and goals.</p>
+            <a href="#contact" class="btn btn-primary btn-lg">Discuss Your Project</a>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section CSS -->
+<style>
+.projects-section {
+    padding: 5rem 0;
+    background: #f8fafc;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--secondary-blue);
+}
+
+.project-card.featured {
+    border-color: var(--accent-orange);
+    background: linear-gradient(135deg, rgba(234, 88, 12, 0.02) 0%, white 100%);
+}
+
+.project-badge {
+    position: absolute;
+    top: -12px;
+    right: 2rem;
+    background: var(--accent-orange);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.project-header {
+    display: flex;
+    align-items: start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+
+.project-card.featured .project-icon {
+    background: linear-gradient(135deg, var(--accent-orange), #dc2626);
+}
+
+.project-meta {
+    flex: 1;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+.project-type {
+    font-size: 0.9rem;
+    color: var(--accent-orange);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.project-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.project-challenge,
+.project-solution {
+    margin-bottom: 1.5rem;
+}
+
+.project-challenge strong,
+.project-solution strong {
+    display: block;
+    color: var(--primary-blue);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.project-challenge p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    font-style: italic;
+    padding-left: 1rem;
+    border-left: 3px solid rgba(234, 88, 12, 0.3);
+}
+
+.project-solution ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-solution li {
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.project-solution li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-orange);
+    font-weight: bold;
+}
+
+.project-impact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(234, 88, 12, 0.05));
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.impact-stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-orange);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.projects-cta {
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 16px;
+}
+
+.projects-cta h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.projects-cta p {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .project-impact {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stat-value {
+        font-size: 2rem;
+    }
+    
+    .projects-cta {
+        padding: 2rem 1.5rem;
+    }
+    
+    .projects-cta h3 {
+        font-size: 1.5rem;
+    }
+}
+</style>
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Let's Start a Conversation</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Ready to explore how automation can transform your business?</p>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-intro">
+                    <h3>I'd Love to Hear From You</h3>
+                    <p>
+                        Whether you're curious about automation possibilities, ready to start a project, or just want to discuss your business challenges—I'm here to help. No high-pressure sales, just honest conversations about what might work for your situation.
+                    </p>
+                </div>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="method-info">
+                            <h4>Schedule a Call</h4>
+                            <p>Book a free 30-minute consultation to discuss your automation needs</p>
+                            <a href="#" class="method-link" onclick="alert('Add your Calendly or scheduling link here');">
+                                View Available Times →
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-info">
+                            <h4>Email Me</h4>
+                            <p>Send me a message and I'll respond within 24 hours</p>
+                            <a href="mailto:drew@drewbit.com" class="method-link">
+                                drew@drewbit.com →
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="method-info">
+                            <h4>Call or Text</h4>
+                            <p>Prefer to talk? Give me a call or send a text message</p>
+                            <a href="tel:+1234567890" class="method-link">
+                                (123) 456-7890 →
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="method-info">
+                            <h4>Connect on LinkedIn</h4>
+                            <p>Let's connect professionally and stay in touch</p>
+                            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="method-link">
+                                View Profile →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expo-callout">
+                    <div class="expo-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="expo-details">
+                        <h4>Meet Me at the Central Valley Business Expo</h4>
+                        <p>
+                            I'll be showcasing Drew B IT services and demonstrating live automation workflows. Stop by for a demo, ask questions, or just say hello!
+                        </p>
+                        <div class="expo-meta">
+                            <span><i class="fas fa-calendar"></i> <strong>Date:</strong> TBD</span>
+                            <span><i class="fas fa-building"></i> <strong>Booth:</strong> TBD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-wrapper">
+                <div class="contact-form-header">
+                    <h3>Quick Contact Form</h3>
+                    <p>Fill out this form and I'll get back to you within 24 hours</p>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            placeholder="John Smith"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="john@company.com"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="(123) 456-7890"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input 
+                            type="text" 
+                            id="company" 
+                            name="company" 
+                            placeholder="Your Company"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">What are you interested in? *</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">Select an option...</option>
+                            <option value="workflow-automation">Workflow Automation</option>
+                            <option value="api-integration">API Integration</option>
+                            <option value="ai-solutions">AI-Powered Solutions</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="consulting">Process Consulting</option>
+                            <option value="support">Ongoing Support</option>
+                            <option value="other">Just Exploring / Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Tell me about your project or challenge *</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            rows="5" 
+                            required 
+                            placeholder="Describe what you're hoping to accomplish or the problems you're trying to solve..."
+                        ></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeline">Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">When do you need this?</option>
+                            <option value="urgent">ASAP / Urgent</option>
+                            <option value="1-2-weeks">1-2 Weeks</option>
+                            <option value="1-month">Within 1 Month</option>
+                            <option value="2-3-months">2-3 Months</option>
+                            <option value="just-exploring">Just Exploring</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                    
+                    <p class="form-privacy">
+                        <i class="fas fa-lock"></i>
+                        Your information is kept private and will never be shared.
+                    </p>
+                </form>
+                
+                <div id="formSuccess" class="form-message success" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>Message Sent Successfully!</h4>
+                    <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
+                </div>
+                
+                <div id="formError" class="form-message error" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h4>Oops! Something Went Wrong</h4>
+                    <p>Please try again or contact me directly via email or phone.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-footer">
+            <div class="business-hours">
+                <h4><i class="fas fa-clock"></i> Response Times</h4>
+                <p>I typically respond to inquiries within 24 hours, Monday-Friday. Weekend messages are answered on Monday morning.</p>
+            </div>
+            <div class="location-info">
+                <h4><i class="fas fa-map-pin"></i> Service Area</h4>
+                <p>Based in El Dorado Hills, CA • Serving the Central Valley & Remote Clients Nationwide</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section CSS -->
+<style>
+.contact-section {
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, white 0%, #f8fafc 100%);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.contact-intro {
+    margin-bottom: 2rem;
+}
+
+.contact-intro h3 {
+    font-size: 1.75rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.contact-intro p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-method {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid rgba(30, 58, 138, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    border-color: var(--secondary-blue);
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.method-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.method-info h4 {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.method-info p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.method-link {
+    display: inline-block;
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.method-link:hover {
+    color: #dc2626;
+    transform: translateX(4px);
+}
+
+.expo-callout {
+    display: flex;
+    gap: 1.25rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(234, 88, 12, 0.08) 0%, rgba(30, 58, 138, 0.08) 100%);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-orange);
+}
+
+.expo-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-orange);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.expo-details h4 {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.expo-details p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.expo-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.expo-meta span {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.expo-meta i {
+    color: var(--accent-orange);
+    margin-right: 0.5rem;
+}
+
+.contact-form-wrapper {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    border: 2px solid rgba(30, 58, 138, 0.1);
+}
+
+.contact-form-header {
+    margin-bottom: 2rem;
+}
+
+.contact-form-header h3 {
+    font-size: 1.75rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.contact-form-header p {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.875rem 1rem;
+    border: 2px solid rgba(30, 58, 138, 0.2);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.form-privacy {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+.form-privacy i {
+    color: var(--accent-orange);
+    margin-right: 0.25rem;
+}
+
+.form-message {
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.form-message.success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 2px solid rgba(34, 197, 94, 0.3);
+}
+
+.form-message.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px solid rgba(239, 68, 68, 0.3);
+}
+
+.form-message i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.form-message.success i {
+    color: #22c55e;
+}
+
+.form-message.error i {
+    color: #ef4444;
+}
+
+.form-message h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.form-message.success h4 {
+    color: #16a34a;
+}
+
+.form-message.error h4 {
+    color: #dc2626;
+}
+
+.form-message p {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.contact-footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.contact-footer h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-footer p {
+    font-size: 0.95rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-form-wrapper {
+        padding: 1.5rem;
+    }
+    
+    .expo-callout {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-footer {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<!-- Contact Form JavaScript -->
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        company: document.getElementById('company').value,
+        interest: document.getElementById('interest').value,
+        message: document.getElementById('message').value,
+        timeline: document.getElementById('timeline').value
+    };
+    
+    // Hide form and show success message
+    // In production, this should send to your backend or use a service like FormSubmit, Netlify Forms, etc.
+    console.log('Form submitted:', formData);
+    
+    this.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    
+    // TODO: Integrate with your preferred form handling service:
+    // - FormSubmit: https://formsubmit.co/
+    // - Netlify Forms: Built-in if hosting on Netlify
+    // - Your own n8n webhook!
+    // Example n8n webhook integration:
+    /*
+    fetch('YOUR_N8N_WEBHOOK_URL', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    })
+    .catch(error => {
+        document.getElementById('formError').style.display = 'block';
+    });
+    */
+});
+</script>
+<!-- Navigation & Footer CSS -->
+<style>
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    line-height: 1.2;
+}
+
+.logo-tagline {
+    font-size: 0.8rem;
+    color: var(--accent-orange);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-blue);
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-orange);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-orange);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link-cta {
+    background: linear-gradient(135deg, var(--accent-orange), #dc2626);
+    color: white !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.nav-link-cta::after {
+    display: none;
+}
+
+.nav-link-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+}
+
+/* Scripture & Quote Sections */
+.scripture-section,
+.quote-section {
+    padding: 3rem 0;
+}
+
+.scripture-section {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+}
+
+.quote-section {
+    background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, rgba(220, 38, 38, 0.05) 100%);
+}
+
+.content-box {
+    display: flex;
+    gap: 2rem;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.box-icon {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: white;
+}
+
+.scripture-section .box-icon {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+}
+
+.quote-section .box-icon {
+    background: linear-gradient(135deg, var(--accent-orange), #dc2626);
+}
+
+.box-content {
+    flex: 1;
+}
+
+.box-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.scripture-quote,
+.daily-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.scripture-reference,
+.quote-author {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.scripture-reference::before {
+    content: '— ';
+}
+
+.quote-author::before {
+    content: '— ';
+}
+
+/* Footer */
+.site-footer {
+    background: linear-gradient(135deg, #1e293b 0%, var(--primary-blue) 100%);
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-column h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+.footer-tagline {
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.footer-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background: var(--accent-orange);
+    transform: translateY(-3px);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.footer-contact i {
+    color: var(--accent-orange);
+    font-size: 1.1rem;
+}
+
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-contact a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-copyright,
+.footer-credits {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 0.5rem 0;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        max-height: 400px;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 1rem;
+    }
+    
+    .nav-link-cta {
+        margin: 1rem;
+    }
+    
+    .content-box {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .scripture-quote,
+    .daily-quote {
+        font-size: 1.15rem;
+    }
+}
+</style>
+
+<!-- Navigation & Content Rotation JavaScript -->
+<script>
+// Mobile Navigation Toggle
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+
+navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Scripture rotation
+const scriptures = [
+    {
+        verse: "For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.",
+        reference: "Jeremiah 29:11"
+    },
+    {
+        verse: "Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.",
+        reference: "Proverbs 3:5-6"
+    },
+    {
+        verse: "I can do all things through him who strengthens me.",
+        reference: "Philippians 4:13"
+    },
+    {
+        verse: "And we know that for those who love God all things work together for good, for those who are called according to his purpose.",
+        reference: "Romans 8:28"
+    },
+    {
+        verse: "Be strong and courageous. Do not fear or be in dread of them, for it is the Lord your God who goes with you. He will not leave you or forsake you.",
+        reference: "Deuteronomy 31:6"
+    },
+    {
+        verse: "Commit your work to the Lord, and your plans will be established.",
+        reference: "Proverbs 16:3"
+    },
+    {
+        verse: "The Lord is my strength and my shield; in him my heart trusts, and I am helped.",
+        reference: "Psalm 28:7"
+    }
+];
+
+// Quote rotation
+const quotes = [
+    {
+        quote: "The way to get started is to quit talking and begin doing.",
+        author: "Walt Disney"
+    },
+    {
+        quote: "The only impossible journey is the one you never begin.",
+        author: "Tony Robbins"
+    },
+    {
+        quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        author: "Winston Churchill"
+    },
+    {
+        quote: "The future belongs to those who believe in the beauty of their dreams.",
+        author: "Eleanor Roosevelt"
+    },
+    {
+        quote: "It does not matter how slowly you go as long as you do not stop.",
+        author: "Confucius"
+    },
+    {
+        quote: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+    },
+    {
+        quote: "Innovation distinguishes between a leader and a follower.",
+        author: "Steve Jobs"
+    }
+];
+
+// Rotate scripture and quote daily
+function getDailyContent() {
+    const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+    
+    const scriptureIndex = dayOfYear % scriptures.length;
+    const quoteIndex = dayOfYear % quotes.length;
+    
+    document.getElementById('scriptureQuote').textContent = scriptures[scriptureIndex].verse;
+    document.getElementById('scriptureReference').textContent = scriptures[scriptureIndex].reference;
+    
+    document.getElementById('dailyQuote').textContent = quotes[quoteIndex].quote;
+    document.getElementById('quoteAuthor').textContent = quotes[quoteIndex].author;
+}
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const navHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = target.offsetTop - navHeight;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Update current year in footer
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    getDailyContent();
+});
+</script>
+</body></html>
