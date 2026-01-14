@@ -51,6 +51,8 @@
             <li><a href="#biography" class="nav-link">My Journey</a></li>
             <li><a href="#services" class="nav-link">Services</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#cyber-news" class="nav-link">Cyber News</a></li>
+            <li><a href="#showcase" class="nav-link">Showcase</a></li>
             <li><a href="#contact" class="nav-link nav-link-cta">Get In Touch</a></li>
         </ul>
     </div>
@@ -2068,6 +2070,1564 @@
     }
 }
 </style>
+
+<!-- CYBERSECURITY NEWS SECTION -->
+<section id="cyber-news" class="cyber-news-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Cybersecurity News</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Stay informed with the latest security news from trusted sources</p>
+        </div>
+
+        <div class="news-controls">
+            <div class="news-filters">
+                <button class="filter-btn active" data-source="all">All Sources</button>
+                <button class="filter-btn" data-source="thn">The Hacker News</button>
+                <button class="filter-btn" data-source="bleeping">BleepingComputer</button>
+            </div>
+            <div class="refresh-controls">
+                <span class="last-updated">Last updated: <span id="lastUpdated">--</span></span>
+                <button class="btn-refresh" id="refreshNews">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+        </div>
+
+        <div class="news-grid" id="newsGrid">
+            <!-- News cards dynamically inserted here -->
+        </div>
+
+        <div class="news-loading" id="newsLoading">
+            <div class="loading-spinner"></div>
+            <p>Fetching latest security news...</p>
+        </div>
+
+        <div class="news-error" id="newsError" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Unable to load news. Please try again later.</p>
+            <button class="btn btn-primary" onclick="CyberNews.fetchAllNews()">Retry</button>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Cybersecurity News Section */
+.cyber-news-section {
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, #f8fafc 0%, white 100%);
+}
+
+.news-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.news-filters {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.25rem;
+    border: 2px solid var(--secondary-blue);
+    background: white;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--primary-blue);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--secondary-blue);
+    color: white;
+}
+
+.refresh-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.last-updated {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.btn-refresh {
+    padding: 0.6rem 1.25rem;
+    background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-refresh:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.btn-refresh.spinning i {
+    animation: spin 1s linear infinite;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.news-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    border-color: var(--secondary-blue);
+}
+
+.news-source-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.news-source-badge.thn {
+    background: rgba(234, 88, 12, 0.1);
+    color: #ea580c;
+}
+
+.news-source-badge.bleeping {
+    background: rgba(30, 58, 138, 0.1);
+    color: var(--primary-blue);
+}
+
+.news-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.news-title a {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.news-title a:hover {
+    color: #ea580c;
+}
+
+.news-excerpt {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.news-date {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.news-date i {
+    margin-right: 0.4rem;
+}
+
+.news-read-more {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.news-read-more:hover {
+    color: #ea580c;
+}
+
+.news-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    gap: 1rem;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(30, 58, 138, 0.1);
+    border-top-color: var(--secondary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.news-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    gap: 1rem;
+    text-align: center;
+}
+
+.news-error i {
+    font-size: 3rem;
+    color: #ea580c;
+}
+
+/* Mobile Responsive for News */
+@media (max-width: 768px) {
+    .news-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .news-filters {
+        justify-content: center;
+    }
+
+    .refresh-controls {
+        justify-content: center;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-meta {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+    }
+}
+</style>
+
+<script>
+// Cybersecurity News Module
+const CyberNews = {
+    RSS2JSON_API: 'https://api.rss2json.com/v1/api.json',
+
+    FEEDS: {
+        thn: {
+            url: 'https://feeds.feedburner.com/TheHackersNews',
+            name: 'The Hacker News',
+            icon: 'fas fa-shield-alt'
+        },
+        bleeping: {
+            url: 'https://www.bleepingcomputer.com/feed/',
+            name: 'BleepingComputer',
+            icon: 'fas fa-laptop-code'
+        }
+    },
+
+    CACHE_KEY: 'drewbit_cyber_news',
+    CACHE_DURATION: 30 * 60 * 1000,
+
+    async fetchFeed(feedKey) {
+        const feed = this.FEEDS[feedKey];
+        const url = `${this.RSS2JSON_API}?rss_url=${encodeURIComponent(feed.url)}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.status === 'ok') {
+                return data.items.map(item => ({
+                    ...item,
+                    source: feedKey,
+                    sourceName: feed.name,
+                    sourceIcon: feed.icon
+                }));
+            }
+            throw new Error('Feed fetch failed');
+        } catch (error) {
+            console.error(`Error fetching ${feedKey}:`, error);
+            return [];
+        }
+    },
+
+    async fetchAllNews() {
+        this.showLoading(true);
+        document.getElementById('refreshNews').classList.add('spinning');
+
+        try {
+            const results = await Promise.all([
+                this.fetchFeed('thn'),
+                this.fetchFeed('bleeping')
+            ]);
+
+            const allNews = results.flat()
+                .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+                .slice(0, 12);
+
+            if (allNews.length > 0) {
+                this.cacheNews(allNews);
+                this.renderNews(allNews);
+                this.updateLastUpdated();
+                document.getElementById('newsError').style.display = 'none';
+            } else {
+                throw new Error('No articles fetched');
+            }
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            const cached = this.getCachedNews();
+            if (cached) {
+                this.renderNews(cached.articles);
+            } else {
+                document.getElementById('newsError').style.display = 'flex';
+                document.getElementById('newsGrid').style.display = 'none';
+            }
+        }
+
+        this.showLoading(false);
+        document.getElementById('refreshNews').classList.remove('spinning');
+    },
+
+    cacheNews(news) {
+        localStorage.setItem(this.CACHE_KEY, JSON.stringify({
+            timestamp: Date.now(),
+            articles: news
+        }));
+    },
+
+    getCachedNews() {
+        const cached = localStorage.getItem(this.CACHE_KEY);
+        if (!cached) return null;
+
+        const { timestamp, articles } = JSON.parse(cached);
+        return { articles, stale: Date.now() - timestamp > this.CACHE_DURATION };
+    },
+
+    renderNews(articles) {
+        const grid = document.getElementById('newsGrid');
+        grid.innerHTML = articles.map(article => this.createNewsCard(article)).join('');
+        grid.style.display = 'grid';
+    },
+
+    createNewsCard(article) {
+        const date = new Date(article.pubDate).toLocaleDateString('en-US', {
+            month: 'short', day: 'numeric', year: 'numeric'
+        });
+
+        return `
+            <article class="news-card" data-source="${article.source}">
+                <div class="news-source-badge ${article.source}">
+                    <i class="${article.sourceIcon}"></i> ${article.sourceName}
+                </div>
+                <h3 class="news-title">
+                    <a href="${article.link}" target="_blank" rel="noopener noreferrer">
+                        ${article.title}
+                    </a>
+                </h3>
+                <p class="news-excerpt">${this.truncate(article.description, 150)}</p>
+                <div class="news-meta">
+                    <span class="news-date">
+                        <i class="fas fa-calendar-alt"></i> ${date}
+                    </span>
+                    <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="news-read-more">
+                        Read Full Article <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </article>
+        `;
+    },
+
+    truncate(text, maxLength) {
+        const stripped = text.replace(/<[^>]+>/g, '');
+        return stripped.length > maxLength
+            ? stripped.substring(0, maxLength) + '...'
+            : stripped;
+    },
+
+    filterBySource(source) {
+        const cards = document.querySelectorAll('.news-card');
+        cards.forEach(card => {
+            card.style.display = (source === 'all' || card.dataset.source === source) ? 'flex' : 'none';
+        });
+    },
+
+    showLoading(show) {
+        document.getElementById('newsLoading').style.display = show ? 'flex' : 'none';
+        if (show) document.getElementById('newsGrid').style.display = 'none';
+    },
+
+    updateLastUpdated() {
+        const now = new Date().toLocaleTimeString('en-US', {
+            hour: '2-digit', minute: '2-digit'
+        });
+        document.getElementById('lastUpdated').textContent = now;
+    },
+
+    init() {
+        const cached = this.getCachedNews();
+        if (cached) {
+            this.renderNews(cached.articles);
+            this.showLoading(false);
+            this.updateLastUpdated();
+            if (cached.stale) {
+                this.fetchAllNews();
+            }
+        } else {
+            this.fetchAllNews();
+        }
+
+        document.getElementById('refreshNews').addEventListener('click', () => {
+            this.fetchAllNews();
+        });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                this.filterBySource(e.target.dataset.source);
+            });
+        });
+
+        setInterval(() => this.fetchAllNews(), this.CACHE_DURATION);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    CyberNews.init();
+});
+</script>
+
+<!-- WEB DESIGN SHOWCASE SECTION -->
+<section id="showcase" class="showcase-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Web Design Showcase</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Interactive demonstrations of what I can build for your business</p>
+        </div>
+
+        <div class="showcase-intro">
+            <p>The best way to understand what's possible is to experience it. Try out these interactive demos—everything you see here, I can build for your website.</p>
+        </div>
+
+        <div class="showcase-grid">
+            <!-- Demo 1: Theme Switcher -->
+            <div class="showcase-card">
+                <div class="showcase-header">
+                    <div class="showcase-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="showcase-meta">
+                        <h3 class="showcase-title">Dynamic Theme Switcher</h3>
+                        <p class="showcase-type">UI Component</p>
+                    </div>
+                </div>
+                <div class="showcase-demo theme-demo" id="themeDemo">
+                    <div class="demo-preview">
+                        <div class="demo-card">
+                            <h4>Sample Card</h4>
+                            <p>This card changes appearance based on the selected theme.</p>
+                            <button class="demo-btn">Action Button</button>
+                        </div>
+                    </div>
+                    <div class="demo-controls">
+                        <button class="theme-btn active" data-theme="light">
+                            <i class="fas fa-sun"></i> Light
+                        </button>
+                        <button class="theme-btn" data-theme="dark">
+                            <i class="fas fa-moon"></i> Dark
+                        </button>
+                        <button class="theme-btn" data-theme="colorful">
+                            <i class="fas fa-rainbow"></i> Colorful
+                        </button>
+                    </div>
+                </div>
+                <p class="showcase-description">Add personality to your website with customizable themes. Perfect for user preferences or seasonal branding.</p>
+            </div>
+
+            <!-- Demo 2: Interactive Cards -->
+            <div class="showcase-card">
+                <div class="showcase-header">
+                    <div class="showcase-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="showcase-meta">
+                        <h3 class="showcase-title">Interactive Card Effects</h3>
+                        <p class="showcase-type">Hover & Click Interactions</p>
+                    </div>
+                </div>
+                <div class="showcase-demo cards-demo">
+                    <div class="interactive-cards">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <i class="fas fa-code"></i>
+                                    <span>Hover Me</span>
+                                </div>
+                                <div class="flip-card-back">
+                                    <span>Revealed!</span>
+                                    <p>Great for services</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tilt-card">
+                            <div class="tilt-content">
+                                <i class="fas fa-magic"></i>
+                                <span>3D Tilt</span>
+                            </div>
+                        </div>
+                        <div class="glow-card">
+                            <i class="fas fa-bolt"></i>
+                            <span>Glow Effect</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="showcase-description">Engaging micro-interactions that make your content memorable and encourage exploration.</p>
+            </div>
+
+            <!-- Demo 3: Button Animations -->
+            <div class="showcase-card">
+                <div class="showcase-header">
+                    <div class="showcase-icon">
+                        <i class="fas fa-hand-pointer"></i>
+                    </div>
+                    <div class="showcase-meta">
+                        <h3 class="showcase-title">Button Animation Gallery</h3>
+                        <p class="showcase-type">Call-to-Action Designs</p>
+                    </div>
+                </div>
+                <div class="showcase-demo buttons-demo">
+                    <div class="button-gallery">
+                        <button class="animated-btn slide-fill">Slide Fill <i class="fas fa-arrow-right"></i></button>
+                        <button class="animated-btn pulse-btn">Pulse Effect</button>
+                        <button class="animated-btn border-draw">Border Draw</button>
+                        <button class="animated-btn gradient-shift">Gradient Shift</button>
+                    </div>
+                </div>
+                <p class="showcase-description">Eye-catching buttons that drive conversions with satisfying feedback.</p>
+            </div>
+
+            <!-- Demo 4: Loading States -->
+            <div class="showcase-card">
+                <div class="showcase-header">
+                    <div class="showcase-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <div class="showcase-meta">
+                        <h3 class="showcase-title">Loading State Animations</h3>
+                        <p class="showcase-type">User Experience Polish</p>
+                    </div>
+                </div>
+                <div class="showcase-demo loading-demo">
+                    <div class="loaders-gallery">
+                        <div class="loader-item">
+                            <div class="loader-dots"><span></span><span></span><span></span></div>
+                            <span class="loader-label">Dots</span>
+                        </div>
+                        <div class="loader-item">
+                            <div class="loader-ring"></div>
+                            <span class="loader-label">Ring</span>
+                        </div>
+                        <div class="loader-item">
+                            <div class="loader-bars"><span></span><span></span><span></span><span></span></div>
+                            <span class="loader-label">Bars</span>
+                        </div>
+                        <div class="loader-item">
+                            <div class="loader-progress"><div class="progress-fill"></div></div>
+                            <span class="loader-label">Progress</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="showcase-description">Keep users engaged during wait times with polished loading animations.</p>
+            </div>
+
+            <!-- Demo 5: Form Styling -->
+            <div class="showcase-card wide">
+                <div class="showcase-header">
+                    <div class="showcase-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="showcase-meta">
+                        <h3 class="showcase-title">Modern Form Styling</h3>
+                        <p class="showcase-type">Input Components</p>
+                    </div>
+                </div>
+                <div class="showcase-demo form-demo">
+                    <form class="styled-form" id="demoForm">
+                        <div class="form-row">
+                            <div class="floating-input">
+                                <input type="text" id="demoName" placeholder=" " required>
+                                <label for="demoName">Your Name</label>
+                            </div>
+                            <div class="floating-input">
+                                <input type="email" id="demoEmail" placeholder=" " required>
+                                <label for="demoEmail">Email Address</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading"><i class="fas fa-circle-notch fa-spin"></i></span>
+                            <span class="btn-success"><i class="fas fa-check"></i> Sent!</span>
+                        </button>
+                    </form>
+                </div>
+                <p class="showcase-description">Beautiful, accessible forms with floating labels and real-time validation feedback.</p>
+            </div>
+
+            <!-- Demo 6: Responsive Preview -->
+            <div class="showcase-card wide">
+                <div class="showcase-header">
+                    <div class="showcase-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="showcase-meta">
+                        <h3 class="showcase-title">Responsive Design Preview</h3>
+                        <p class="showcase-type">Mobile-First Development</p>
+                    </div>
+                </div>
+                <div class="showcase-demo responsive-demo">
+                    <div class="device-switcher">
+                        <button class="device-btn" data-device="mobile"><i class="fas fa-mobile-alt"></i> Mobile</button>
+                        <button class="device-btn" data-device="tablet"><i class="fas fa-tablet-alt"></i> Tablet</button>
+                        <button class="device-btn active" data-device="desktop"><i class="fas fa-desktop"></i> Desktop</button>
+                    </div>
+                    <div class="responsive-preview-container">
+                        <div class="device-frame desktop" id="deviceFrame">
+                            <div class="preview-content">
+                                <div class="preview-header">
+                                    <div class="preview-logo"></div>
+                                    <div class="preview-nav"><span></span><span></span><span></span></div>
+                                </div>
+                                <div class="preview-hero">
+                                    <div class="preview-title"></div>
+                                    <div class="preview-subtitle"></div>
+                                    <div class="preview-btn"></div>
+                                </div>
+                                <div class="preview-grid">
+                                    <div class="preview-card"></div>
+                                    <div class="preview-card"></div>
+                                    <div class="preview-card"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="showcase-description">Every website I build is fully responsive—optimized for phones, tablets, and desktops.</p>
+            </div>
+        </div>
+
+        <div class="showcase-cta">
+            <h3>Like What You See?</h3>
+            <p>These are just samples of what's possible. Let's discuss how custom interactive elements can enhance your website.</p>
+            <a href="#contact" class="btn btn-primary btn-lg">Start Your Project</a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Web Design Showcase Section */
+.showcase-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.showcase-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.showcase-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.showcase-card:hover {
+    border-color: var(--secondary-blue);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.showcase-card.wide {
+    grid-column: span 2;
+}
+
+.showcase-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.showcase-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.showcase-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.showcase-type {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0.25rem 0 0;
+}
+
+.showcase-demo {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+.showcase-description {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Theme Switcher Demo */
+.theme-demo .demo-preview {
+    padding: 2rem;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    background: #f8fafc;
+    margin-bottom: 1rem;
+}
+
+.theme-demo .demo-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+}
+
+.theme-demo .demo-card h4 {
+    margin: 0 0 0.5rem;
+    color: var(--text-dark);
+    transition: color 0.4s ease;
+}
+
+.theme-demo .demo-card p {
+    margin: 0 0 1rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    transition: color 0.4s ease;
+}
+
+.theme-demo .demo-btn {
+    padding: 0.5rem 1rem;
+    background: var(--secondary-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.demo-controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.theme-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-btn:hover, .theme-btn.active {
+    border-color: var(--secondary-blue);
+    background: var(--secondary-blue);
+    color: white;
+}
+
+/* Dark theme */
+.theme-demo.theme-dark .demo-preview {
+    background: #1f2937;
+}
+
+.theme-demo.theme-dark .demo-card {
+    background: #374151;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.theme-demo.theme-dark .demo-card h4 {
+    color: white;
+}
+
+.theme-demo.theme-dark .demo-card p {
+    color: #9ca3af;
+}
+
+/* Colorful theme */
+.theme-demo.theme-colorful .demo-preview {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.theme-demo.theme-colorful .demo-card {
+    background: rgba(255,255,255,0.95);
+}
+
+.theme-demo.theme-colorful .demo-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* Interactive Cards Demo */
+.interactive-cards {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flip-card {
+    width: 100px;
+    height: 120px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+}
+
+.flip-card-front i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #ea580c, #dc2626);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card-back p {
+    font-size: 0.7rem;
+    font-weight: 400;
+    margin-top: 0.25rem;
+}
+
+.tilt-card {
+    width: 100px;
+    height: 120px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease;
+    cursor: pointer;
+}
+
+.tilt-content {
+    text-align: center;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.tilt-content i {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.glow-card {
+    width: 100px;
+    height: 120px;
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.glow-card i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.glow-card:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+    transform: scale(1.05);
+}
+
+/* Button Animation Gallery */
+.button-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.animated-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-fill {
+    background: transparent;
+    border: 2px solid var(--secondary-blue);
+    color: var(--secondary-blue);
+}
+
+.slide-fill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary-blue);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.slide-fill:hover {
+    color: white;
+}
+
+.slide-fill:hover::before {
+    left: 0;
+}
+
+.pulse-btn {
+    background: #ea580c;
+    color: white;
+}
+
+.pulse-btn:hover {
+    animation: pulse 0.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.border-draw {
+    background: transparent;
+    border: 2px solid transparent;
+    color: var(--text-dark);
+    position: relative;
+}
+
+.border-draw::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+}
+
+.border-draw:hover::before {
+    width: 100%;
+    height: 100%;
+    border-color: var(--secondary-blue);
+}
+
+.gradient-shift {
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue), #ea580c);
+    background-size: 200% 100%;
+    color: white;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Loading States Demo */
+.loaders-gallery {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.loader-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.loader-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.loader-dots {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.loader-dots span {
+    width: 10px;
+    height: 10px;
+    background: var(--secondary-blue);
+    border-radius: 50%;
+    animation: dotBounce 1.4s ease-in-out infinite both;
+}
+
+.loader-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loader-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes dotBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+.loader-ring {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(59, 130, 246, 0.2);
+    border-top-color: var(--secondary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loader-bars {
+    display: flex;
+    gap: 0.2rem;
+    height: 40px;
+    align-items: flex-end;
+}
+
+.loader-bars span {
+    width: 8px;
+    background: var(--secondary-blue);
+    animation: barGrow 1s ease-in-out infinite;
+}
+
+.loader-bars span:nth-child(1) { animation-delay: 0s; }
+.loader-bars span:nth-child(2) { animation-delay: 0.1s; }
+.loader-bars span:nth-child(3) { animation-delay: 0.2s; }
+.loader-bars span:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes barGrow {
+    0%, 100% { height: 10px; }
+    50% { height: 40px; }
+}
+
+.loader-progress {
+    width: 80px;
+    height: 8px;
+    background: rgba(59, 130, 246, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--secondary-blue);
+    border-radius: 4px;
+    animation: progressFill 2s ease-in-out infinite;
+}
+
+@keyframes progressFill {
+    0% { width: 0%; }
+    50% { width: 100%; }
+    100% { width: 0%; }
+}
+
+/* Form Styling Demo */
+.styled-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.floating-input {
+    position: relative;
+}
+
+.floating-input input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.floating-input input:focus {
+    outline: none;
+    border-color: var(--secondary-blue);
+}
+
+.floating-input label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: var(--text-light);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    background: white;
+    padding: 0 0.25rem;
+}
+
+.floating-input input:focus + label,
+.floating-input input:not(:placeholder-shown) + label {
+    top: -0.6rem;
+    font-size: 0.85rem;
+    color: var(--secondary-blue);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+}
+
+.submit-btn .btn-loading,
+.submit-btn .btn-success {
+    display: none;
+}
+
+.submit-btn.loading .btn-text { display: none; }
+.submit-btn.loading .btn-loading { display: inline; }
+.submit-btn.success .btn-text { display: none; }
+.submit-btn.success .btn-success { display: inline; }
+.submit-btn.success { background: #10b981; }
+
+/* Responsive Preview Demo */
+.device-switcher {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.device-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.device-btn:hover, .device-btn.active {
+    border-color: var(--secondary-blue);
+    background: var(--secondary-blue);
+    color: white;
+}
+
+.responsive-preview-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background: #f1f5f9;
+    border-radius: 8px;
+    min-height: 250px;
+    align-items: center;
+}
+
+.device-frame {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.device-frame.desktop {
+    width: 100%;
+    max-width: 500px;
+}
+
+.device-frame.tablet {
+    width: 350px;
+}
+
+.device-frame.mobile {
+    width: 200px;
+}
+
+.preview-content {
+    padding: 1rem;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.preview-logo {
+    width: 60px;
+    height: 20px;
+    background: var(--secondary-blue);
+    border-radius: 4px;
+}
+
+.preview-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.preview-nav span {
+    width: 30px;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+}
+
+.device-frame.mobile .preview-nav {
+    display: none;
+}
+
+.preview-hero {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.preview-title {
+    width: 80%;
+    height: 16px;
+    background: var(--text-dark);
+    border-radius: 4px;
+    margin: 0 auto 0.5rem;
+}
+
+.preview-subtitle {
+    width: 60%;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    margin: 0 auto 1rem;
+}
+
+.preview-btn {
+    width: 80px;
+    height: 24px;
+    background: var(--secondary-blue);
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.device-frame.mobile .preview-grid {
+    grid-template-columns: 1fr;
+}
+
+.device-frame.tablet .preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.preview-card {
+    height: 50px;
+    background: #f8fafc;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Showcase CTA */
+.showcase-cta {
+    text-align: center;
+    padding: 3rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 16px;
+    color: white;
+}
+
+.showcase-cta h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.showcase-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+}
+
+.showcase-cta .btn {
+    background: white;
+    color: var(--primary-blue);
+}
+
+.showcase-cta .btn:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsive for Showcase */
+@media (max-width: 968px) {
+    .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .showcase-card.wide {
+        grid-column: span 1;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .interactive-cards {
+        gap: 0.75rem;
+    }
+
+    .flip-card, .tilt-card, .glow-card {
+        width: 80px;
+        height: 100px;
+    }
+
+    .button-gallery {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .loaders-gallery {
+        gap: 1.5rem;
+    }
+}
+</style>
+
+<script>
+// Web Design Showcase Module
+const Showcase = {
+    init() {
+        this.initThemeSwitcher();
+        this.initTiltEffect();
+        this.initDeviceSwitcher();
+        this.initFormSubmit();
+    },
+
+    initThemeSwitcher() {
+        const themeDemo = document.getElementById('themeDemo');
+        const themeBtns = themeDemo.querySelectorAll('.theme-btn');
+
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                themeDemo.className = `showcase-demo theme-demo theme-${btn.dataset.theme}`;
+            });
+        });
+    },
+
+    initTiltEffect() {
+        const tiltCard = document.querySelector('.tilt-card');
+        if (!tiltCard) return;
+
+        tiltCard.addEventListener('mousemove', (e) => {
+            const rect = tiltCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 8;
+            const rotateY = (centerX - x) / 8;
+            tiltCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        tiltCard.addEventListener('mouseleave', () => {
+            tiltCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    },
+
+    initDeviceSwitcher() {
+        const deviceBtns = document.querySelectorAll('.device-btn');
+        const deviceFrame = document.getElementById('deviceFrame');
+
+        deviceBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                deviceBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                deviceFrame.className = `device-frame ${btn.dataset.device}`;
+            });
+        });
+    },
+
+    initFormSubmit() {
+        const form = document.getElementById('demoForm');
+        if (!form) return;
+
+        const submitBtn = form.querySelector('.submit-btn');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submitBtn.classList.add('loading');
+
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                submitBtn.classList.add('success');
+
+                setTimeout(() => {
+                    submitBtn.classList.remove('success');
+                    form.reset();
+                }, 2000);
+            }, 1500);
+        });
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    Showcase.init();
+});
+</script>
+
 <!-- CONTACT SECTION -->
 <section id="contact" class="contact-section">
     <div class="container">
