@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#127807;</text></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christian Spiritual Coaching | The Shepherd &amp; Me — Redesign Concept</title>
+<meta name="description" content="Heal your past, hear God clearly, and live on purpose. Faith-based transformational coaching with Andrew & Maria Segovia. Book a free 30-minute session.">
+<meta property="og:title" content="The Shepherd & Me — Christian Spiritual Coaching">
+<meta property="og:description" content="Heal your past, hear God clearly, and live on purpose. Book a free 30-minute session with Andrew & Maria Segovia.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sage:#9DB5A4;
+  --sage-deep:#3F5C49;
+  --sage-dark:#2E4437;
+  --cream:#EEF1E4;
+  --cream-soft:#F7F8F2;
+  --ink:#141414;
+  --ink-soft:#3D423E;
+  --line:#D8DECB;
+  --white:#FFFFFF;
+  --gold:#C2A05A;
+  --radius:14px;
+  --shadow:0 10px 34px rgba(20,30,22,.10);
+  --display:'Anton',Impact,sans-serif;
+  --body:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--cream-soft);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--sage-deep)}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+.narrow{max-width:820px}
+
+/* ---------- typography ---------- */
+h1,h2,h3,.display{font-family:var(--display);font-weight:400;letter-spacing:.5px;line-height:1.04;text-transform:uppercase;color:var(--ink)}
+h1{font-size:clamp(2.6rem,6vw,4.6rem)}
+h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:.5em}
+h3{font-size:1.28rem;letter-spacing:.8px}
+.kicker{display:inline-block;font-family:var(--body);font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:14px}
+.lead{font-size:1.13rem;color:var(--ink-soft)}
+.center{text-align:center}
+.on-dark,.on-dark h1,.on-dark h2,.on-dark h3{color:var(--white)}
+.on-dark .kicker{color:var(--sage)}
+.on-dark p{color:rgba(255,255,255,.88)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;font-family:var(--body)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(20,40,25,.18)}
+.btn-primary{background:var(--sage-deep);color:#fff}
+.btn-primary:hover{background:var(--sage-dark)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-ghost.on-dark-btn{color:#fff;border-color:rgba(255,255,255,.85)}
+.btn-light{background:#fff;color:var(--sage-dark)}
+.btn .arrow{transition:transform .18s}
+.btn:hover .arrow{transform:translateX(4px)}
+
+/* ---------- header ---------- */
+.skip{position:absolute;left:-9999px;top:0;background:#fff;padding:10px 16px;z-index:200}
+.skip:focus{left:12px;top:12px}
+header{position:sticky;top:0;z-index:100;background:rgba(247,248,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{background:var(--ink);color:#fff;font-family:var(--display);text-transform:uppercase;font-size:.82rem;line-height:1.14;padding:9px 12px;letter-spacing:.6px;border-left:3px solid var(--sage)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem;padding:6px 2px;border-bottom:2px solid transparent;transition:border-color .15s}
+.nav-links a:hover{border-color:var(--sage)}
+.nav-links a.active{border-color:var(--sage-deep);font-weight:600}
+.nav-cta{margin-left:6px}
+.nav .btn{padding:11px 22px;font-size:.9rem}
+.hamburger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--ink);margin:5px 0;border-radius:2px;transition:.25s}
+.mobile-menu{display:none;background:var(--cream-soft);border-bottom:1px solid var(--line);padding:8px 24px 22px}
+.mobile-menu a{display:block;padding:13px 4px;text-decoration:none;color:var(--ink);font-weight:600;font-size:1.05rem;border-bottom:1px solid var(--line)}
+.mobile-menu .btn{margin-top:16px;justify-content:center;display:flex}
+body.menu-open .mobile-menu{display:block}
+body.menu-open .hamburger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+body.menu-open .hamburger span:nth-child(2){opacity:0}
+body.menu-open .hamburger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* ---------- page routing ---------- */
+.page{display:none}
+.page.current{display:block}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,18,12,.72) 0%,rgba(10,18,12,.45) 55%,rgba(10,18,12,.25) 100%)}
+.hero-inner{position:relative;z-index:2;padding:110px 0}
+.hero h1{color:#fff;max-width:820px}
+.hero h1 em{font-style:normal;color:var(--sage)}
+.hero p{max-width:560px;margin:26px 0 34px;font-size:1.14rem;color:rgba(255,255,255,.9)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(157,181,164,.2);border:1px solid rgba(157,181,164,.55);color:#DCE7DE;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:999px;margin-bottom:26px}
+
+/* interior page hero */
+.page-hero{background:var(--cream);padding:92px 0 64px;border-bottom:1px solid var(--line)}
+.page-hero h1{max-width:900px}
+.page-hero .lead{max-width:660px;margin-top:18px}
+
+/* ---------- sections ---------- */
+section.band{padding:92px 0}
+.band-cream{background:var(--cream)}
+.band-white{background:#fff}
+.band-dark{background:var(--sage-dark)}
+.band-sage{background:var(--sage)}
+.band-img{position:relative;color:#fff}
+.band-img .band-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.band-img .band-bg::after{content:"";position:absolute;inset:0;background:rgba(16,26,19,.62)}
+.band-img .container{position:relative;z-index:2}
+
+/* scripture */
+.scripture{border-left:4px solid var(--sage);background:var(--cream);padding:26px 30px;border-radius:0 var(--radius) var(--radius) 0;margin:34px 0;font-size:1.06rem;font-style:italic;color:var(--ink-soft)}
+.scripture cite{display:block;margin-top:10px;font-style:normal;font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-deep)}
+
+/* grid helpers */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.photo img{width:100%;height:100%;object-fit:cover}
+
+/* program cards */
+.program-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .2s ease}
+.program-card:hover{transform:translateY(-5px)}
+.program-card .pc-img{height:190px;position:relative}
+.program-card .pc-img img{width:100%;height:100%;object-fit:cover}
+.pc-num{position:absolute;top:14px;left:14px;background:rgba(20,20,20,.82);color:#fff;font-family:var(--display);padding:5px 12px;border-radius:8px;font-size:.95rem;letter-spacing:1px}
+.pc-price{position:absolute;top:14px;right:14px;background:var(--sage);color:var(--ink);font-weight:700;padding:5px 14px;border-radius:999px;font-size:.85rem}
+.pc-price.free{background:var(--gold);color:#fff}
+.program-card .pc-body{padding:26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.program-card h3{font-size:1.15rem}
+.program-card p{font-size:.95rem;color:var(--ink-soft)}
+.program-card .btn{margin-top:auto;align-self:flex-start}
+
+/* includes list */
+.includes{list-style:none;margin:10px 0}
+.includes li{padding:7px 0 7px 30px;position:relative;font-size:.95rem;color:var(--ink-soft)}
+.includes li::before{content:"✓";position:absolute;left:4px;top:6px;color:var(--sage-deep);font-weight:800}
+
+/* testimonial cards */
+.t-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
+.t-quote{font-size:1.02rem;color:var(--ink-soft);font-style:italic}
+.t-name{font-weight:700;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-deep)}
+.t-card details{font-size:.93rem;color:var(--ink-soft)}
+.t-card summary{cursor:pointer;font-weight:600;color:var(--sage-deep);list-style:none;font-style:normal}
+.t-card summary::after{content:" +";font-weight:800}
+.t-card details[open] summary::after{content:" –"}
+.t-card details p{margin-top:12px}
+.stars{color:var(--gold);letter-spacing:3px;font-size:.95rem}
+
+/* story article */
+.article{max-width:760px;margin:0 auto;padding:70px 24px 30px}
+.article p{margin-bottom:1.35em;font-size:1.07rem;color:var(--ink-soft)}
+.article .drop{font-size:1.2rem;color:var(--ink);font-weight:500}
+.story-head{display:grid;grid-template-columns:340px 1fr;gap:54px;align-items:center}
+.pull{font-size:1.45rem;line-height:1.45;font-weight:600;color:var(--ink);border-left:4px solid var(--gold);padding-left:24px;margin:10px 0}
+.byline{margin-top:18px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;color:var(--sage-deep)}
+
+/* value props */
+.vp{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;box-shadow:var(--shadow)}
+.vp .vp-ico{width:52px;height:52px;border-radius:14px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px}
+.vp h3{margin-bottom:10px}
+.vp p{font-size:.96rem;color:var(--ink-soft)}
+
+/* forms (visual demo) */
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:38px;box-shadow:var(--shadow)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f-group{margin-bottom:18px}
+.f-group label{display:block;font-weight:600;font-size:.88rem;margin-bottom:7px}
+.f-group input,.f-group textarea,.f-group select{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);font-size:.98rem;background:var(--cream-soft)}
+.f-group input:focus,.f-group textarea:focus{outline:2px solid var(--sage);border-color:var(--sage)}
+.amounts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.amt{padding:13px 26px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-weight:700;cursor:pointer;font-size:1rem}
+.amt.sel{background:var(--sage-deep);color:#fff;border-color:var(--sage-deep)}
+
+/* faq */
+.faq{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;padding:22px 0;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.faq summary::after{content:"+";font-size:1.5rem;color:var(--sage-deep);font-weight:400}
+.faq[open] summary::after{content:"–"}
+.faq p{padding:0 0 22px;color:var(--ink-soft)}
+
+/* footer */
+footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 0 30px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:50px}
+footer h4{color:#fff;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
+footer a{color:rgba(255,255,255,.78);text-decoration:none;display:block;padding:5px 0;font-size:.94rem}
+footer a:hover{color:var(--sage)}
+.foot-brand p{font-size:.94rem;margin-top:16px;max-width:300px}
+.socials{display:flex;gap:12px;margin-top:20px}
+.socials a{width:40px;height:40px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0}
+.socials a:hover{border-color:var(--sage);background:rgba(157,181,164,.15)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:rgba(255,255,255,.55)}
+
+/* cta band */
+.cta-band{padding:96px 0;text-align:center}
+.cta-band h2{max-width:760px;margin:0 auto 18px}
+.cta-band p{max-width:560px;margin:0 auto 34px}
+
+/* demo ribbon + toast */
+.demo-tag{position:fixed;bottom:18px;left:18px;z-index:120;background:var(--ink);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.08em;padding:9px 16px;border-radius:999px;opacity:.88}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--sage-dark);color:#fff;padding:14px 26px;border-radius:12px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:150;box-shadow:var(--shadow)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* reveal (transform only — content always readable) */
+.reveal{transform:translateY(26px);transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{transform:none}
+@media (prefers-reduced-motion: reduce){.reveal{transform:none;transition:none}}
+
+/* responsive */
+@media (max-width:960px){
+  .grid-2,.story-head{grid-template-columns:1fr;gap:36px}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hamburger{display:block}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .grid-3,.f-row{grid-template-columns:1fr}
+  section.band,.cta-band{padding:64px 0}
+  .hero{min-height:76vh}
+  .foot-grid{grid-template-columns:1fr}
+  .form-card{padding:26px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="The Shepherd and Me — home">
+      <span class="brand-mark">The<br>Shepherd<br>&amp; Me</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#home" data-nav="home">Home</a></li>
+        <li><a href="#coaching" data-nav="coaching">Coaching</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
+        <li><a href="#testimonials" data-nav="testimonials">Testimonials</a></li>
+        <li><a href="#give" data-nav="give">Get Involved</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="#contact">Book a Free Session</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#coaching">Coaching</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#give">Get Involved</a>
+    <a class="btn btn-primary" href="#contact">Book a Free Session</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================ HOME -->
+<section class="page" id="page-home">
+  <div class="hero">
+    <div class="hero-bg" style="background-image:url('assets/mountain-river-valley-1920x1080.jpg')" role="img" aria-label="A river winding through a forested mountain valley"></div>
+    <div class="container hero-inner">
+      <span class="hero-badge">✦ Christian Transformational Coaching</span>
+      <h1>Heal your past.<br>Hear God clearly.<br><em>Live on purpose.</em></h1>
+      <p>We help you experience a spiritually renewed life through transformational coaching — so you can live in freedom, with purpose, and in a close relationship with God.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Book a Free 30-Minute Session <span class="arrow">→</span></a>
+        <a class="btn btn-ghost on-dark-btn" href="#coaching">Explore Coaching</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="band band-white">
+    <div class="container narrow center reveal">
+      <p class="lead" style="font-style:italic">“Then he calls his friends and neighbors together and says, ‘Rejoice with me; I have found my lost sheep.’ I tell you that in the same way there will be more rejoicing in heaven over one sinner who repents than over ninety-nine righteous persons who do not need to repent.”</p>
+      <p style="margin-top:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;color:var(--sage-deep)">Luke 15:6–7</p>
+    </div>
+  </section>
+
+  <section class="band band-cream">
+    <div class="container grid-2">
+      <div class="photo reveal" style="max-height:560px">
+        <img src="assets/andrew-maria-760x948.jpg" alt="Andrew and Maria Segovia standing together outdoors">
+      </div>
+      <div>
+        <span class="kicker">Who we are</span>
+        <h2>Our Mission</h2>
+        <p class="lead">Leading people into a deeper relationship with Jesus by teaching God’s Word, bringing healing and transformation, and equipping every person to discover and fulfill their God-given identity and purpose.</p>
+        <h2 style="margin-top:38px">Our Vision</h2>
+        <p class="lead">To see every person know the truth of God’s Word, experience the freedom found in Jesus Christ, and live the abundant life God created them to live.</p>
+        <div class="scripture">“Jesus said, ‘If you hold to my teaching, you are really my disciples. Then you will know the truth, and the truth will set you free.’”<cite>John 8:31–32 (NIV)</cite></div>
+        <a class="btn btn-ghost" href="#about">Meet Andrew &amp; Maria <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+  <section class="band band-white">
+    <div class="container">
+      <div class="center reveal" style="margin-bottom:52px">
+        <span class="kicker">Coaching Programs</span>
+        <h2>Your journey starts with<br>one free conversation</h2>
+        <p class="lead" style="max-width:620px;margin:0 auto">Begin with a free 30-minute Spiritual Encounter session — no cost, no pressure. Then go deeper whenever you’re ready.</p>
+      </div>
+      <div class="grid-3">
+        <article class="program-card reveal">
+          <div class="pc-img">
+            <img src="assets/open-hands-praying-800x550.jpg" alt="Open hands lifted in prayer in warm light">
+            <span class="pc-num">01</span><span class="pc-price free">Free</span>
+          </div>
+          <div class="pc-body">
+            <h3>Spiritual Encounter Coaching</h3>
+            <p>A personal experience in hearing God’s voice. Once you learn to hear Him, His Spirit guides you into a closer relationship — and His abundant love, peace, and joy.</p>
+            <a class="btn btn-primary" href="#contact">Book Free Session</a>
+          </div>
+        </article>
+        <article class="program-card reveal">
+          <div class="pc-img">
+            <img src="assets/forest-sunrays-800x550.jpg" alt="Sunrays breaking through a forest canopy">
+            <span class="pc-num">02</span><span class="pc-price">$400</span>
+          </div>
+          <div class="pc-body">
+            <h3>Spiritual Healing Coaching</h3>
+            <p>Personal encounters with God through the Holy Spirit that bring healing and restoration to the heart — freedom, peace, and a closer relationship with God.</p>
+            <a class="btn btn-ghost" href="#coaching">Program Details</a>
+          </div>
+        </article>
+        <article class="program-card reveal">
+          <div class="pc-img">
+            <img src="assets/hiker-mountain-800x550.jpg" alt="A hiker standing on a mountain with arms open">
+            <span class="pc-num">03</span><span class="pc-price">$400</span>
+          </div>
+          <div class="pc-body">
+            <h3>Spiritual Transformation Program</h3>
+            <p>Breaks down the barriers that block us from being who God created us to be — so you can live renewed, with freedom and greater purpose.</p>
+            <a class="btn btn-ghost" href="#coaching">Program Details</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-cream">
+    <div class="container">
+      <div class="center reveal" style="margin-bottom:48px">
+        <span class="kicker">Testimonials</span>
+        <h2>Lives that tell the story</h2>
+      </div>
+      <div class="grid-3">
+        <div class="t-card reveal">
+          <span class="stars" aria-label="5 stars">★★★★★</span>
+          <p class="t-quote">“I discovered my true identity in Him and gained absolute clarity about my divine calling… Thank you for being a true instrument of God’s love during this pivotal chapter of my life.”</p>
+          <span class="t-name">— Amanda</span>
+        </div>
+        <div class="t-card reveal">
+          <span class="stars" aria-label="5 stars">★★★★★</span>
+          <p class="t-quote">“Being able to have a real, two-way relationship with a loving God has made all the difference.”</p>
+          <span class="t-name">— Cathy</span>
+        </div>
+        <div class="t-card reveal">
+          <span class="stars" aria-label="5 stars">★★★★★</span>
+          <p class="t-quote">“I feel that my relationship with God has been restored… I am now on a different trajectory, the one that is in alignment with my destiny.”</p>
+          <span class="t-name">— Andrea</span>
+        </div>
+      </div>
+      <div class="center" style="margin-top:40px">
+        <a class="btn btn-ghost" href="#testimonials">Read All 12 Stories <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-img">
+    <div class="band-bg" style="background-image:url('assets/hands-reaching-1600x900.jpg')"></div>
+    <div class="container on-dark center">
+      <span class="kicker">Get Involved</span>
+      <h2 style="max-width:700px;margin:0 auto .5em">Help us go after the one</h2>
+      <p style="max-width:600px;margin:0 auto 34px">The Shepherd and Me supports ministries that further God’s kingdom by restoring an individual’s true identity and purpose. Your heart and prayers help this ministry grow.</p>
+      <a class="btn btn-light" href="#give">Give Today <span class="arrow">→</span></a>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================ COACHING -->
+<section class="page" id="page-coaching">
+  <div class="page-hero">
+    <div class="container">
+      <span class="kicker">Coaching Services</span>
+      <h1>Transform your<br>spiritual journey</h1>
+      <p class="lead">Programs designed to help you heal the past, hear God clearly, and step into the abundant life you were created for.</p>
+      <div class="hero-actions" style="margin-top:30px">
+        <a class="btn btn-primary" href="#contact">Book a Free 30-Minute Session <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="band band-white">
+    <div class="container" style="display:flex;flex-direction:column;gap:34px">
+
+      <article class="form-card reveal" style="padding:0;overflow:hidden">
+        <div class="grid-2" style="gap:0;align-items:stretch">
+          <div style="padding:44px">
+            <span class="kicker">01 · Start here — Free</span>
+            <h3 style="font-size:1.6rem;margin-bottom:14px">Spiritual Encounter Coaching</h3>
+            <p style="color:var(--ink-soft)">Have you been struggling lately to hear God? Have you been feeling like He is far away?</p>
+            <p style="color:var(--ink-soft);margin-top:12px">Spiritual Encounter Coaching is designed to give you a personal experience in hearing God’s voice. Once you learn to hear His voice, His Spirit will guide you into a closer relationship with Him. You will experience His abundant love, peace, and joy.</p>
+            <ul class="includes"><li>One 30-minute coaching session</li><li>No cost — a gift to help you take the first step</li></ul>
+            <p style="font-weight:800;font-size:1.3rem;margin:8px 0 20px">Free</p>
+            <a class="btn btn-primary" href="#contact">Book Your Free Session</a>
+          </div>
+          <div class="photo" style="border-radius:0;box-shadow:none;min-height:340px">
+            <img src="assets/open-hands-praying-900x800.jpg" alt="Open hands lifted in prayer">
+          </div>
+        </div>
+      </article>
+
+      <article class="form-card reveal" style="padding:0;overflow:hidden">
+        <div class="grid-2" style="gap:0;align-items:stretch">
+          <div class="photo" style="border-radius:0;box-shadow:none;min-height:340px">
+            <img src="assets/forest-sunrays-900x800.jpg" alt="Morning sun breaking through forest trees">
+          </div>
+          <div style="padding:44px">
+            <span class="kicker">02 · Four weeks</span>
+            <h3 style="font-size:1.6rem;margin-bottom:14px">Spiritual Healing Coaching</h3>
+            <p style="color:var(--ink-soft)">Have you been dealing with past emotional pain that is holding you back? Do you feel stuck in a cycle of repeating painful or unproductive life patterns?</p>
+            <p style="color:var(--ink-soft);margin-top:12px">Spiritual Healing Coaching involves personal encounters with God through the Holy Spirit that bring healing and restoration to our hearts. Once your heart is healed, you will begin to live a spiritually renewed life — freedom, peace, and a closer relationship with God.</p>
+            <ul class="includes">
+              <li>4 one-hour coaching sessions</li>
+              <li>Weekly coaching summaries with personalized assignments</li>
+              <li>2 personalized video coaching messages</li>
+              <li>24-hour response to e-mail communication</li>
+              <li>30-minute check-in call one month after the program ends</li>
+            </ul>
+            <p style="font-weight:800;font-size:1.3rem;margin:8px 0 20px">$400 <span style="font-weight:500;font-size:.9rem;color:var(--ink-soft)">total</span></p>
+            <a class="btn btn-primary" href="#contact">Inquire About This Program</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="form-card reveal" style="padding:0;overflow:hidden">
+        <div class="grid-2" style="gap:0;align-items:stretch">
+          <div style="padding:44px">
+            <span class="kicker">03 · Four weeks</span>
+            <h3 style="font-size:1.6rem;margin-bottom:14px">Spiritual Transformation Program</h3>
+            <p style="color:var(--ink-soft)">Have you been feeling stuck and not able to make the changes you know you should? Have you made meaningful changes but find that they don’t last?</p>
+            <p style="color:var(--ink-soft);margin-top:12px">Making significant and lasting change is a lot easier once we remove the barriers that hold us back. Spiritual Transformation Coaching breaks down the barriers that block us from being who God created us to be — so you can live renewed, with freedom, greater purpose, and a closer relationship with God.</p>
+            <ul class="includes">
+              <li>4 one-hour coaching sessions</li>
+              <li>Weekly coaching summaries with personalized assignments</li>
+              <li>2 personalized video coaching messages</li>
+              <li>24-hour response to e-mail communication</li>
+              <li>30-minute check-in call one month after the program ends</li>
+            </ul>
+            <p style="font-weight:800;font-size:1.3rem;margin:8px 0 20px">$400 <span style="font-weight:500;font-size:.9rem;color:var(--ink-soft)">total</span></p>
+            <a class="btn btn-primary" href="#contact">Inquire About This Program</a>
+          </div>
+          <div class="photo" style="border-radius:0;box-shadow:none;min-height:340px">
+            <img src="assets/hiker-mountain-900x800.jpg" alt="A hiker on a mountain summit with arms outstretched">
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="band band-cream">
+    <div class="container">
+      <div class="center reveal" style="margin-bottom:48px">
+        <span class="kicker">Our Approach</span>
+        <h2>The foundation of your transformation</h2>
+        <p class="lead" style="max-width:640px;margin:0 auto">A coaching journey that goes beyond strategy — focused on the spiritual core of your existence, helping you align with God’s voice and your true identity.</p>
+      </div>
+      <div class="grid-3">
+        <div class="vp reveal"><div class="vp-ico">🕊️</div><h3>Divine Identity</h3><p>Discover who God created you to be and walk confidently in your unique calling and purpose.</p></div>
+        <div class="vp reveal"><div class="vp-ico">🔓</div><h3>Spiritual Freedom</h3><p>Break free from the weights and wounds of your past through transformational spiritual encounters.</p></div>
+        <div class="vp reveal"><div class="vp-ico">👂</div><h3>Clear Hearing</h3><p>Equip yourself to hear God’s voice clearly, bringing peace and direction to every area of your life.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-white">
+    <div class="container narrow">
+      <div class="center reveal" style="margin-bottom:30px">
+        <span class="kicker">Good to know</span>
+        <h2>Common questions</h2>
+      </div>
+      <details class="faq"><summary>Is coaching the same as counseling or therapy?</summary><p>No. Our services are rooted in Christian principles and intended for personal growth, spiritual development, mentorship, and encouragement. We do not provide licensed medical care, mental health counseling, psychotherapy, legal advice, or financial services — and coaching should never replace professional advice, diagnosis, or treatment from qualified providers.</p></details>
+      <details class="faq"><summary>What happens in the free 30-minute session?</summary><p>It’s a personal, unhurried conversation where you can experience what Spiritual Encounter Coaching is like, share where you are on your journey, and see whether walking together is right for you. No cost, no obligation.</p></details>
+      <details class="faq"><summary>How do the 4-week programs work?</summary><p>Each program includes four one-hour sessions, weekly summaries with personalized assignments, two personalized video coaching messages, 24-hour email response, and a 30-minute check-in call one month after the program ends.</p></details>
+      <details class="faq"><summary>What is your refund policy?</summary><p>Package refund requests are considered within 14 days of purchase provided no sessions have been completed; sessions may be rescheduled with 24 hours’ notice. Unused sessions can be transferred to another person with written approval within 12 months. Full details are on our Refund Policy page.</p></details>
+    </div>
+  </section>
+
+  <section class="cta-band band-dark on-dark">
+    <div class="container">
+      <span class="kicker">Ready to heal?</span>
+      <h2>Hear God clearly &amp; live on purpose</h2>
+      <p>Start your transformational journey today. We are here to guide you toward a deeper relationship with Jesus and a life of spiritual restoration.</p>
+      <a class="btn btn-light" href="#contact">Book a Free Discovery Session <span class="arrow">→</span></a>
+    </div>
+  </section>
+</section>
+<!-- ============================================================ ABOUT -->
+<section class="page" id="page-about">
+  <div class="page-hero">
+    <div class="container">
+      <span class="kicker">About Us</span>
+      <h1>Walking with you<br>through life’s trials</h1>
+      <p class="lead">We are a compassionate team of Christian coaches dedicated to walking with you through life’s trials. Guided by faith and love, we provide a safe space for spiritual growth and inner healing.</p>
+    </div>
+  </div>
+
+  <section class="band band-white">
+    <div class="container grid-2">
+      <div>
+        <span class="kicker">Our Story</span>
+        <h2>We understand, because we’ve walked it</h2>
+        <p class="lead">We understand what it feels like to walk through life’s most difficult seasons. Our journey has included experiences with divorce, cancer, depression, financial hardship, single parenting, grief, and loss. Through God’s faithfulness, we have discovered healing, hope, and restoration.</p>
+        <p style="margin-top:16px;color:var(--ink-soft)">Today, we are passionate about walking alongside others as they navigate life’s challenges. Through biblical coaching, prayer, and encouragement, we help individuals deepen their relationship with God, experience His healing, discover lasting peace and joy, and confidently walk in the purpose He has created for them.</p>
+      </div>
+      <div class="photo reveal">
+        <img src="assets/andrew-maria-about-900x640.jpg" alt="Andrew and Maria Segovia smiling together">
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-cream">
+    <div class="container" style="display:flex;flex-direction:column;gap:30px">
+      <article class="form-card reveal" style="padding:0;overflow:hidden">
+        <div class="story-head" style="gap:0;grid-template-columns:300px 1fr">
+          <div class="photo" style="border-radius:0;box-shadow:none;height:100%">
+            <img src="assets/andrew-portrait-600x750.jpg" alt="Portrait of Pastor Andrew Segovia">
+          </div>
+          <div style="padding:40px">
+            <span class="kicker">Pastor</span>
+            <h3 style="font-size:1.5rem;margin-bottom:12px">Andrew Segovia</h3>
+            <p style="color:var(--ink-soft)">Pastor Andrew Segovia is a Christian coach, pastor, and mentor who is passionate about helping people grow in their relationship with Jesus Christ and walk in the freedom and purpose God has for their lives. With a heart for discipleship, he combines biblical truth, practical wisdom, and compassionate encouragement to help individuals overcome obstacles, strengthen their faith, and discover their God-given identity.</p>
+            <p style="color:var(--ink-soft);margin-top:12px">He serves alongside his wife, Maria, as a Location Pastor at Higher Vision Church in La Crescenta, equipping others to live transformed lives through the power of God’s Word and the Holy Spirit.</p>
+            <a class="btn btn-ghost" style="margin-top:20px" href="#andrew">Read Andrew’s Story <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="form-card reveal" style="padding:0;overflow:hidden">
+        <div class="story-head" style="gap:0;grid-template-columns:300px 1fr">
+          <div class="photo" style="border-radius:0;box-shadow:none;height:100%">
+            <img src="assets/maria-portrait-600x750.png" alt="Portrait of Maria Segovia">
+          </div>
+          <div style="padding:40px">
+            <span class="kicker">Ministry Leader · Prayer Intercessor</span>
+            <h3 style="font-size:1.5rem;margin-bottom:12px">Maria Segovia</h3>
+            <p style="color:var(--ink-soft)">Maria Segovia is a Christian coach, prayer warrior, and ministry leader with a passion for helping people experience healing, spiritual freedom, and transformation through the truth of God’s Word.</p>
+            <p style="color:var(--ink-soft);margin-top:12px">She serves alongside her husband, Pastor Andrew Segovia, as a Location Pastor at Higher Vision Church in La Crescenta. She leads the Prayer &amp; Healing Ministry, Kids Ministry, Women’s Bible Study, and discipleship programs — equipping others to hear God’s voice, apply biblical truth, and experience lasting transformation through the power of the Holy Spirit.</p>
+            <a class="btn btn-ghost" style="margin-top:20px" href="#maria">Read Maria’s Story <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="band band-img">
+    <div class="band-bg" style="background-image:url('assets/sheep-pasture-1600x900.jpg')"></div>
+    <div class="container on-dark center">
+      <span class="kicker">Our Approach</span>
+      <h2 style="max-width:640px;margin:0 auto .5em">Restoring wholeness</h2>
+      <p style="max-width:620px;margin:0 auto 34px">We offer a gentle, faith-filled path to healing. By focusing on God’s love, we support your journey to complete wellness — balance and peace across your heart, mind, and physical health.</p>
+      <a class="btn btn-light" href="#contact">Start With a Free Session <span class="arrow">→</span></a>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================ ANDREW STORY -->
+<section class="page" id="page-andrew">
+  <div class="page-hero">
+    <div class="container story-head">
+      <div class="photo reveal" style="max-width:340px">
+        <img src="assets/andrew-portrait-648x810.jpg" alt="Portrait of Andrew Segovia">
+      </div>
+      <div>
+        <span class="kicker">Personal Testimony</span>
+        <h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Andrew’s Story:<br>From shadows to clarity</h1>
+        <p class="pull" style="margin-top:24px">“I finally understood that God doesn’t just speak to the world; He speaks directly to my heart. That clarity changed everything for me.”</p>
+        <p class="byline">— Andrew Segovia</p>
+      </div>
+    </div>
+  </div>
+  <article class="article">
+    <p class="drop">I wasn’t always a Christian. In fact, even after giving my life to Christ in 2012, I spent many years struggling to understand what it truly meant to follow Jesus.</p>
+    <p>I jumped from church to church searching for answers. I had a difficult time understanding the Bible, I wasn’t sure if I was praying the “right” way, and I eventually realized something deeper — I knew about God, but I didn’t really know God or have a close relationship with Him.</p>
+    <p>Those early years were filled with frustration and discouragement. I often heard well-meaning advice like, “Just keep your eyes on Jesus,” “You just need more faith,” or “Just pray about it, brother.” While those statements were true, I didn’t know how to actually live them out.</p>
+    <p>I was searching for someone to walk alongside me.</p>
+    <p>Thankfully, God brought a few faithful Christians into my life — including the woman who would later become my wife — who allowed me to be honest about my struggles. They didn’t judge me; they helped guide me, encourage me, and shepherd me with love.</p>
+    <div class="scripture">“Your rod and your staff, they comfort me.”<cite>Psalm 23:4</cite></div>
+    <p>Through their discipleship, patience, and encouragement, I began to grow in wisdom, understanding, and my relationship with God.</p>
+    <div class="scripture">“I will give you shepherds after My own heart, who will lead you with knowledge and understanding.”<cite>Jeremiah 3:15</cite></div>
+    <p>Even as my faith grew, life was still difficult. I wrestled with questions I couldn’t answer.</p>
+    <p>I didn’t understand why my father passed away from cancer at only 57 years old. I didn’t understand why I faced my own battle with prostate cancer at 41. I didn’t understand why my previous marriage ended in a painful divorce that brought emotional and financial hardship. I didn’t understand why depression became so heavy that I almost lost my life.</p>
+    <p>I also carried guilt and shame from mistakes I had made before knowing Christ. But God was not finished with my story.</p>
+    <p>I made the decision that my past would no longer define my future. I began allowing God into the wounded places of my heart. I started releasing the guilt, pain, and disappointment I had been carrying for years. I was letting go of the old and embracing the new.</p>
+    <div class="scripture">“Do not conform to the pattern of this world, but be transformed by the renewing of your mind.”<cite>Romans 12:2</cite></div>
+    <p>Then breakthrough came. My relationship with God became personal and real. Prayer was no longer something I was trying to figure out — it became a daily conversation with my Father. The Bible came alive as His Word began transforming my heart. I discovered that nothing — not my past, my mistakes, my struggles, or my failures — could ever separate me from the love of God.</p>
+    <div class="scripture">“For I am convinced that neither death nor life… nor anything else in all creation, will be able to separate us from the love of God.”<cite>Romans 8:38–39</cite></div>
+    <p>Even though challenges still come, I now stand on this truth: “I can do all things through Christ who strengthens me.” (Philippians 4:13)</p>
+    <p>Then came “the call.” I felt God leading me to use my story, my healing, and my experiences to help others discover the same freedom and relationship with Him. In December 2019, I stepped away from my career to devote my life to serving God and helping people.</p>
+    <p>Since then, I have served in ministry supporting single parents, community outreach, marriage care, discipleship, and healing ministries. I also had the opportunity to travel to Brazil as part of a Christian healing mission.</p>
+    <p>In January 2020, my wife and I launched The Shepherd and Me, a Christian coaching and discipleship ministry created to walk alongside others as they grow closer to God. Today, my heart is simply to serve — helping others know God personally, understand His Word, heal from past wounds, discover their identity in Christ, and step into the purpose He created them for.</p>
+    <p><strong>All for His glory.</strong></p>
+  </article>
+  <section class="cta-band band-dark on-dark">
+    <div class="container">
+      <span class="kicker">The journey is far from over</span>
+      <h2>Ready to start your journey?</h2>
+      <p>Whether you’re looking for guidance, healing, or a deeper connection with God, we’re here to walk alongside you. Let’s explore your purpose together.</p>
+      <a class="btn btn-light" href="#contact">Get Started <span class="arrow">→</span></a>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================ MARIA STORY -->
+<section class="page" id="page-maria">
+  <div class="page-hero">
+    <div class="container story-head">
+      <div class="photo reveal" style="max-width:340px">
+        <img src="assets/maria-portrait-648x810.png" alt="Portrait of Maria Segovia">
+      </div>
+      <div>
+        <span class="kicker">Personal Testimony</span>
+        <h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Maria’s Story:<br>Finding grace in purpose</h1>
+        <p class="pull" style="margin-top:24px">“I surrendered my heavy burdens to Him, and in that holy moment, the Lord met me with a love that transformed my deepest struggles into a divine purpose.”</p>
+        <p class="byline">— Maria Segovia</p>
+      </div>
+    </div>
+  </div>
+  <article class="article">
+    <p class="drop">We all come to God in our own time.</p>
+    <p>Some find Him early in life and build their lives around His purpose. Others find Him through tragedy, illness, loss, or a moment when we realize we can no longer carry everything on our own.</p>
+    <p>For many of us, the journey takes time. We fall. We make mistakes. We try to control our circumstances. We allow pain, disappointment, and unforgiveness to harden our hearts. We try to do life in our own strength until we realize we were never meant to walk alone. That was my journey.</p>
+    <p>And like a loving Father, God patiently waited for me. For twenty-two years of my adult life, I was a single mother facing the challenges, fears, and responsibilities that came with raising my daughters alone. I carried guilt and shame for not giving them the family life I had dreamed of. I battled financial struggles, failed relationships, pride, unforgiveness, and the weight of trying to hold everything together.</p>
+    <p>When life became overwhelming, I buried myself in my career. Success became a place where I could escape the pain and struggles I didn’t know how to heal from.</p>
+    <p>But God saw the parts of my heart that needed healing. My turning point came when my youngest daughter was diagnosed with a congenital disorder. As a young single mother, I found myself making difficult medical decisions and facing a situation I could not fix or control. That was the moment I surrendered.</p>
+    <p>I prayed for a miracle. I cried out to God and realized how much I needed Him. By His grace, my daughter’s condition was corrected — but God didn’t just heal a situation, He began healing me.</p>
+    <div class="scripture">“Behold, I stand at the door and knock…”<cite>Revelation 3:20</cite></div>
+    <p>That was the beginning of my true relationship with God. I discovered He wasn’t distant. He was a loving Father who had been walking with me all along. He comforted me through my pain, strengthened me through my struggles, and began restoring the broken places in my heart.</p>
+    <p>My walk with God wasn’t always easy. I faced suffering, fear, and challenges, but He remained faithful through every season. I didn’t have a plan for my career, a plan to buy a home, a plan to travel the world, or a plan to rebuild my life — but God did.</p>
+    <div class="scripture">“For I know the plans I have for you… plans to give you hope and a future.”<cite>Jeremiah 29:11</cite></div>
+    <p>God opened doors I could never have opened myself. He transformed my mind, grew my faith, and taught me to see my story through His eyes.</p>
+    <p>What I once saw as failures, God turned into wisdom.<br>What I once saw as pain, God turned into compassion.<br>What I once saw as brokenness, God turned into purpose.</p>
+    <p>After more than twenty years as a single mother, God blessed me with my husband Andrew. Together, we now serve God’s calling to help others discover healing, freedom, and a deeper relationship with Jesus.</p>
+    <p>Through prayer, mentoring, and walking alongside others, my heart is to help people experience the love of the Shepherd who never gave up on me.</p>
+    <p>We created The Shepherd and Me because Jesus always goes after the one — the one who feels lost, tired, discouraged, or far away.</p>
+    <p><strong>I know because I was that one. And He came after me.</strong></p>
+  </article>
+  <section class="cta-band band-dark on-dark">
+    <div class="container">
+      <span class="kicker">The journey is far from over</span>
+      <h2>Ready to start your journey?</h2>
+      <p>Whether you’re looking for guidance, healing, or a deeper connection with God, we’re here to walk alongside you. Let’s explore your purpose together.</p>
+      <a class="btn btn-light" href="#contact">Get Started <span class="arrow">→</span></a>
+    </div>
+  </section>
+</section>
+<!-- ============================================================ TESTIMONIALS -->
+<section class="page" id="page-testimonials">
+  <div class="page-hero">
+    <div class="container">
+      <span class="kicker">Testimonials</span>
+      <h1>Faith-led journeys</h1>
+      <p class="lead">Blessed results. Find inspiration through our coaching stories — twelve real journeys of healing, freedom, and hearing God’s voice.</p>
+    </div>
+  </div>
+  <section class="band band-cream">
+    <div class="container">
+      <div class="grid-3" style="align-items:start">
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“I discovered my true identity in Him and gained absolute clarity about my divine calling.”</p>
+          <details><summary>Read Amanda’s full story</summary><p>I entered this program curious about where God was leading me during a time of great professional and personal transition. Between working full-time and being a wife and mother, I was struggling to find balance in a stressful season. My participation in the Transformational Coaching program became an opportunity to completely renew my relationship with my Heavenly Father. Andrew curated specific videos and spiritual readings that strengthened my bond with God in ways I never expected. I learned the power of being still in prayer, opening the eyes of my heart to the guiding Spirit, and the transformative practice of two-way journaling. I am now forever grateful to know the depth of my Father’s love and the specific calling He has placed on me to serve others.</p></details>
+          <span class="t-name">— Amanda · Transformational Coaching</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“Being able to have a real, two-way relationship with a loving God has made all the difference.”</p>
+          <details><summary>Read Cathy’s full story</summary><p>Having just completed the ‘4 Keys to Hearing God’s Voice’ course and learning and growing so much in my relationship with God because of it, I knew I didn’t want that growth to stop. Thankfully, individual coaching was available and Andrew was there to humbly, patiently, and graciously lead me closer to God. Before starting, I had a lot of “ideas” about who I thought I was (mostly negative) and who I thought God was. Andrew used his discernment and incredible gift of hearing the Holy Spirit to provide readings, videos, heartfelt feedback, and scriptures that touched my heart exactly at the right time and place to change those ideas. I’m continuing to use a lesson learned daily so my heart can be free from bitterness as I move forgiveness out of my head and into my heart (Luke 6:27–28) — I didn’t think I would ever find that peace!</p></details>
+          <span class="t-name">— Cathy · Individual Coaching</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“Each week the experience was clearly led by the Holy Spirit… They go ‘vertical’ prior to ‘horizontal’ in all areas of this work.”</p>
+          <details><summary>Read Jan’s full story</summary><p>I am so grateful for the opportunity I had to spend 4 weeks with Andrew and Maria. It was a time of spiritual awareness and awakening in my life. God spoke through both Andrew and Maria in very unique ways. Unlike most therapy/coaching sessions, they were both vulnerable about their life experiences and openly shared them with me. I am grateful for the session re-caps and related “homework.” The Word of God was paramount in their coaching, and related scripture was a part of every session. I never felt like I was “on the clock” during our meetings. I believe the suggested monetary contribution is far less than the value of this coaching. I would highly recommend this very unique and individual coaching experience to others who are seeking to grow closer to Jesus.</p></details>
+          <span class="t-name">— Jan · 4-Week Coaching</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“I am already victorious before the battle even begins. Why? Because the Lord’s power rests upon me.”</p>
+          <details><summary>Read MO’s full story</summary><p>At first, I didn’t know what I was looking for. I just knew I wanted to get closer to GOD and learn how to live a truthful, fearless, happy Christian life. I took the 4-week course and was given so much from Andrew. He helped me find myself, find GOD on a different level, and gave me tools to help with things I was dealing with through God’s word. I now know who I am and how God sees me — as His child. I learned the Lord’s power is made perfect in my weaknesses and all I have to do is have FAITH. Through the grace of GOD and the help of Andrew, I am a better man, a better husband, a better friend — and most of all I know who I am in God’s eyes. I am now fearless with a sound mind and a spiritual understanding of what I need to do as a servant of GOD.</p></details>
+          <span class="t-name">— MO · 4-Week Course</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“Andrew helped me shed many long-term barriers I had put up in my heart toward God — a new revitalized relationship filled with joy and peace.”</p>
+          <details><summary>Read Christian’s full story</summary><p>God has used Andrew’s ministry in my life in an incredible way. For many years I struggled to see myself in my true identity as a child of God. I had an extensive education in “Christianity” and the Bible, but my heart was held back by lies the enemy had planted deep within. Andrew has been blessed by God with a powerful gift to peel back the layers. His sensitivity to the Spirit of God allowed him to be a wonderful facilitator of the message God wanted to deliver to me. This freedom has completely changed the way I handle every aspect of my life. I am very thankful for how God has used The Shepherd and Me in my life!</p></details>
+          <span class="t-name">— Christian · Spiritual Transformation</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“I learned simple ways of hearing God’s voice and following His direction for my future. Very specific and amazingly inspiring!”</p>
+          <details><summary>Read Gina’s full story</summary><p>I had an amazing experience of renewed healing in my walk with the Lord Jesus! I gained insight into areas of my life that I was still wounded from and had to release and become more vulnerable to God and His love and forgiveness. Andrew is very gifted, discerning, and sensitive to the Holy Spirit and I am truly blessed by the program!!</p></details>
+          <span class="t-name">— Gina</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“I finally have the relationship with Jesus that I longed for my whole life.”</p>
+          <details><summary>Read Josie’s full story</summary><p>When I first began working with Andrew, I was lost — going through a divorce, caregiving for my mother, being there for my children while trying to hold it together. Andrew’s guidance and knowledge taught me to accept, see, and love myself as God did. I finally understood who I was in Christ and how much I was loved. I was able to dig deep to understand how generational curses and inner vows held me back. Because of Andrew’s coaching, I was able to study and pass my real estate exam while going through my storm. I now feel freedom to love and be loved without condemnation.</p></details>
+          <span class="t-name">— Josie</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“His program really opens up your eyes and heart to God as our Father.”</p>
+          <details><summary>Read AD’s full story</summary><p>I consider myself a Christian and I thought I knew God. What I realized through Andrew’s guidance and teachings is that there is so much more to God. He provided amazing material that helped me understand how God, Jesus &amp; the Holy Spirit work together in developing my relationship with God on a deeper level. The “Pillar I — Relationship with God” program was flexible and had the right amount of material that made me hungry to learn more. If you’re a beginner Christian trying to understand the Bible or what the next step is after being baptized, I recommend this program.</p></details>
+          <span class="t-name">— AD · Pillar I Program</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“I have never been that dedicated or committed to a class in my 54 years.”</p>
+          <details><summary>Read Lisa’s full story</summary><p>What the 4 Keys To Hearing God’s Voice course gave me was a much clearer understanding of what I am reading as far as scripture is concerned. I doubted every single thing in my life — mostly myself. Having 90 minutes a week to work with what I consider TWO instructors has given me many tools. But more importantly, it’s given me a stronger faith in my walk with the Lord. I still don’t necessarily know where I’m going, but I do know Who to ask and have a much better understanding of how to receive the answers. I’m kind of sad it’s over. God Bless.</p></details>
+          <span class="t-name">— Lisa · 4 Keys Course</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“It opens up the possibility of having a closer walk in the Spirit with Jesus that is based on scripture and a real spiritual redemptive experience.”</p>
+          <details><summary>Read the full story</summary><p>Andrew has a way of sharing God’s word that gives me the confidence to draw strength from my relationship with Jesus. Rather than succumbing to feelings of guilt and wanting to give up, I begin to take action. I’m able to begin the process of renewing God’s forgiveness daily, empowering me toward a closer relationship with Him, as well as my friends and family. With Andrew’s assistance, I’m also beginning to better understand my identity in Christ, allowing me to live a more resilient life as a Christian man — especially impacting my son with God’s love as a single parent, creating a new legacy.</p></details>
+          <span class="t-name">— Anonymous</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“Andrew was able to discern the root issues and home in on the Kingdom keys to unlock my heart.”</p>
+          <details><summary>Read Andrea’s full story</summary><p>Coaching with Andrew has been transformational for me. I did not really know what to expect but God has done more than I could have asked or imagined. The combination of his heart for God and his sensitivity to the Spirit gave him a focus which felt deep and insightful. As a result, I feel that my relationship with God has been restored, I have grown in my true identity in Him and received emotional healing. I know that through Andrew God has put me back on track — on a different trajectory, the one that is in alignment with my destiny, and I am very grateful!</p></details>
+          <span class="t-name">— Andrea</span></div>
+
+        <div class="t-card reveal"><span class="stars">★★★★★</span>
+          <p class="t-quote">“This journaling has moved me into a deeper, more intimate relationship with Jesus.”</p>
+          <details><summary>Read Dorie’s full story</summary><p>Coaching with Andrew was a life-changing experience for me. I was stuck in areas of my walk with the Lord, and working with Andrew for 4 weeks I recognized the barriers that were holding me back. I also learned to hear God’s voice and truly experience His abundant love and joy! Andrew is blessed with discernment and he is sensitive to the Spirit of God. He knew the precise tools and resources each week to propel me to my next step. I loved learning the two-way journal! I am thankful for the opportunity to work with Andrew!</p></details>
+          <span class="t-name">— Dorie · 4-Week Coaching</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-band band-img">
+    <div class="band-bg" style="background-image:url('assets/forest-pathway-1600x800.jpg')"></div>
+    <div class="container on-dark">
+      <span class="kicker">Your story could be next</span>
+      <h2>Start your journey</h2>
+      <p>Begin with a free 30-minute session — no cost, no pressure, just a conversation.</p>
+      <a class="btn btn-light" href="#contact">Book a Free Session <span class="arrow">→</span></a>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================ GIVE -->
+<section class="page" id="page-give">
+  <div class="page-hero">
+    <div class="container">
+      <span class="kicker">Get Involved</span>
+      <h1>Help us go after the one</h1>
+      <p class="lead">Your heart and prayers help this ministry grow. Join us in faith through giving and spiritual support.</p>
+    </div>
+  </div>
+  <section class="band band-white">
+    <div class="container grid-2" style="align-items:start">
+      <div>
+        <span class="kicker">Why give</span>
+        <h2>Restoring identity &amp; purpose</h2>
+        <p class="lead">The Shepherd and Me supports ministries that further God’s kingdom by restoring an individual’s true identity and purpose. God created all of us with a divine purpose to accomplish His great commission.</p>
+        <p style="margin-top:16px;color:var(--ink-soft)">Every gift helps us walk alongside more people — through free encounter sessions, discipleship resources, healing ministry, and community outreach.</p>
+        <div class="scripture">“Rejoice with me; I have found my lost sheep.”<cite>Luke 15:6</cite></div>
+        <p style="color:var(--ink-soft);font-size:.92rem">Prefer to give another way, or have questions? Reach us at <a href="mailto:info@shepherdandme.com">info@shepherdandme.com</a> or <a href="tel:+16615058159">(661) 505-8159</a>.</p>
+      </div>
+      <div class="form-card reveal">
+        <h3 style="margin-bottom:18px">Give today</h3>
+        <div class="amounts" role="group" aria-label="Donation amount">
+          <button class="amt" onclick="selAmt(this)">$10</button>
+          <button class="amt sel" onclick="selAmt(this)">$20</button>
+          <button class="amt" onclick="selAmt(this)">$30</button>
+          <button class="amt" onclick="selAmt(this)">Custom</button>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label for="g-fn">First name *</label><input id="g-fn" type="text" autocomplete="given-name"></div>
+          <div class="f-group"><label for="g-ln">Last name *</label><input id="g-ln" type="text" autocomplete="family-name"></div>
+        </div>
+        <div class="f-group"><label for="g-em">Email *</label><input id="g-em" type="email" autocomplete="email"></div>
+        <div class="f-group"><label for="g-ph">Phone</label><input id="g-ph" type="tel" autocomplete="tel"></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="demoToast()">Donate</button>
+        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:14px;text-align:center">Demo form — connect to Wix Pay, Zeffy, or Tithe.ly in production.</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================ CONTACT -->
+<section class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="container">
+      <span class="kicker">Get Started</span>
+      <h1>Step into your<br>God-given purpose</h1>
+      <p class="lead">Ready to experience spiritual breakthrough? Reach out to Andrew and Maria to learn how transformational coaching can help you heal, grow, and walk confidently in the life God intended for you.</p>
+    </div>
+  </div>
+  <section class="band band-white">
+    <div class="container grid-2" style="align-items:start">
+      <div>
+        <span class="kicker">Connect for your breakthrough</span>
+        <h2>Start with a free 30-minute session</h2>
+        <p class="lead">Send us a message below, or reach out directly — we’d love to walk together toward your purpose.</p>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:16px">
+          <a href="tel:+16615058159" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">📞</span> (661) 505-8159</a>
+          <a href="mailto:info@shepherdandme.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> info@shepherdandme.com</a>
+          <span style="display:flex;align-items:center;gap:14px;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">📍</span> Serving La Crescenta, Santa Clarita &amp; greater Los Angeles — sessions available remotely</span>
+        </div>
+        <div class="scripture" style="margin-top:34px">“For I know the plans I have for you… plans to give you hope and a future.”<cite>Jeremiah 29:11</cite></div>
+      </div>
+      <div class="form-card reveal">
+        <h3 style="margin-bottom:18px">Send a message</h3>
+        <div class="f-row">
+          <div class="f-group"><label for="c-fn">First name *</label><input id="c-fn" type="text" autocomplete="given-name"></div>
+          <div class="f-group"><label for="c-ln">Last name *</label><input id="c-ln" type="text" autocomplete="family-name"></div>
+        </div>
+        <div class="f-group"><label for="c-em">Email address *</label><input id="c-em" type="email" placeholder="email@example.com" autocomplete="email"></div>
+        <div class="f-group"><label for="c-ph">Phone *</label><input id="c-ph" type="tel" autocomplete="tel"></div>
+        <div class="f-group"><label for="c-sub">I’m interested in</label>
+          <select id="c-sub">
+            <option>Free 30-minute Spiritual Encounter session</option>
+            <option>Spiritual Healing Coaching ($400)</option>
+            <option>Spiritual Transformation Program ($400)</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="f-group"><label for="c-msg">Message *</label><textarea id="c-msg" rows="4" placeholder="Tell us more about your goals..."></textarea></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="demoToast()">Send Message</button>
+        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:14px;text-align:center">Demo form — connect to Wix Forms or a scheduler (Wix Bookings / Calendly) in production.</p>
+      </div>
+    </div>
+  </section>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand-mark" style="display:inline-block">The<br>Shepherd<br>&amp; Me</span>
+        <p>A Christian coaching and discipleship ministry walking alongside you as you grow closer to God — founded by Andrew &amp; Maria Segovia in 2020.</p>
+        <div class="socials">
+          <a href="https://business.facebook.com/shepherdandme/" target="_blank" rel="noopener" aria-label="The Shepherd and Me on Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.09 24 18.1 24 12.07z"/></svg></a>
+          <a href="https://www.instagram.com/theshepherdandme" target="_blank" rel="noopener" aria-label="The Shepherd and Me on Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.39A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.39 2.13a5.9 5.9 0 0 0 2.13 1.39c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.39 5.9 5.9 0 0 0 1.39-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.39-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm7.85-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <a href="#home">Home</a>
+        <a href="#coaching">Coaching Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#give">Get Involved</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+16615058159">(661) 505-8159</a>
+        <a href="mailto:info@shepherdandme.com">info@shepherdandme.com</a>
+        <a href="#contact">Book a Free Session</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#" onclick="demoToast();return false">Terms &amp; Conditions</a>
+        <a href="#" onclick="demoToast();return false">Privacy Policy</a>
+        <a href="#" onclick="demoToast();return false">Refund Policy</a>
+        <a href="#" onclick="demoToast();return false">Accessibility Statement</a>
+        <a href="#" onclick="demoToast();return false">Ministry Disclaimer</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 The Shepherd &amp; Me. All rights reserved.</span>
+      <span>Coaching is not a substitute for licensed medical or mental-health care.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="demo-tag">Redesign concept · Spark Alliance</div>
+<div class="toast" id="toast">This is a design demo — forms are not connected yet.</div>
+
+<script>
+(function(){
+  var routes = ['home','coaching','about','andrew','maria','testimonials','give','contact'];
+
+  function show(route){
+    if (routes.indexOf(route) === -1) route = 'home';
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('current'); });
+    var page = document.getElementById('page-' + route);
+    if (page) page.classList.add('current');
+    document.querySelectorAll('[data-nav]').forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-nav') === route);
+    });
+    document.body.classList.remove('menu-open');
+    var hb = document.querySelector('.hamburger');
+    if (hb) hb.setAttribute('aria-expanded','false');
+    window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+    observeReveals();
+  }
+
+  function current(){ return (location.hash || '#home').replace('#',''); }
+  window.addEventListener('hashchange', function(){ show(current()); });
+
+  /* reveal on scroll — transform only, content always readable */
+  var io = null;
+  function observeReveals(){
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    if (!io){
+      io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, {threshold:.12});
+    }
+    document.querySelectorAll('.page.current .reveal:not(.in)').forEach(function(el){ io.observe(el); });
+  }
+
+  window.toggleMenu = function(){
+    var open = document.body.classList.toggle('menu-open');
+    document.querySelector('.hamburger').setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+
+  var toastTimer = null;
+  window.demoToast = function(){
+    var t = document.getElementById('toast');
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2600);
+  };
+
+  window.selAmt = function(btn){
+    btn.parentNode.querySelectorAll('.amt').forEach(function(b){ b.classList.remove('sel'); });
+    btn.classList.add('sel');
+  };
+
+  show(current());
+})();
+</script>
+</body>
+</html>
