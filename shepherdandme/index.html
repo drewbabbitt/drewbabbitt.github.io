@@ -159,6 +159,8 @@ section.band{padding:92px 0}
 .article p{margin-bottom:1.35em;font-size:1.07rem;color:var(--ink-soft)}
 .article .drop{font-size:1.2rem;color:var(--ink);font-weight:500}
 .story-head{display:grid;grid-template-columns:340px 1fr;gap:54px;align-items:center}
+.profile-card-grid{grid-template-columns:300px 1fr;gap:0}
+.profile-card-grid .photo{height:100%;border-radius:0;box-shadow:none}
 .pull{font-size:1.45rem;line-height:1.45;font-weight:600;color:var(--ink);border-left:4px solid var(--gold);padding-left:24px;margin:10px 0}
 .byline{margin-top:18px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;color:var(--sage-deep)}
 
@@ -216,6 +218,9 @@ footer a:hover{color:var(--sage)}
 /* responsive */
 @media (max-width:960px){
   .grid-2,.story-head{grid-template-columns:1fr;gap:36px}
+  .profile-card-grid{gap:0}
+  .profile-card-grid .photo{height:auto}
+  .profile-card-grid .photo img{height:auto}
   .grid-3{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
@@ -531,8 +536,8 @@ footer a:hover{color:var(--sage)}
   <section class="band band-cream">
     <div class="container" style="display:flex;flex-direction:column;gap:30px">
       <article class="form-card reveal" style="padding:0;overflow:hidden">
-        <div class="story-head" style="gap:0;grid-template-columns:300px 1fr">
-          <div class="photo" style="border-radius:0;box-shadow:none;height:100%">
+        <div class="story-head profile-card-grid">
+          <div class="photo">
             <img src="assets/andrew-portrait-600x750.jpg" alt="Portrait of Pastor Andrew Segovia">
           </div>
           <div style="padding:40px">
@@ -546,8 +551,8 @@ footer a:hover{color:var(--sage)}
       </article>
 
       <article class="form-card reveal" style="padding:0;overflow:hidden">
-        <div class="story-head" style="gap:0;grid-template-columns:300px 1fr">
-          <div class="photo" style="border-radius:0;box-shadow:none;height:100%">
+        <div class="story-head profile-card-grid">
+          <div class="photo">
             <img src="assets/maria-portrait-600x750.png" alt="Portrait of Maria Segovia">
           </div>
           <div style="padding:40px">
