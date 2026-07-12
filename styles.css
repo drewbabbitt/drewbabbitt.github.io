@@ -74,6 +74,7 @@
   --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
   --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
   --section-pad: clamp(72px, 9vw, 128px);
+  --header-h: 88px;
   --wrap: 1160px;
 
   /* Radius & shadow vocabulary — physical, not floating */
@@ -286,7 +287,7 @@ em {
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 68px;
+  height: var(--header-h, 88px);
   background: rgba(10, 30, 49, 0.92); /* --navy-950 at 92% */
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
@@ -307,7 +308,7 @@ em {
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 600;
-  font-size: var(--text-lg);
+  font-size: 1.5rem;
   letter-spacing: -0.01em;
   color: var(--on-dark);
   text-decoration: none;
@@ -319,8 +320,8 @@ em {
 /* Circular badge "enamel pin" — badge PNGs are opaque with white corners,
    so border-radius crops exactly at the inscribed circle */
 .brand__badge {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   margin-right: var(--s-3);
   border-radius: 50%;                         /* crops the opaque white corners */
   box-shadow: 0 0 0 1px var(--hairline-dark); /* hairline seat on navy */
@@ -422,7 +423,7 @@ em {
   position: absolute;
   top: calc(var(--s-2) * -1);
   right: var(--s-5);
-  width: clamp(120px, 14vw, 190px);
+  width: clamp(150px, 17vw, 235px);
   height: auto;
   aspect-ratio: 1;
   border-radius: 50%;                          /* crops the opaque white corners */
@@ -1710,6 +1711,15 @@ em {
   margin-top: var(--s-3);
 }
 
+.footer-sign {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  border-radius: var(--radius-media);
+  box-shadow: 0 0 0 1px var(--gray-warm), 0 14px 36px rgba(10, 30, 49, 0.5);
+  margin-bottom: var(--s-4);
+}
+
 /* "Managed IT. Websites. AI Automation. · Est. 2024" line under .footer-tag */
 .footer-est {
   font-size: var(--text-xs);
@@ -1835,10 +1845,13 @@ em {
   /* Mobile nav — full-width navy panel */
   .nav-toggle { display: block; }
 
+  :root { --header-h: 72px; }
+  .brand { font-size: 1.3rem; }
+  .brand__badge { width: 44px; height: 44px; }
   .site-nav {
     display: none;
     position: absolute;
-    top: 68px;
+    top: var(--header-h, 88px);
     left: 0;
     right: 0;
     flex-direction: column;
