@@ -404,7 +404,8 @@ em {
 .hero {
   background: var(--navy-950);
   color: var(--on-dark-soft);
-  padding: var(--section-pad) 0 0; /* bottom edge is the first ledger line */
+  /* 60% of section-pad: the header + kicker carry the top, no dead navy band */
+  padding: calc(var(--section-pad) * 0.6) 0 0; /* bottom edge is the first ledger line */
 }
 .hero h1, .hero h2, .hero h3 { color: var(--on-dark); }
 .hero h1 {
@@ -417,7 +418,7 @@ em {
 
 /* Compact heroes: less dead navy above the kicker, and the badge mounted
    as a brand seal on the right so the space reads deliberate, not empty */
-.hero--compact { position: relative; padding-top: calc(var(--section-pad) * 0.6); }
+.hero--compact { position: relative; }
 .hero--compact .wrap { position: relative; }
 .hero__seal {
   position: absolute;
