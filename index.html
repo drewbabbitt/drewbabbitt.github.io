@@ -4,17 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drew B IT — Websites, Automation &amp; AI for Small Business | Central Valley, CA</title>
-  <meta name="description" content="Drew B IT designs websites, marketing automation, and Claude AI systems for small businesses in California's Central Valley — on flat monthly plans, not five-figure invoices.">
+  <meta name="description" content="Drew B IT builds websites, marketing automation, and Claude AI systems for small businesses in California's Central Valley — Modesto, Oakdale, Turlock, Manteca, Tracy — on flat monthly plans, not five-figure invoices.">
   <link rel="canonical" href="https://drewb-it.com/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Drew B IT — Websites, Automation &amp; AI for Small Business">
-  <meta property="og:description" content="Websites that work, marketing on autopilot, and AI your team actually uses — on flat monthly plans.">
+  <meta property="og:description" content="Websites, marketing automation, and Claude AI for Central Valley small businesses — on flat monthly plans. Built, run, and answered by one person you can actually call.">
   <meta property="og:url" content="https://drewb-it.com/">
   <meta property="og:image" content="https://drewb-it.com/headshot.jpeg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23081226'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' fill='%23ea580c' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific: hero portrait inside the live-frame device (square image, no 16/10 crop) */
+    .hero-portrait { width: 100%; height: auto; border-radius: 0; }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,9 +38,12 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/">Drew B <span class="dot">IT</span></a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-      <nav class="site-nav">
+      <a class="brand" href="/">Drew B <span class="brand__dot">IT</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="site-nav" aria-label="Main">
         <a href="/" aria-current="page">Home</a>
         <a href="/work.html">Work</a>
         <a href="/services.html">Services &amp; Pricing</a>
@@ -45,175 +53,299 @@
     </div>
   </header>
 
+  <main>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <span class="kicker">Web · Automation · AI — Central Valley, CA</span>
-      <h1>Technology that <em>earns its keep</em>, every single month.</h1>
-      <p class="lede">Drew B IT builds websites that win customers, automations that answer while you sleep, and AI systems your team actually uses — on flat monthly plans instead of five-figure invoices. One partner, no agencies, no surprises.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="/services.html">See services &amp; pricing</a>
-        <a class="btn btn-ghost" href="/work.html">View the work</a>
+      <div class="split split--7-5">
+        <div>
+          <span class="hero__kicker">Web · Automation · AI — Central Valley, California</span>
+          <h1>Technology that <em>earns its keep</em>. Every month.</h1>
+          <p class="hero__lede">Websites, marketing automation, and Claude AI for Central Valley small businesses — on flat monthly plans instead of five-figure invoices. Built, run, and answered by one person you can actually call.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/services.html">See services &amp; pricing</a>
+            <a class="btn btn-ghost" href="/work.html">Walk through the Galleria</a>
+          </div>
+          <p class="founder-line">
+            <img class="founder-line__thumb" src="headshot.jpeg" alt="Drew Babbitt" width="48" height="48">
+            <span><strong>Run entirely by Drew Babbitt.</strong> Nothing outsourced, nothing offshored — you work with the person who builds it.</span>
+          </p>
+        </div>
+        <figure class="live-frame">
+          <div class="live-frame__bar">
+            <span class="live-frame__dots"></span>
+            <span class="live-frame__url">drew@drewb-it.com</span>
+            <span class="live-badge">REAL HUMAN</span>
+          </div>
+          <img class="hero-portrait" src="headshot.jpeg" alt="Drew Babbitt, the one person behind Drew B IT" width="1000" height="1000" fetchpriority="high">
+        </figure>
       </div>
-      <div class="hero-proof">
-        <div class="stat"><strong>6</strong><span>live sites in the portfolio</span></div>
-        <div class="stat"><strong>10+ yrs</strong><span>IT, MSP &amp; sales engineering</span></div>
-        <div class="stat"><strong>1 day</strong><span>typical response time</span></div>
-        <div class="stat"><strong>$0</strong><span>surprise invoices, ever</span></div>
+      <div class="trust-strip">
+        <span class="trust-strip__item"><strong>AI drafts —</strong> a human approves.</span>
+        <span class="trust-strip__item"><strong>Official Meta APIs</strong> only.</span>
+        <span class="trust-strip__item"><strong>If a tactic risks your account,</strong> I won't build it.</span>
+      </div>
+      <div class="ledger-line">
+        <span class="ledger-line__label">· Every price listed · Everything accounted for ·</span>
       </div>
     </div>
   </section>
 
+  <!-- № 01 · WHAT I DO -->
   <section class="section">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="ledger-line">
+        <span class="ledger-line__label"><strong>№ 01</strong> · What I Do</span>
+      </div>
+      <div class="reveal">
         <h2>Three ways I make your business run better</h2>
         <p>Every service is productized: a fixed setup, a flat monthly plan, and a clear list of what you get. You always know what it costs and what it does for you.</p>
       </div>
-      <div class="pillars">
-        <article class="pillar reveal">
-          <div class="num">01 — Web</div>
-          <h3>Websites that work</h3>
+      <div class="pillars reveal">
+        <article class="pillar">
+          <span class="pillar__num">№ 01 — Web</span>
+          <h3>Websites that win customers</h3>
           <p>Custom-designed, fast, SEO-ready sites — then hosting, security, edits, and monthly improvements handled for you under one care plan. Your website stays current instead of quietly rotting.</p>
-          <div class="from">Care plans from <strong>$99/mo</strong></div>
-          <a class="pillar-link" href="/services.html#web">Explore web plans →</a>
+          <p class="pillar__from">from $99/mo</p>
+          <a class="pillar-link" href="/services.html#web">Explore web plans</a>
         </article>
-        <article class="pillar reveal">
-          <div class="num">02 — Marketing</div>
+        <article class="pillar">
+          <span class="pillar__num">№ 02 — Marketing</span>
           <h3>Marketing on autopilot</h3>
-          <p>Instagram &amp; Facebook DM automation, comment-to-DM lead magnets, FAQ bots, and lead alerts — built on Meta's official APIs, never gray-area bots. Coming next: research agents that mine competitor posts and comments for warm sales leads.</p>
-          <div class="from">Autopilot from <strong>$400/mo</strong></div>
-          <a class="pillar-link" href="/services.html#social">Explore automation →</a>
+          <p>Instagram &amp; Facebook DM automation, comment-to-DM lead magnets, FAQ bots, and lead alerts — built on Meta's official APIs, never gray-area bots.</p>
+          <p class="pillar__from">from $400/mo</p>
+          <a class="pillar-link" href="/services.html#social">Explore automation</a>
         </article>
-        <article class="pillar reveal">
-          <div class="num">03 — AI</div>
-          <h3>Claude AI for business</h3>
+        <article class="pillar">
+          <span class="pillar__num">№ 03 — AI</span>
+          <h3>Claude AI, set up right</h3>
           <p>I set up Claude for your team — accounts, projects, custom instructions, and SOPs tuned to how you actually work — then manage it monthly so the tools keep paying for themselves instead of gathering dust.</p>
-          <div class="from">Managed AI from <strong>$350/mo</strong></div>
-          <a class="pillar-link" href="/services.html#ai">Explore AI plans →</a>
+          <p class="pillar__from">from $350/mo</p>
+          <a class="pillar-link" href="/services.html#ai">Explore AI plans</a>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section alt">
+  <!-- № 02 · THE PROOF -->
+  <section class="section section--tight">
     <div class="wrap">
-      <div class="section-head reveal">
-        <h2>Recent work</h2>
-        <p>Live sites, not mockups. Every preview below is the real thing, running in production right now.</p>
+      <div class="ledger-line">
+        <span class="ledger-line__label"><strong>№ 02</strong> · The Proof</span>
       </div>
-      <div class="work-grid">
-        <a class="work-card reveal" href="https://drewb-it.com/dickerson-law-site/" target="_blank" rel="noopener">
-          <div class="work-preview">
-            <iframe src="https://drewb-it.com/dickerson-law-site/" title="Dickerson Law website preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            <div class="preview-veil">Visit live site ↗</div>
+      <div class="split split--7-5 reveal">
+        <div>
+          <span class="work-card__tag">Law firm · Oakdale, CA</span>
+          <h2>The site vanished. Ten days later it was back — better.</h2>
+          <ol class="timeline-3beat">
+            <li><strong>Gone with the hosting account.</strong> Years of practice-area content vanished off GoDaddy overnight.</li>
+            <li><strong>I recovered every page of content.</strong> Pulled from archives, verified line by line.</li>
+            <li><strong>Rebuilt, relaunched, structured for local search.</strong> Faster than the original, and ranking.</li>
+          </ol>
+          <div class="stat-row">
+            <div class="stat">
+              <span class="stat__num">1</span>
+              <span class="stat__label">site recovered from total loss</span>
+            </div>
           </div>
-          <div class="work-body">
-            <div class="work-tag">Law Firm · Full Rebuild</div>
-            <h3>Dickerson Law, Inc</h3>
-            <p>Complete recovery and redesign for an Oakdale, CA law firm — labor &amp; employment, real estate, business, and estate planning practice areas with local SEO structure.</p>
-            <div class="work-meta">Design · SEO · Content recovery</div>
-          </div>
+        </div>
+        <div>
+          <figure class="live-frame" data-src="https://drewb-it.com/dickerson-law-site/" data-title="Dickerson Law, Inc — live site" data-autoload>
+            <div class="live-frame__bar">
+              <span class="live-frame__dots"></span>
+              <span class="live-frame__url">drewb-it.com/dickerson-law-site</span>
+              <span class="live-badge">LIVE</span>
+            </div>
+            <div class="live-frame__viewport">
+              <button class="frame-poster" type="button">
+                <span class="frame-poster__initial" aria-hidden="true">D</span>
+                <span class="work-card__tag">Law firm · Oakdale, CA</span>
+                <strong>Dickerson Law, Inc</strong>
+                <span class="frame-poster__load">▶ Load the live site</span>
+              </button>
+            </div>
+          </figure>
+          <p class="frame-caption"><em>This is the real site — scroll it.</em> <a href="https://drewb-it.com/dickerson-law-site/" target="_blank" rel="noopener">Visit full site ↗</a></p>
+        </div>
+      </div>
+
+      <div class="work-row reveal">
+        <a class="work-card" href="/work.html">
+          <span class="work-card__tag">Coaching</span>
+          <h3>The Shepherd &amp; Me</h3>
+          <p class="work-card__meta">Booking-first redesign concept</p>
         </a>
-        <a class="work-card reveal" href="https://drewb-it.com/shepherdandme/" target="_blank" rel="noopener">
-          <div class="work-preview">
-            <iframe src="https://drewb-it.com/shepherdandme/" title="The Shepherd and Me website preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            <div class="preview-veil">Visit live site ↗</div>
-          </div>
-          <div class="work-body">
-            <div class="work-tag">Coaching · Redesign Concept</div>
-            <h3>The Shepherd &amp; Me</h3>
-            <p>Faith-based coaching brand with warm photography, booking-first layout, and a story-driven structure built to convert visitors into free-session bookings.</p>
-            <div class="work-meta">Design · Branding · Conversion</div>
-          </div>
+        <a class="work-card" href="/work.html">
+          <span class="work-card__tag">Education e-commerce</span>
+          <h3>Preschool Playbook Co.</h3>
+          <p class="work-card__meta">11-page store with SEO plan</p>
+        </a>
+        <a class="work-card" href="/work.html">
+          <span class="work-card__tag">Marketplace</span>
+          <h3>DaBomb Breaks</h3>
+          <p class="work-card__meta">Live-breaks storefront</p>
+        </a>
+        <a class="work-card" href="/work.html">
+          <span class="work-card__tag">Data-driven catalog</span>
+          <h3>Drewbeee Rips</h3>
+          <p class="work-card__meta">Card-singles catalog site</p>
         </a>
       </div>
-      <p class="reveal" style="margin-top:36px;"><a class="btn btn-outline" href="/work.html">See the full galleria →</a></p>
+
+      <div class="reveal">
+        <p class="route-line">Modesto <b>→</b> Oakdale <b>→</b> Turlock <b>→</b> Manteca <b>→</b> Tracy</p>
+        <p class="ladder-line">I live here. Highway 99 traffic and all.</p>
+      </div>
     </div>
   </section>
 
-  <section class="section dark">
+  <!-- № 03 · THE METHOD — dark band -->
+  <section class="section section--dark">
     <div class="wrap">
-      <div class="section-head reveal">
-        <h2>How working together goes</h2>
-        <p>A simple, honest process. Most projects go from first call to live in two to four weeks.</p>
+      <div class="ledger-line">
+        <span class="ledger-line__label"><strong>№ 03</strong> · The Method</span>
       </div>
-      <div class="steps">
-        <div class="step reveal">
-          <h3>Free discovery call</h3>
+      <div class="reveal">
+        <h2>How working together goes</h2>
+        <p>Audit → Build → Verify → Care. Most projects go from first call to live in two to four weeks.</p>
+      </div>
+      <div class="process reveal">
+        <span class="process__spine"></span>
+        <div class="process__step">
+          <span class="process__node"></span>
+          <h3>Audit</h3>
           <p>Thirty minutes on what you sell, who you serve, and where technology is costing you money.</p>
         </div>
-        <div class="step reveal">
-          <h3>Fixed-scope proposal</h3>
-          <p>One page: what I'll build, what it costs, what you get every month. No hourly mystery billing.</p>
+        <div class="process__step">
+          <span class="process__node"></span>
+          <h3>Build</h3>
+          <p>A one-page fixed-scope proposal, then you watch the build at a live preview link.</p>
         </div>
-        <div class="step reveal">
-          <h3>Build &amp; launch</h3>
-          <p>You see progress at a live preview link the whole way. We launch when you love it.</p>
+        <div class="process__step">
+          <span class="process__node"></span>
+          <h3>Verify</h3>
+          <p>Nothing ships until a human — you and me — has approved it. That goes double for anything AI touches.</p>
         </div>
-        <div class="step reveal">
-          <h3>Care &amp; grow</h3>
-          <p>Your monthly plan keeps everything fast, secure, and improving — with a real human one email away.</p>
+        <div class="process__step">
+          <span class="process__node"></span>
+          <h3>Care</h3>
+          <p>Your monthly plan keeps it fast, secure, and improving, with a real human one email away.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- № 04 · WHY MONTHLY — pure typography -->
   <section class="section">
     <div class="wrap">
+      <div class="ledger-line">
+        <span class="ledger-line__label"><strong>№ 04</strong> · Why Monthly</span>
+      </div>
+      <div class="split split--5-7 reveal">
+        <blockquote class="pull-quote">When every edit is a $200 invoice, sites go stale. Flat plans make improvement frictionless.</blockquote>
+        <div>
+          <p>Add up what a small-business site really costs to keep alive: hosting, security, backups, monitoring, and a developer on call when something breaks. Bought separately, that stack runs more than $99–$249 a month — and you're the one coordinating it.</p>
+          <p>Here's the five-year math, named head-on: five years on a monthly plan can cost more than one big build. It also buys five years of edits, improvements, and a site that never rots. Most one-time builds are stale by year two, and every fix after that is a new invoice.</p>
+          <p>And the plans hold no hostages. I keep clients with results, not contracts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="own-strip">
+    <div class="wrap">
+      <p><strong>You own your site, your domain, your content.</strong> Every monthly plan cancels with 30 days' notice — and after the 12-month $0-down term, the site is 100% yours. If you leave, you leave with everything.</p>
+    </div>
+  </div>
+
+  <!-- № 05 · ABOUT -->
+  <section class="section">
+    <div class="wrap">
+      <div class="ledger-line">
+        <span class="ledger-line__label"><strong>№ 05</strong> · About</span>
+      </div>
       <div class="about-strip reveal">
-        <img src="headshot.jpeg" alt="Drew Babbitt, founder of Drew B IT">
+        <img src="headshot.jpeg" alt="Drew Babbitt, founder of Drew B IT" width="1000" height="1000" loading="lazy">
         <div>
           <h2>Built by one person who answers his own email</h2>
           <p>I'm Drew Babbitt — a sales engineer and technical account manager turned automation architect. I've spent a decade inside managed IT, seeing exactly where small businesses overpay for technology that underdelivers. Drew B IT is the fix: senior-level web, automation, and AI work, delivered directly, priced like a subscription instead of a settlement.</p>
-          <p>When you call, you get the person who built your site — not a ticket queue.</p>
-          <div class="values">
-            <span class="chip">Faith</span>
-            <span class="chip">Family</span>
-            <span class="chip">Technology</span>
-            <span class="chip">Central Valley proud</span>
-          </div>
+          <p>Based in the Central Valley. When you call, you get the person who built your site — not a ticket queue.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <!-- № 06 · FAIR QUESTIONS -->
+  <section class="section section--tight">
     <div class="wrap">
-      <div class="cta-band reveal">
-        <div>
-          <h2>Let's find the money leak in your tech.</h2>
-          <p>A free 30-minute call. Worst case, you leave with a punch list you can hand to anyone.</p>
-        </div>
-        <a class="btn btn-primary" href="/contact.html">Book your free call</a>
+      <div class="ledger-line">
+        <span class="ledger-line__label"><strong>№ 06</strong> · Fair Questions</span>
+      </div>
+      <h2 class="reveal">Fair questions, straight answers</h2>
+      <div class="faq reveal">
+        <details>
+          <summary class="faq__summary">Do I actually own my website?</summary>
+          <p>Yes. Your site, your domain, your content — all of it. Monthly plans cancel with 30 days' notice, and after the 12-month $0-down term the site is 100% yours. If you leave, you leave with everything.</p>
+        </details>
+        <details>
+          <summary class="faq__summary">Who actually does the work?</summary>
+          <p>I do. Nothing outsourced, nothing offshored, no junior handoffs. When you email, I'm the one who replies — not a ticket queue with my name on it.</p>
+        </details>
+        <details>
+          <summary class="faq__summary">Why monthly instead of one big invoice?</summary>
+          <p>Because sites that cost $200 per edit go stale. A flat plan bundles hosting, security, backups, monitoring, and ongoing improvements into one line item — so the site keeps getting better instead of quietly rotting. Full pricing is on the <a href="/services.html">services page</a>, every number public.</p>
+        </details>
       </div>
     </div>
   </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="ledger-line">
+        <span class="ledger-line__label"><strong>№ 07</strong> · The Next Step</span>
+      </div>
+      <h2>Let's find the money leak in your tech.</h2>
+      <p>A free 30-minute call. Worst case, you leave with a punch list you can hand to anyone.</p>
+      <div class="cta-band__actions">
+        <a class="btn btn-primary" href="/contact.html">Book the free call</a>
+        <a class="btn-text" href="mailto:drew@drewb-it.com?subject=One%20link%2C%20three%20fixes">Send one link → get 3 fixes</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
 
   <footer class="site-footer">
     <div class="wrap">
+      <div class="ledger-line ledger-line--footer">
+        <span class="ledger-line__label">· Drew B IT · Central Valley, California ·</span>
+      </div>
       <div class="footer-grid">
         <div>
-          <h4>Drew B IT</h4>
-          <p class="footer-tag">Websites. Automation. AI. One partner, flat monthly plans.</p>
+          <a class="brand" href="/">Drew B <span class="brand__dot">IT</span></a>
+          <p class="footer-tag">Websites. Automation. AI. One person, flat monthly plans.</p>
         </div>
         <div>
-          <h4>Explore</h4>
+          <h3>Explore</h3>
           <ul>
+            <li><a href="/">Home</a></li>
             <li><a href="/work.html">Work</a></li>
             <li><a href="/services.html">Services &amp; Pricing</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h4>Services</h4>
+          <h3>Services</h3>
           <ul>
-            <li><a href="/services.html#web">Web design &amp; care</a></li>
+            <li><a href="/services.html#web">Websites &amp; care plans</a></li>
             <li><a href="/services.html#social">Marketing automation</a></li>
             <li><a href="/services.html#ai">Claude AI for business</a></li>
           </ul>
         </div>
         <div>
-          <h4>Connect</h4>
+          <h3>Connect</h3>
           <ul>
             <li><a href="mailto:drew@drewb-it.com">drew@drewb-it.com</a></li>
             <li><a href="https://github.com/drewbabbitt" target="_blank" rel="noopener">GitHub</a></li>
@@ -222,7 +354,7 @@
       </div>
       <div class="footer-bottom">
         <span>© <span data-year>2026</span> Drew B IT · Central Valley, California</span>
-        <span>Proverbs 16:3 — Commit your work to the Lord.</span>
+        <span><em>Proverbs 16:3 — Commit your work to the Lord.</em></span>
       </div>
     </div>
   </footer>

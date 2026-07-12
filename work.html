@@ -3,25 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work — Live Sites &amp; Automation Case Studies | Drew B IT</title>
-  <meta name="description" content="A galleria of live websites and automation systems built by Drew B IT — law firms, e-commerce, coaching brands, and n8n/AI workflow case studies.">
+  <title>The Galleria — Live Client Sites &amp; AI Case Studies | Drew B IT</title>
+  <meta name="description" content="Five live client-grade websites you can scroll inside the page — law firm, coaching, education e-commerce, marketplace, catalog — plus six automation and Claude AI case studies. Built by Drew B IT, Central Valley, California.">
   <link rel="canonical" href="https://drewb-it.com/work.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Work — Drew B IT">
-  <meta property="og:description" content="Live sites, not mockups: law firm, coaching, curriculum, and e-commerce builds plus automation case studies.">
+  <meta property="og:title" content="The Galleria — Live Work You Can Click Into | Drew B IT">
+  <meta property="og:description" content="Nothing here is a mockup. Every preview loads the real site, running in production right now — plus the automation and AI systems that run behind the scenes.">
   <meta property="og:url" content="https://drewb-it.com/work.html">
+  <meta property="og:image" content="https://drewb-it.com/headshot.jpeg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23081226'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' fill='%23ea580c' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific: "Galleria" keeps its small-caps ledger treatment inside display type */
+    .pull-quote .galleria,
+    .cta-band h2 .galleria {
+      font-size: 0.6em;
+      font-style: normal;
+      letter-spacing: 0.16em;
+      color: inherit;
+      vertical-align: 0.14em;
+    }
+  </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/">Drew B <span class="dot">IT</span></a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-      <nav class="site-nav">
+      <a class="brand" href="/">Drew B <span class="brand__dot">IT</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="site-nav" aria-label="Main">
         <a href="/">Home</a>
         <a href="/work.html" aria-current="page">Work</a>
         <a href="/services.html">Services &amp; Pricing</a>
@@ -31,182 +47,277 @@
     </div>
   </header>
 
-  <section class="hero" style="padding-bottom:72px;">
-    <div class="wrap">
-      <span class="kicker">The Galleria</span>
-      <h1>Live work you can <em>click into</em> right now.</h1>
-      <p class="lede">Every website below is real and in production — the previews are the actual sites, not screenshots. Below the sites: automation and AI systems built for managed-service and small-business operations.</p>
-    </div>
-  </section>
+  <main>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <h2>Websites</h2>
-        <p>Five different industries, five different personalities — one standard: fast, honest, built to convert.</p>
+    <!-- Statement hero — the first live frame is the star; the hero gets out of its way -->
+    <section class="hero hero--compact">
+      <div class="wrap">
+        <span class="hero__kicker">The Galleria</span>
+        <h1>Live work you can <em>click into</em>.</h1>
+        <p class="hero__lede">Nothing here is a mockup. Every preview loads the real site, running in production right now — scroll them, click them, judge them. Below the sites: the automation and AI systems that run behind the scenes.</p>
+        <div class="ledger-line">
+          <span class="ledger-line__label">· Live work · Running in production ·</span>
+        </div>
       </div>
-      <div class="work-grid">
+    </section>
 
-        <a class="work-card reveal" href="https://drewb-it.com/dickerson-law-site/" target="_blank" rel="noopener">
-          <div class="work-preview">
-            <iframe src="https://drewb-it.com/dickerson-law-site/" title="Dickerson Law website preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            <div class="preview-veil">Visit live site ↗</div>
-          </div>
-          <div class="work-body">
-            <div class="work-tag">Law Firm · Full Rebuild</div>
-            <h3>Dickerson Law, Inc</h3>
-            <p>An Oakdale, CA firm lost its entire GoDaddy site. I recovered the content, rebuilt it from scratch, and structured it for local search — practice-area pages for labor &amp; employment, real estate, business, and estate planning.</p>
-            <div class="work-meta">Recovery · Design · Local SEO · LegalService schema</div>
-          </div>
-        </a>
+    <!-- № 01 · THE GALLERIA — WEBSITES -->
+    <section class="section" id="websites">
+      <div class="wrap">
+        <div class="ledger-line">
+          <span class="ledger-line__label"><strong>№ 01</strong> · The Galleria — Websites</span>
+        </div>
+        <h2>Five industries. One standard: fast, honest, built to convert.</h2>
+        <p>Each preview below is the production site itself, framed in the page. Load one, scroll it, and judge the work the way a customer would.</p>
 
-        <a class="work-card reveal" href="https://drewb-it.com/shepherdandme/" target="_blank" rel="noopener">
-          <div class="work-preview">
-            <iframe src="https://drewb-it.com/shepherdandme/" title="The Shepherd and Me website preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            <div class="preview-veil">Visit live site ↗</div>
+        <!-- Featured: the Dickerson recovery — full-width 7/5, frame left, story right -->
+        <div class="work-feature reveal">
+          <div>
+            <figure class="live-frame" data-src="https://drewb-it.com/dickerson-law-site/" data-title="Dickerson Law, Inc — live site">
+              <div class="live-frame__bar">
+                <span class="live-frame__dots"></span>
+                <span class="live-frame__url">drewb-it.com/dickerson-law-site</span>
+                <span class="live-badge">LIVE</span>
+              </div>
+              <div class="live-frame__viewport">
+                <button class="frame-poster" type="button">
+                  <span class="frame-poster__initial" aria-hidden="true">D</span>
+                  <span class="work-card__tag">Law Firm · Oakdale, CA</span>
+                  <strong>Dickerson Law, Inc</strong>
+                  <span class="frame-poster__load">▶ Load the live site</span>
+                </button>
+              </div>
+            </figure>
+            <p class="frame-caption"><em>This is the real site — scroll it.</em> <a href="https://drewb-it.com/dickerson-law-site/" target="_blank" rel="noopener">Visit full site ↗</a></p>
           </div>
-          <div class="work-body">
-            <div class="work-tag">Coaching · Redesign Concept</div>
+          <div>
+            <span class="work-card__tag">Law firm · Oakdale, CA</span>
+            <h3>Dickerson Law, Inc — recovered from total loss</h3>
+            <ol class="timeline-3beat">
+              <li><strong>The site vanished off GoDaddy.</strong> No backups, no warning — years of practice-area content gone with the hosting account.</li>
+              <li><strong>I recovered every page of content.</strong> Cached copies, archives, and patient digging brought back the labor &amp; employment, real estate, business, and estate-planning pages intact.</li>
+              <li><strong>Rebuilt, relaunched, structured for local search.</strong> Ten days from total loss to back online, faster than before, with LegalService schema doing quiet work underneath.</li>
+            </ol>
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat__num">1</span>
+                <span class="stat__label">Site recovered from total loss</span>
+              </div>
+            </div>
+            <p class="work-card__meta">Recovery · Design · Local SEO · LegalService schema</p>
+          </div>
+        </div>
+
+        <!-- The remaining four, 2-up live-frame facade cards -->
+        <div class="work-grid reveal">
+
+          <article class="work-card">
+            <figure class="live-frame" data-src="https://drewb-it.com/shepherdandme/" data-title="The Shepherd &amp; Me — live site">
+              <div class="live-frame__bar">
+                <span class="live-frame__dots"></span>
+                <span class="live-frame__url">drewb-it.com/shepherdandme</span>
+                <span class="live-badge">LIVE</span>
+              </div>
+              <div class="live-frame__viewport">
+                <button class="frame-poster" type="button">
+                  <span class="frame-poster__initial" aria-hidden="true">S</span>
+                  <span class="work-card__tag">Coaching</span>
+                  <strong>The Shepherd &amp; Me</strong>
+                  <span class="frame-poster__load">▶ Load the live site</span>
+                </button>
+              </div>
+            </figure>
+            <p class="frame-caption"><em>This is the real site — scroll it.</em> <a href="https://drewb-it.com/shepherdandme/" target="_blank" rel="noopener">Visit full site ↗</a></p>
             <h3>The Shepherd &amp; Me</h3>
-            <p>A faith-based transformational coaching brand. Warm photography, a story-first structure, and a booking-first layout designed to turn visitors into free-session appointments.</p>
-            <div class="work-meta">Design · Branding · Conversion strategy</div>
-          </div>
-        </a>
+            <p>A faith-based transformational coaching brand whose old site buried the booking path. I built a story-first structure with warm photography and a booking-first layout that turns visitors into free-session appointments.</p>
+            <p class="work-card__meta">Design · Branding · Conversion strategy</p>
+          </article>
 
-        <a class="work-card reveal" href="https://drewb-it.com/crayon-crate-demo/" target="_blank" rel="noopener">
-          <div class="work-preview">
-            <iframe src="https://drewb-it.com/crayon-crate-demo/" title="Preschool Playbook Co. website preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            <div class="preview-veil">Visit live site ↗</div>
-          </div>
-          <div class="work-body">
-            <div class="work-tag">Education · E-commerce Launch</div>
+          <article class="work-card">
+            <figure class="live-frame" data-src="https://drewb-it.com/crayon-crate-demo/" data-title="Preschool Playbook Co. — live site">
+              <div class="live-frame__bar">
+                <span class="live-frame__dots"></span>
+                <span class="live-frame__url">drewb-it.com/crayon-crate-demo</span>
+                <span class="live-badge">LIVE</span>
+              </div>
+              <div class="live-frame__viewport">
+                <button class="frame-poster" type="button">
+                  <span class="frame-poster__initial" aria-hidden="true">P</span>
+                  <span class="work-card__tag">Education e-commerce</span>
+                  <strong>Preschool Playbook Co.</strong>
+                  <span class="frame-poster__load">▶ Load the live site</span>
+                </button>
+              </div>
+            </figure>
+            <p class="frame-caption"><em>This is the real site — scroll it.</em> <a href="https://drewb-it.com/crayon-crate-demo/" target="_blank" rel="noopener">Visit full site ↗</a></p>
             <h3>Preschool Playbook Co.</h3>
-            <p>An 11-page brand and storefront for a preschool-curriculum business founded by a working preschool director — product pages, brand system, and a full SEO launch plan against an established competitor.</p>
-            <div class="work-meta">Design · Brand · SEO battle plan · 11 pages</div>
-          </div>
-        </a>
+            <p>A preschool-curriculum business founded by a working preschool director, launching against an established competitor. I built the full 11-page brand and storefront — product pages, brand system, and an SEO launch plan with a job to do.</p>
+            <p class="work-card__meta">Design · Brand · SEO launch plan · 11 pages</p>
+          </article>
 
-        <a class="work-card reveal" href="https://drewb-it.com/dabomb-breaks/" target="_blank" rel="noopener">
-          <div class="work-preview">
-            <iframe src="https://drewb-it.com/dabomb-breaks/" title="DaBomb Breaks website preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            <div class="preview-veil">Visit live site ↗</div>
-          </div>
-          <div class="work-body">
-            <div class="work-tag">E-commerce · Marketplace Demo</div>
+          <article class="work-card">
+            <figure class="live-frame" data-src="https://drewb-it.com/dabomb-breaks/" data-title="DaBomb Breaks — live site">
+              <div class="live-frame__bar">
+                <span class="live-frame__dots"></span>
+                <span class="live-frame__url">drewb-it.com/dabomb-breaks</span>
+                <span class="live-badge">LIVE</span>
+              </div>
+              <div class="live-frame__viewport">
+                <button class="frame-poster" type="button">
+                  <span class="frame-poster__initial" aria-hidden="true">B</span>
+                  <span class="work-card__tag">Marketplace</span>
+                  <strong>DaBomb Breaks</strong>
+                  <span class="frame-poster__load">▶ Load the live site</span>
+                </button>
+              </div>
+            </figure>
+            <p class="frame-caption"><em>This is the real site — scroll it.</em> <a href="https://drewb-it.com/dabomb-breaks/" target="_blank" rel="noopener">Visit full site ↗</a></p>
             <h3>DaBomb Breaks</h3>
-            <p>A sports-card marketplace concept for a 4.8★ Whatnot seller — graded singles, live break scheduling, and consignment intake, presented with big-energy collector styling.</p>
-            <div class="work-meta">Design · Catalog UX · Live-commerce integration</div>
-          </div>
-        </a>
+            <p>A sports-card marketplace concept for a 4.8-star Whatnot seller who needed a home base beyond the livestream. Graded singles, live break scheduling, and consignment intake, presented with big-energy collector styling.</p>
+            <p class="work-card__meta">Design · Catalog UX · Live-commerce integration</p>
+          </article>
 
-        <a class="work-card reveal" href="https://drewb-it.com/drewbeeerips/" target="_blank" rel="noopener">
-          <div class="work-preview">
-            <iframe src="https://drewb-it.com/drewbeeerips/" title="Drewbeee Rips website preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            <div class="preview-veil">Visit live site ↗</div>
-          </div>
-          <div class="work-body">
-            <div class="work-tag">E-commerce · Data-Driven Catalog</div>
+          <article class="work-card">
+            <figure class="live-frame" data-src="https://drewb-it.com/drewbeeerips/" data-title="Drewbeee Rips — live site">
+              <div class="live-frame__bar">
+                <span class="live-frame__dots"></span>
+                <span class="live-frame__url">drewb-it.com/drewbeeerips</span>
+                <span class="live-badge">LIVE</span>
+              </div>
+              <div class="live-frame__viewport">
+                <button class="frame-poster" type="button">
+                  <span class="frame-poster__initial" aria-hidden="true">R</span>
+                  <span class="work-card__tag">Data-driven catalog</span>
+                  <strong>Drewbeee Rips</strong>
+                  <span class="frame-poster__load">▶ Load the live site</span>
+                </button>
+              </div>
+            </figure>
+            <p class="frame-caption"><em>This is the real site — scroll it.</em> <a href="https://drewb-it.com/drewbeeerips/" target="_blank" rel="noopener">Visit full site ↗</a></p>
             <h3>Drewbeee Rips</h3>
             <p>A card-singles storefront run from a single JSON file — add a card, push, and the site updates. Proof that a lean static build can behave like a real store with zero monthly hosting cost.</p>
-            <div class="work-meta">Design · JSON-driven catalog · $0 hosting</div>
-          </div>
-        </a>
+            <p class="work-card__meta">Design · JSON-driven catalog · $0 hosting</p>
+          </article>
 
-        <a class="work-card reveal" href="https://drewb-it.com/" target="_blank" rel="noopener">
-          <div class="work-preview">
-            <iframe src="https://drewb-it.com/" title="Drew B IT website preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            <div class="preview-veil">You are here ↗</div>
-          </div>
-          <div class="work-body">
-            <div class="work-tag">Studio · This Site</div>
-            <h3>drewb-it.com</h3>
-            <p>The site you're on — designed, written, and shipped the same way client sites are: static, fast, zero-cost hosting, structured data, and a design system that scales across every page.</p>
-            <div class="work-meta">Design system · SEO · Performance</div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section dark">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <h2>Automation &amp; AI case studies</h2>
-        <p>The systems behind the scenes — built with n8n, Claude, and the APIs businesses already pay for.</p>
-      </div>
-      <div class="case-grid">
-        <div class="case-card reveal">
-          <div class="work-tag">MSP Operations</div>
-          <h3>HaloPSA Integration Suite</h3>
-          <p>Connected a professional-services platform to billing, monitoring, and client-portal tools so tickets, alerts, and invoices flow without human copy-paste.</p>
-        </div>
-        <div class="case-card reveal">
-          <div class="work-tag">Monitoring</div>
-          <h3>Acronis Backup Monitoring</h3>
-          <p>Automated backup-health checks and alerting across client fleets — failures surface in minutes instead of at restore time.</p>
-        </div>
-        <div class="case-card reveal">
-          <div class="work-tag">Reporting</div>
-          <h3>Automated Security Assessments</h3>
-          <p>Turned a manual, hours-long security assessment write-up into a generated, client-ready report — consistent, branded, and fast.</p>
-        </div>
-        <div class="case-card reveal">
-          <div class="work-tag">Client Experience</div>
-          <h3>CloudRadial Portal Automations</h3>
-          <p>Self-service portal workflows that answer common client requests automatically and route the rest with full context attached.</p>
-        </div>
-        <div class="case-card reveal">
-          <div class="work-tag">AI Pipeline</div>
-          <h3>Job Application Agent</h3>
-          <p>An n8n + Telegram + Claude pipeline that researches openings, drafts tailored applications, and waits for one-tap human approval before anything sends.</p>
-        </div>
-        <div class="case-card reveal">
-          <div class="work-tag">AI Enablement</div>
-          <h3>Team-wide Claude Deployment</h3>
-          <p>A complete Claude rollout package for a real company — setup scripts, shared knowledge base, best-practice templates, and team training materials.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cta-band reveal">
-        <div>
-          <h2>Want yours in this galleria?</h2>
-          <p>Every project here started with the same free 30-minute call.</p>
+    <!-- № 02 · BEHIND THE SCENES — AUTOMATION & AI (dark band) -->
+    <section class="section section--dark" id="automation">
+      <div class="wrap">
+        <div class="ledger-line">
+          <span class="ledger-line__label"><strong>№ 02</strong> · Behind the Scenes — Automation &amp; AI</span>
         </div>
-        <a class="btn btn-primary" href="/contact.html">Book your free call</a>
+        <h2>The systems that run while you sleep</h2>
+        <p>Websites are the visible half of the work. These are the pipelines behind it — built with n8n, Claude, and the platforms businesses already pay for, every one of them gated by a human before anything ships.</p>
+
+        <div class="case-grid reveal">
+
+          <article class="case-card">
+            <span class="work-card__tag">MSP operations</span>
+            <h3>HaloPSA Integration Suite</h3>
+            <span class="case-stat">Tickets, alerts, and invoices flow with zero copy-paste</span>
+            <p>Connected a professional-services platform to billing, monitoring, and client-portal tools so the data moves itself and technicians work tickets instead of retyping them.</p>
+          </article>
+
+          <article class="case-card">
+            <span class="work-card__tag">Monitoring</span>
+            <h3>Acronis Backup Monitoring</h3>
+            <span class="case-stat">Backup failures surface in minutes — not at restore time</span>
+            <p>Automated backup-health checks and alerting across client fleets. The worst time to learn a backup failed is the day you need it; this makes that day impossible.</p>
+          </article>
+
+          <article class="case-card">
+            <span class="work-card__tag">Reporting</span>
+            <h3>Automated Security Assessments</h3>
+            <span class="case-stat">A client-ready report in minutes, not an afternoon of writing</span>
+            <p>Turned a manual, hours-long security assessment write-up into a generated, branded report — consistent every time, reviewed by a human before it goes out.</p>
+          </article>
+
+          <article class="case-card">
+            <span class="work-card__tag">Client experience</span>
+            <h3>CloudRadial Portal Automations</h3>
+            <span class="case-stat">Common requests answer themselves; the rest route with full context attached</span>
+            <p>Self-service portal workflows that resolve routine client requests automatically and hand the genuinely hard ones to a person — with the history already gathered.</p>
+          </article>
+
+          <article class="case-card">
+            <span class="work-card__tag">AI pipeline</span>
+            <h3>Job Application Agent</h3>
+            <span class="case-stat">Researches, drafts, and waits for one-tap human approval before anything sends</span>
+            <p>An n8n + Telegram + Claude pipeline that researches openings and drafts tailored applications. Nothing leaves the queue until a human taps approve — that rule is the architecture.</p>
+          </article>
+
+          <article class="case-card">
+            <span class="work-card__tag">AI enablement</span>
+            <h3>Team-wide Claude Deployment</h3>
+            <span class="case-stat">A whole team onboarded: setup scripts, SOPs, and training that stuck</span>
+            <p>A complete Claude rollout for a real company — setup scripts, a shared knowledge base, best-practice templates, and training the team still uses months later.</p>
+          </article>
+
+        </div>
+
+        <p class="frame-caption"><a class="btn-text" href="/services.html">These systems power the plans on the services page →</a></p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- № 03 · Pure-typography moment -->
+    <section class="section section--tight">
+      <div class="wrap">
+        <div class="ledger-line">
+          <span class="ledger-line__label"><strong>№ 03</strong> · On the Record</span>
+        </div>
+        <p class="pull-quote reveal">Nothing in this <span class="galleria">Galleria</span> is a mockup. If I&rsquo;ll show it to you, it&rsquo;s running.</p>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="cta-band">
+      <div class="wrap">
+        <div class="ledger-line">
+          <span class="ledger-line__label"><strong>№ 04</strong> · Your Turn</span>
+        </div>
+        <h2>Want yours in the <span class="galleria">Galleria</span>?</h2>
+        <p>Every site here started with the same free 30-minute call. Worst case, you leave with a punch list you can hand to anyone.</p>
+        <div class="cta-band__actions">
+          <a class="btn-primary" href="/contact.html">Book the free call</a>
+          <a class="btn-text" href="mailto:drew@drewb-it.com?subject=Three%20fixes%20for%20my%20site">Send one link → get 3 fixes</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <footer class="site-footer">
     <div class="wrap">
+      <div class="ledger-line ledger-line--footer">
+        <span class="ledger-line__label">· Drew B IT · Central Valley, California ·</span>
+      </div>
       <div class="footer-grid">
         <div>
-          <h4>Drew B IT</h4>
-          <p class="footer-tag">Websites. Automation. AI. One partner, flat monthly plans.</p>
+          <a class="brand" href="/">Drew B <span class="brand__dot">IT</span></a>
+          <p class="footer-tag">Websites. Automation. AI. One person, flat monthly plans.</p>
         </div>
         <div>
-          <h4>Explore</h4>
+          <h3>Explore</h3>
           <ul>
+            <li><a href="/">Home</a></li>
             <li><a href="/work.html">Work</a></li>
             <li><a href="/services.html">Services &amp; Pricing</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h4>Services</h4>
+          <h3>Services</h3>
           <ul>
-            <li><a href="/services.html#web">Web design &amp; care</a></li>
+            <li><a href="/services.html#web">Websites &amp; care plans</a></li>
             <li><a href="/services.html#social">Marketing automation</a></li>
             <li><a href="/services.html#ai">Claude AI for business</a></li>
           </ul>
         </div>
         <div>
-          <h4>Connect</h4>
+          <h3>Connect</h3>
           <ul>
             <li><a href="mailto:drew@drewb-it.com">drew@drewb-it.com</a></li>
             <li><a href="https://github.com/drewbabbitt" target="_blank" rel="noopener">GitHub</a></li>
@@ -215,7 +326,7 @@
       </div>
       <div class="footer-bottom">
         <span>© <span data-year>2026</span> Drew B IT · Central Valley, California</span>
-        <span>Proverbs 16:3 — Commit your work to the Lord.</span>
+        <span><em>Proverbs 16:3 — Commit your work to the Lord.</em></span>
       </div>
     </div>
   </footer>

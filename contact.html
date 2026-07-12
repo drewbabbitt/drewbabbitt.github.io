@@ -3,109 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Book a Free 30-Minute Call | Drew B IT</title>
-  <meta name="description" content="Book a free 30-minute discovery call with Drew B IT — websites, marketing automation, and Claude AI for Central Valley small businesses.">
+  <title>Contact — Email One Link, Get Three Fixes | Drew B IT</title>
+  <meta name="description" content="Email Drew Babbitt one link — your website or Instagram — and get three specific fixes back within one business day. Free. Serving Modesto, Oakdale, Turlock, Manteca, and Tracy, California.">
   <link rel="canonical" href="https://drewb-it.com/contact.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Contact — Drew B IT">
-  <meta property="og:description" content="Book a free 30-minute discovery call.">
+  <meta property="og:title" content="Contact — Email One Link, Get Three Fixes | Drew B IT">
+  <meta property="og:description" content="Email one link and get three specific fixes back — free, usually within one business day. Or book the free 30-minute call.">
   <meta property="og:url" content="https://drewb-it.com/contact.html">
+  <meta property="og:image" content="https://drewb-it.com/headshot.jpeg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23081226'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' fill='%23ea580c' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific: frame the hero headshot (existing classes only) */
+    .hero .split img {
+      width: 100%;
+      border-radius: var(--radius-media);
+      border: 1px solid var(--line-dark);
+    }
+  </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/">Drew B <span class="dot">IT</span></a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-      <nav class="site-nav">
+      <a class="brand" href="/">Drew B <span class="brand__dot">IT</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="site-nav" aria-label="Main">
         <a href="/">Home</a>
         <a href="/work.html">Work</a>
         <a href="/services.html">Services &amp; Pricing</a>
         <a href="/contact.html" aria-current="page">Contact</a>
-        <a class="nav-cta" href="mailto:drew@drewb-it.com">Email Drew</a>
+        <a class="nav-cta" href="mailto:drew@drewb-it.com?subject=Free%20discovery%20call&amp;body=Hi%20Drew%2C%0A%0AMy%20business%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0ABest%20days%2Ftimes%20for%20a%20call%3A%20%0A%0AThanks%21">Book a free call</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero" style="padding-bottom:72px;">
+  <main>
+
+  <section class="hero hero--compact">
     <div class="wrap">
-      <span class="kicker">Contact</span>
-      <h1>Thirty minutes. <em>Zero</em> pressure.</h1>
-      <p class="lede">Tell me what you sell and what's frustrating you about your website, your marketing, or your tools. You'll leave the call with honest advice and a clear next step — whether or not that step is me.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:drew@drewb-it.com?subject=Free%20discovery%20call&body=Hi%20Drew%2C%0A%0AMy%20business%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0ABest%20days%2Ftimes%20for%20a%20call%3A%20%0A%0AThanks!">Email me for a call slot</a>
+      <div class="split split--7-5">
+        <div>
+          <span class="hero__kicker">Contact</span>
+          <h1>Send one link. I&rsquo;ll send <em>three fixes</em>.</h1>
+          <p class="hero__lede">Email me the URL of your website or your Instagram, and I&rsquo;ll reply with the three specific things I&rsquo;d fix first — free, no strings, usually within one business day. Or skip ahead and book the free 30-minute call.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:drew@drewb-it.com?subject=Three%20things%20to%20fix&amp;body=Hi%20Drew%2C%20here%27s%20my%20link%3A%20">Email one link &rarr; get 3 fixes</a>
+            <a class="btn btn-ghost" href="mailto:drew@drewb-it.com?subject=Free%20discovery%20call&amp;body=Hi%20Drew%2C%0A%0AMy%20business%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0ABest%20days%2Ftimes%20for%20a%20call%3A%20%0A%0AThanks%21">Book the free 30-min call</a>
+          </div>
+        </div>
+        <figure>
+          <img src="headshot.jpeg" alt="Drew Babbitt, the one person behind Drew B IT" width="1000" height="1000">
+          <figcaption class="frame-caption">When you email, I&rsquo;m the one who replies — within one business day, usually much faster.</figcaption>
+        </figure>
       </div>
+      <div class="ledger-line"><span class="ledger-line__label">&middot; Every price listed &middot; Everything accounted for &middot;</span></div>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="contact-grid">
-        <div class="contact-card reveal">
-          <h3>The direct line</h3>
+      <div class="ledger-line"><span class="ledger-line__label"><strong>&#8470; 01</strong> &middot; The Direct Line</span></div>
+      <div class="contact-grid reveal">
+        <div class="contact-card">
+          <h2>The direct line</h2>
           <a class="big-link" href="mailto:drew@drewb-it.com">drew@drewb-it.com</a>
           <p>Email lands directly with me — not a shared inbox, not a ticket system. I reply within one business day, usually much faster.</p>
+          <p class="route-line">Modesto <b>&rarr;</b> Oakdale <b>&rarr;</b> Turlock <b>&rarr;</b> Manteca <b>&rarr;</b> Tracy</p>
           <ul class="contact-list">
-            <li><strong>Based in:</strong> California's Central Valley (Pacific time)</li>
-            <li><strong>Serving:</strong> Modesto, Oakdale, Turlock, Manteca, Tracy &amp; anywhere remote</li>
+            <li><strong>Based in:</strong> California&rsquo;s Central Valley (Pacific time), working with anyone remote.</li>
             <li><strong>Elsewhere:</strong> <a href="https://github.com/drewbabbitt" target="_blank" rel="noopener">github.com/drewbabbitt</a></li>
           </ul>
         </div>
-        <div class="contact-card reveal">
-          <h3>What makes a great first email</h3>
+        <div class="contact-card">
+          <h2>What makes a great first email</h2>
           <ul class="contact-list">
             <li><strong>What you do</strong> — one or two sentences about the business.</li>
             <li><strong>What hurts</strong> — the outdated site, the unanswered DMs, the AI subscription nobody uses.</li>
             <li><strong>Your timeline</strong> — "yesterday" is an acceptable answer.</li>
             <li><strong>A time window</strong> — a couple of days/times that work for a 30-minute call.</li>
           </ul>
-          <p style="margin-top:16px;">Not ready for a call? Browse <a href="/work.html">the work</a> or <a href="/services.html">the pricing</a> first — everything is public on purpose.</p>
+          <p>Not ready for a call? Browse <a href="/work.html">the work</a> or <a href="/services.html">the pricing</a> first — everything is public on purpose.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <section class="personal-band">
     <div class="wrap">
-      <div class="cta-band reveal">
+      <div class="ledger-line"><span class="ledger-line__label"><strong>&#8470; 02</strong> &middot; The Person</span></div>
+      <div class="split split--5-7 reveal">
+        <img src="family.jpeg" alt="Drew Babbitt with his wife and children" width="1070" height="1200" loading="lazy">
         <div>
-          <h2>Prefer to start smaller?</h2>
-          <p>Send one URL — your current site or your Instagram — and I'll reply with three specific things I'd fix first. Free, no strings.</p>
+          <p class="ethos-line">Faith. Family. Technology.</p>
+          <p>Drew B IT is how I take care of my family — which is exactly why your project gets treated like it matters. Based in the Central Valley; I live here, Highway 99 traffic and all.</p>
         </div>
-        <a class="btn btn-primary" href="mailto:drew@drewb-it.com?subject=Three%20things%20to%20fix&body=Hi%20Drew%2C%20here%27s%20my%20link%3A%20">Get your 3 fixes</a>
       </div>
     </div>
   </section>
+
+  <section class="section section--tight">
+    <div class="wrap text-center reveal">
+      <p>Thirty minutes, zero pressure. Worst case, you leave with a punch list you can hand to anyone.</p>
+      <a class="btn btn-primary" href="mailto:drew@drewb-it.com?subject=Free%20discovery%20call&amp;body=Hi%20Drew%2C%0A%0AMy%20business%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0ABest%20days%2Ftimes%20for%20a%20call%3A%20%0A%0AThanks%21">Book the free call</a>
+    </div>
+  </section>
+
+  </main>
 
   <footer class="site-footer">
     <div class="wrap">
+      <div class="ledger-line ledger-line--footer"><span class="ledger-line__label">&middot; Drew B IT &middot; Central Valley, California &middot;</span></div>
       <div class="footer-grid">
         <div>
-          <h4>Drew B IT</h4>
-          <p class="footer-tag">Websites. Automation. AI. One partner, flat monthly plans.</p>
+          <a class="brand" href="/">Drew B <span class="brand__dot">IT</span></a>
+          <p class="footer-tag">Websites. Automation. AI. One person, flat monthly plans.</p>
         </div>
         <div>
-          <h4>Explore</h4>
+          <h3>Explore</h3>
           <ul>
+            <li><a href="/">Home</a></li>
             <li><a href="/work.html">Work</a></li>
             <li><a href="/services.html">Services &amp; Pricing</a></li>
             <li><a href="/contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h4>Services</h4>
+          <h3>Services</h3>
           <ul>
-            <li><a href="/services.html#web">Web design &amp; care</a></li>
+            <li><a href="/services.html#web">Websites &amp; care plans</a></li>
             <li><a href="/services.html#social">Marketing automation</a></li>
             <li><a href="/services.html#ai">Claude AI for business</a></li>
           </ul>
         </div>
         <div>
-          <h4>Connect</h4>
+          <h3>Connect</h3>
           <ul>
             <li><a href="mailto:drew@drewb-it.com">drew@drewb-it.com</a></li>
             <li><a href="https://github.com/drewbabbitt" target="_blank" rel="noopener">GitHub</a></li>
@@ -113,8 +151,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Drew B IT · Central Valley, California</span>
-        <span>Proverbs 16:3 — Commit your work to the Lord.</span>
+        <span>&copy; <span data-year>2026</span> Drew B IT &middot; Central Valley, California</span>
+        <span><em>Proverbs 16:3 — Commit your work to the Lord.</em></span>
       </div>
     </div>
   </footer>
