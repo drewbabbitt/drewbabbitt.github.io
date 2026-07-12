@@ -303,7 +303,7 @@ em {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--s-3);
+  gap: 0; /* the wordmark reads tight: "Drew B.-IT" — spacing comes from the badge's own margin */
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 600;
@@ -321,6 +321,7 @@ em {
 .brand__badge {
   width: 40px;
   height: 40px;
+  margin-right: var(--s-3);
   border-radius: 50%;                         /* crops the opaque white corners */
   box-shadow: 0 0 0 1px var(--hairline-dark); /* hairline seat on navy */
 }
@@ -411,7 +412,25 @@ em {
   margin-bottom: var(--s-5);
 }
 .hero h1 em { color: var(--orange-400); } /* ≥1.5rem bold — large-text exempt */
-.hero--compact h1 { font-size: var(--display-lg); line-height: 1.12; }
+.hero--compact h1 { font-size: var(--display-lg); line-height: 1.12; max-width: 22ch; }
+
+/* Compact heroes: less dead navy above the kicker, and the badge mounted
+   as a brand seal on the right so the space reads deliberate, not empty */
+.hero--compact { position: relative; padding-top: calc(var(--section-pad) * 0.6); }
+.hero--compact .wrap { position: relative; }
+.hero__seal {
+  position: absolute;
+  top: calc(var(--s-2) * -1);
+  right: var(--s-5);
+  width: clamp(120px, 14vw, 190px);
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;                          /* crops the opaque white corners */
+  box-shadow: 0 0 0 1px var(--hairline-dark), 0 10px 28px rgba(10, 30, 49, 0.45);
+  transform: rotate(-4deg);                    /* hand-applied, like the sign on the van */
+  pointer-events: none;
+}
+@media (max-width: 960px) { .hero__seal { display: none; } }
 
 /* The hero's first ledger line sits at its bottom border */
 .hero .ledger-line { margin-top: var(--s-8); margin-bottom: 0; padding-bottom: var(--s-3); }
