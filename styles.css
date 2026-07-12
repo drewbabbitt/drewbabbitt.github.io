@@ -12,32 +12,48 @@
    01 · TOKENS
    ============================================================ */
 :root {
-  /* Brand */
-  --navy-950: #081226;   /* page-dark, footer, hero */
-  --navy-900: #0b1b34;   /* dark band surface     */
-  --navy-800: #12294e;   /* dark card surface     */
-  --navy-700: #1c3a6b;   /* dark hover/border     */
-  --navy-100: #dbe4f3;
+  /* Brand navy ramp — anchored on #0F2B46 */
+  --navy-950: #0A1E31;   /* page-dark, footer, hero (derived darker brand navy) */
+  --navy-900: #0F2B46;   /* dark band surface — BRAND NAVY "Modesto Water Tower Blue", exact */
+  --navy-800: #1A3A57;   /* dark card surface (derived lighter) */
+  --navy-700: var(--slate); /* dark hover/border — slate takes this job */
 
-  --orange-700: #9a3412; /* orange text on light surfaces (AA-safe small text) */
-  --orange-600: #c2410c; /* rules, ticks, large-text accent on light */
-  --orange-500: #ea580c; /* CTA fills, badges, LIVE pulse */
-  --orange-400: #f97316; /* accent on DARK surfaces only (large text/ticks) */
-  --orange-100: #ffedd5;
+  /* Brand orange ramp — anchored on #D97132 */
+  --orange-700: #A34E12; /* small orange text on light (AA-derived) */
+  --orange-600: #B4551B; /* rules/ticks on light + REST state of white-text fills */
+  --orange-500: #C2551C; /* CTA hover fills, focus ring (white text still AA) */
+  --orange-400: #E58B50; /* orange text/ticks on DARK surfaces (AA at small size) */
+  --orange-brand: #D97132; /* BRAND ORANGE "Orange Grove Gold", exact.
+                              Decorative-only brand orange: brush ticks, process/timeline
+                              nodes, LIVE pulse contexts, hover top-rules. NEVER text, never a
+                              fill that carries body-size white text. */
 
-  /* Neutrals — warm paper, never pure #fff/#000 */
-  --paper:     #faf7f2;
-  --surface:   #ffffff;
-  --ink:       #16202e;
-  --ink-soft:  #44526a;
-  --ink-faint: #5d6a82; /* ≥4.5:1 on --paper for text-xs labels */
-  --line:      #e3ddd2;
+  /* Neutrals — the page becomes the brand's cream paper */
+  --paper:     #F2EDE3;  /* BRAND CREAM "Almond Blossom Cream", exact */
+  --surface:   #FBF8F1;  /* cards: derived cream-white, never pure #fff */
+  --ink:       #1C2B36;  /* headings/body (warm navy-black) */
+  --ink-soft:  var(--slate); /* secondary text — slate takes this job */
+  --ink-faint: #66604F;  /* meta text: derived from warm gray #ADA79A (darkened) */
+  --line:      #DCD5C6;  /* hairlines: derived tint of warm gray */
+  --gray-warm: #ADA79A;  /* BRAND WARM GRAY "Barnwood Brown", exact. Decorative only: photo/logo frame
+                            borders, .live-frame__dots, stronger hairlines on cream. Never text. */
+
+  /* Brand tokens with specific jobs */
+  --slate: #3B5A6B;      /* BRAND SLATE, exact. Secondary UI — secondary text on light
+                            (--ink-soft), dark-surface hover borders (--navy-700),
+                            .btn-outline border/fill, circuit-pad rings. */
+  --olive: #6B7F5A;      /* BRAND OLIVE "Valley Olive", exact. Proof/compliance/guarantee accents —
+                            .own-strip left rule, .trust-strip ticks, .guarantee-line ✓.
+                            Decorative only on cream (3.74:1). */
+  --olive-700: #556247;  /* olive TEXT on light (verification strongs, est-lines) */
+  --olive-300: #A9BB90;  /* olive accent/text on dark (trust ticks on navy) */
+  --olive-100: #E7EADC;  /* .own-strip background tint */
 
   /* On-dark */
-  --on-dark:      #f2ede4;
-  --on-dark-soft: #b9c4d8;
-  --line-dark:    rgba(242, 237, 228, 0.14);
-  --hairline-dark: rgba(242, 237, 228, 0.10);
+  --on-dark:      #F2EDE3; /* BRAND CREAM "Almond Blossom Cream", exact */
+  --on-dark-soft: #B8C7D0; /* slate-tinted cream */
+  --line-dark:    rgba(242, 237, 227, 0.14);
+  --hairline-dark: rgba(242, 237, 227, 0.10);
 
   /* Type scale — the ONLY font sizes in this file */
   --text-xs:   0.8125rem;
@@ -64,8 +80,8 @@
   --radius-card: 4px;
   --radius-pill: 999px;
   --radius-media: 8px;
-  --shadow-featured: 0 12px 32px rgba(11, 27, 52, 0.12);
-  --shadow-frame: 0 18px 48px rgba(11, 27, 52, 0.18);
+  --shadow-featured: 0 12px 32px rgba(10, 30, 49, 0.12); /* derived from --navy-950 */
+  --shadow-frame: 0 18px 48px rgba(10, 30, 49, 0.18);    /* derived from --navy-950 */
 }
 
 /* ============================================================
@@ -96,7 +112,7 @@ p { margin: 0 0 var(--s-4); }
 p:last-child { margin-bottom: 0; }
 
 a { color: var(--orange-700); text-decoration-color: var(--orange-600); text-underline-offset: 3px; }
-a:hover { color: var(--orange-600); }
+a:hover { color: var(--orange-700); text-decoration-thickness: 2px; }
 
 strong { font-weight: 600; }
 
@@ -105,6 +121,14 @@ strong { font-weight: 600; }
   outline: 2px solid var(--orange-500);
   outline-offset: 3px;
 }
+/* On dark navy surfaces the 500 ring is dim — lift to orange-400
+   (6.55:1 on navy-950, 5.60:1 on navy-900) */
+.site-header :focus-visible,
+.hero :focus-visible,
+.section--dark :focus-visible,
+.cta-band :focus-visible,
+.site-footer :focus-visible,
+.price-card--featured :focus-visible { outline-color: var(--orange-400); }
 
 /* ============================================================
    03 · TYPOGRAPHY
@@ -185,15 +209,39 @@ em {
   padding-top: var(--s-3);
   margin-bottom: var(--s-6);
 }
+/* Texture Device A — hand-painted brush dash (inline SVG, brand orange, decorative) */
 .ledger-line::before {
   content: "";
   position: absolute;
-  top: -1px;
+  top: -3px;
   left: 0;
   width: 24px;
-  height: 2px;
-  background: var(--orange-600);
+  height: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 6'%3E%3Cpath d='M1 3.2C4 1.6 7.5 2.7 10.5 2.1 14 1.4 18 2.9 23 2.2 21.5 3.9 16 3.4 12 4.1 8 4.8 3.5 4.3 1 3.2Z' fill='%23D97132'/%3E%3C/svg%3E") no-repeat center / contain;
 }
+
+/* Texture Device B — circuit-pad terminal: hairline runs into a small open ring */
+.ledger-line::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--slate);
+  border-radius: 50%;
+  background: var(--paper);
+}
+.section--dark .ledger-line::after,
+.hero .ledger-line::after,
+.cta-band .ledger-line::after,
+.site-footer .ledger-line::after {
+  border-color: var(--on-dark-soft);
+  background: var(--navy-950);
+}
+.cta-band .ledger-line::after { background: var(--navy-900); }
+.section--dark .ledger-line::after { background: var(--navy-900); } /* section--dark bands are navy-900, not navy-950 */
+.ledger-line--footer::after { display: none; } /* centered footer line keeps symmetry */
 .ledger-line__label {
   display: inline-block;
   font-family: var(--font-display);
@@ -239,7 +287,7 @@ em {
   top: 0;
   z-index: 100;
   height: 68px;
-  background: rgba(8, 18, 38, 0.92);
+  background: rgba(10, 30, 49, 0.92); /* --navy-950 at 92% */
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--hairline-dark);
@@ -253,6 +301,9 @@ em {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 600;
@@ -264,6 +315,16 @@ em {
 }
 .brand:hover { color: var(--on-dark); }
 .brand__dot { color: var(--orange-400); } /* the "IT" */
+
+/* Circular badge "enamel pin" — badge PNGs are opaque with white corners,
+   so border-radius crops exactly at the inscribed circle */
+.brand__badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;                         /* crops the opaque white corners */
+  box-shadow: 0 0 0 1px var(--hairline-dark); /* hairline seat on navy */
+}
+.site-footer .brand__badge { width: 32px; height: 32px; }
 
 .site-nav {
   display: flex;
@@ -385,6 +446,16 @@ em {
 .hero a { color: var(--on-dark); text-decoration-color: var(--orange-400); }
 .hero a:hover { color: var(--orange-400); }
 
+/* Index hero portrait inside the live-frame device (square image, no 16/10 crop) */
+.hero-portrait { width: 100%; height: auto; border-radius: 0; }
+
+/* Contact compact-hero headshot — framed like the site's other photos, on navy */
+.hero--compact .split figure img {
+  width: 100%;
+  border-radius: var(--radius-media);
+  border: 1px solid var(--line-dark);
+}
+
 /* Services hero jump links — underlined text links with orange ticks, NOT pills */
 .anchor-nav {
   display: flex;
@@ -436,11 +507,11 @@ em {
 }
 
 .btn-primary {
-  background: var(--orange-500);
+  background: var(--orange-600); /* rest: 4.93:1 with white */
   color: #ffffff;
 }
 .btn-primary:hover {
-  background: var(--orange-400);
+  background: var(--orange-500); /* hover: lighter, still 4.56:1 AA */
   color: #ffffff;
   transform: translateY(-1px);
 }
@@ -448,7 +519,7 @@ em {
 /* Dark surfaces only */
 .btn-ghost {
   background: transparent;
-  border: 1.5px solid rgba(242, 237, 228, 0.35);
+  border: 1.5px solid rgba(242, 237, 227, 0.35);
   color: var(--on-dark);
 }
 .btn-ghost:hover {
@@ -460,11 +531,11 @@ em {
 /* Light surfaces only */
 .btn-outline {
   background: transparent;
-  border: 1.5px solid var(--navy-800);
-  color: var(--navy-800);
+  border: 1.5px solid var(--slate);
+  color: var(--slate);
 }
 .btn-outline:hover {
-  background: var(--navy-800);
+  background: var(--slate);
   color: var(--on-dark);
   transform: translateY(-1px);
 }
@@ -557,8 +628,8 @@ em {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--ink-faint);
-  box-shadow: 13px 0 0 var(--ink-faint), 26px 0 0 var(--ink-faint);
+  background: var(--gray-warm);
+  box-shadow: 13px 0 0 var(--gray-warm), 26px 0 0 var(--gray-warm);
   margin-right: 26px;
 }
 
@@ -568,7 +639,7 @@ em {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: var(--text-xs);
   color: var(--on-dark-soft);
-  background: rgba(242, 237, 228, 0.08);
+  background: rgba(242, 237, 227, 0.08);
   border-radius: var(--radius-pill);
   padding: 3px 14px;
   white-space: nowrap;
@@ -719,6 +790,15 @@ em {
 }
 .section--dark .galleria,
 .hero .galleria { color: var(--on-dark-soft); }
+/* Inside display type, "Galleria" keeps the small-caps treatment at display scale */
+.pull-quote .galleria,
+.cta-band h2 .galleria {
+  font-size: 0.6em;
+  font-style: normal;
+  letter-spacing: 0.16em;
+  color: inherit;
+  vertical-align: 0.14em;
+}
 
 /* Full-width featured piece: frame one side, story the other */
 .work-feature {
@@ -763,7 +843,7 @@ em {
   right: 0;
   height: 2px;
   z-index: 1; /* stays visible above a bled live-frame */
-  background: var(--orange-600);
+  background: var(--orange-brand); /* hover top-rule on light */
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 200ms ease;
@@ -828,7 +908,7 @@ em {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--orange-500);
+  background: var(--orange-brand); /* decorative dot — true brand orange */
 }
 .timeline-3beat li strong { font-family: var(--font-display); font-weight: 600; }
 
@@ -911,7 +991,7 @@ em {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--orange-600);
+  background: var(--orange-brand); /* hover top-rule on light */
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 200ms ease;
@@ -993,7 +1073,7 @@ em {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--orange-600);
+  background: var(--orange-brand); /* hover top-rule on light */
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 200ms ease;
@@ -1148,7 +1228,7 @@ em {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--orange-600);
+  color: var(--olive); /* guarantee ✓ — olive = compliance */
   font-weight: 600;
 }
 .guarantee-line strong { color: var(--ink); }
@@ -1178,10 +1258,13 @@ em {
    ============================================================ */
 /* Ownership / guarantee strip — full-width band; put copy in a .wrap inside */
 .own-strip {
-  background: var(--orange-100);
-  border-left: 4px solid var(--orange-600);
+  background: var(--olive-100);
   color: var(--ink);
   padding: var(--s-5) 0;
+}
+.own-strip .wrap p {
+  border-left: 4px solid var(--olive); /* proof rule — olive's job, anchored to the copy */
+  padding-left: var(--s-5);
 }
 .own-strip p { font-size: var(--text-base); max-width: 80ch; }
 .own-strip strong { font-weight: 600; }
@@ -1206,7 +1289,7 @@ em {
 .trust-strip__item strong {
   font-family: var(--font-display);
   font-weight: 600;
-  color: var(--ink);
+  color: var(--olive-700); /* olive text on light — verification strongs (5.58:1 AA) */
 }
 .hero .trust-strip__item,
 .section--dark .trust-strip__item { color: var(--on-dark-soft); }
@@ -1221,10 +1304,10 @@ em {
   top: 0.65em;
   width: 14px;
   height: 2px;
-  background: var(--orange-600);
+  background: var(--olive); /* compliance ticks — olive's job */
 }
 .hero .trust-strip__item + .trust-strip__item::before,
-.section--dark .trust-strip__item + .trust-strip__item::before { background: var(--orange-400); }
+.section--dark .trust-strip__item + .trust-strip__item::before { background: var(--olive-300); }
 
 /* A split following a trust strip breathes on the spacing scale */
 .trust-strip + .split { margin-top: var(--s-7); }
@@ -1295,7 +1378,7 @@ em {
   border-bottom: 1px solid var(--line);
   padding: var(--s-4) 0;
 }
-.route-line b { color: var(--orange-600); font-weight: 600; }
+.route-line b { color: var(--orange-700); font-weight: 600; }
 .section--dark .route-line,
 .hero .route-line {
   color: var(--on-dark-soft);
@@ -1361,7 +1444,7 @@ em {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--orange-500);
+  background: var(--orange-brand); /* decorative dot — true brand orange */
   box-shadow: 0 0 0 4px var(--navy-900); /* ring, not a glow */
 }
 
@@ -1377,7 +1460,7 @@ em {
 .about-strip img {
   width: 100%;
   border-radius: var(--radius-card);
-  border: 1px solid var(--line);
+  border: 1px solid var(--gray-warm); /* photo-frame job */
 }
 
 /* Contact personal band — light, warm, tasteful */
@@ -1390,7 +1473,7 @@ em {
 .personal-band img {
   width: 100%;
   border-radius: var(--radius-card);
-  border: 1px solid var(--line);
+  border: 1px solid var(--gray-warm); /* photo-frame job */
 }
 .personal-band p { color: var(--ink-soft); }
 
@@ -1432,7 +1515,7 @@ em {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--orange-600);
+  background: var(--orange-brand); /* hover top-rule on light */
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 200ms ease;
@@ -1558,6 +1641,16 @@ em {
   margin-top: var(--s-6);
 }
 
+/* Index brand strip — the full logo's one on-page moment (cream-on-cream, framed) */
+.brand-strip { background: var(--paper); text-align: center; }
+.brand-strip img {
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto var(--s-6);
+  border-radius: var(--radius-media);
+  border: 1px solid var(--gray-warm); /* the framed-context treatment */
+}
+
 .site-footer {
   background: var(--navy-950);
   color: var(--on-dark-soft);
@@ -1594,6 +1687,15 @@ em {
   font-optical-sizing: auto;
   font-style: italic;
   font-size: var(--text-base);
+  color: var(--on-dark-soft);
+  margin-top: var(--s-3);
+}
+
+/* "Managed IT. Websites. AI Automation. · Est. 2024" line under .footer-tag */
+.footer-est {
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--on-dark-soft);
   margin-top: var(--s-3);
 }
