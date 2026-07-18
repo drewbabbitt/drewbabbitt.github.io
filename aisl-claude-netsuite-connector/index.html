@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AISL × Claude — NetSuite AI Connector · System Manifest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4EFE1;
+    --paper-2:#EDE6D3;
+    --ink:#1E2833;
+    --steel:#46586A;
+    --faint:#7A8798;
+    --rule:#C9BEA2;
+    --safety:#F04A00;
+    --safety-soft:#FDE4D6;
+    --blue:#1D5CB4;
+    --blue-soft:#DDE8F7;
+    --live:#1F7A4D;
+    --white:#FFFDF8;
+    --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    --body:'Archivo',-apple-system,'Segoe UI',system-ui,sans-serif;
+    --display:'Archivo Black','Arial Black',var(--body);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--blue);}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+
+  .hazard{
+    height:10px;
+    background:repeating-linear-gradient(-45deg,var(--safety) 0 14px,var(--ink) 14px 28px);
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px 72px;}
+
+  /* ---------- MANIFEST HEADER ---------- */
+  header.manifest{
+    position:relative;
+    background:var(--white);
+    border:1.5px solid var(--ink);
+    border-top:none;
+    margin-top:0;
+    padding:34px 38px 30px;
+    box-shadow:0 2px 0 var(--rule);
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--steel);
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  }
+  .eyebrow b{color:var(--safety);font-weight:600;}
+  h1{
+    font-family:var(--display);
+    font-size:clamp(30px,4.6vw,52px);
+    line-height:1.02;
+    letter-spacing:-.01em;
+    text-transform:uppercase;
+    margin:14px 0 6px;
+  }
+  h1 .thin{color:var(--steel);}
+  .sub{max-width:62ch;color:var(--steel);font-size:16.5px;}
+
+  .stamp{
+    position:absolute;
+    top:30px;right:34px;
+    transform:rotate(-7deg);
+    border:3px solid var(--live);
+    color:var(--live);
+    font-family:var(--display);
+    font-size:22px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    padding:8px 16px 6px;
+    border-radius:4px;
+    background:rgba(31,122,77,.05);
+  }
+  .stamp small{
+    display:block;
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.1em;
+    color:var(--live);
+    font-weight:600;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .stamp{animation:thump .5s cubic-bezier(.2,1.4,.4,1) .3s backwards;}
+    @keyframes thump{from{transform:rotate(-7deg) scale(2.1);opacity:0;}to{transform:rotate(-7deg) scale(1);opacity:1;}}
+  }
+
+  .fields{
+    margin-top:26px;
+    border-top:1.5px dashed var(--rule);
+    padding-top:18px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:14px 26px;
+  }
+  .field label{
+    display:block;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin-bottom:3px;
+  }
+  .field .v{font-family:var(--mono);font-size:13.5px;font-weight:600;word-break:break-all;}
+  .field .v.orange{color:var(--safety);}
+  .field .v.blue{color:var(--blue);}
+
+  /* ---------- CONNECTION LINE ---------- */
+  .line-card{
+    background:var(--white);
+    border:1.5px solid var(--ink);
+    border-top:none;
+    padding:30px 38px 26px;
+  }
+  .line-title{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);
+    margin-bottom:22px;display:flex;align-items:center;gap:12px;
+  }
+  .line-title::after{content:"";flex:1;height:1px;background:var(--rule);}
+  .conveyor{
+    display:flex;align-items:stretch;justify-content:space-between;gap:0;flex-wrap:nowrap;
+  }
+  .node{
+    flex:1;
+    border:1.5px solid var(--steel);
+    border-radius:6px;
+    padding:12px 12px 10px;
+    text-align:center;
+    background:var(--white);
+    min-width:0;
+  }
+  .node .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:4px;}
+  .node .n{font-weight:700;font-size:14px;line-height:1.25;}
+  .node .d{font-size:11.5px;color:var(--steel);margin-top:3px;line-height:1.35;}
+  .node.claude{border-color:var(--blue);background:var(--blue-soft);}
+  .node.claude .n{color:var(--blue);}
+  .node.ns{border-color:var(--safety);background:var(--safety-soft);}
+  .node.ns .n{color:var(--safety);}
+  .node.gate{
+    position:relative;
+    border:3px double var(--ink);
+    background:var(--paper);
+    flex:1.15;
+  }
+  .node.gate::before{
+    content:"";
+    position:absolute;top:7px;left:50%;transform:translateX(-50%);
+    width:9px;height:9px;border:1.5px solid var(--ink);border-radius:50%;
+    background:var(--white);
+  }
+  .node.gate .n{margin-top:8px;}
+  .arrow{
+    align-self:center;
+    font-family:var(--mono);
+    color:var(--steel);
+    font-size:17px;
+    padding:0 7px;
+    flex:0 0 auto;
+  }
+  .line-caption{
+    margin-top:16px;
+    font-size:13.5px;color:var(--steel);
+    display:flex;gap:24px;flex-wrap:wrap;
+  }
+  .line-caption span::before{content:"— ";color:var(--rule);}
+  .line-caption b{color:var(--ink);}
+
+  /* ---------- SECTIONS ---------- */
+  section{margin-top:52px;}
+  .sec-head{
+    display:flex;align-items:baseline;gap:14px;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:8px;margin-bottom:24px;
+  }
+  .sec-head .tag{
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;
+    color:var(--white);background:var(--ink);
+    padding:3px 8px;border-radius:3px;
+  }
+  .sec-head h2{
+    font-family:var(--display);font-size:clamp(20px,2.6vw,27px);
+    text-transform:uppercase;letter-spacing:.01em;
+  }
+  .sec-head .note{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em;}
+
+  /* scope */
+  .scope{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;}
+  .panel{
+    background:var(--white);border:1.5px solid var(--rule);border-radius:6px;
+    padding:22px 24px;
+  }
+  .panel h3{
+    font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    margin-bottom:14px;display:flex;align-items:center;gap:8px;
+  }
+  .panel.in h3{color:var(--live);}
+  .panel.out h3{color:var(--steel);}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+  .chip{
+    font-family:var(--mono);font-size:12.5px;font-weight:600;
+    border:1.5px solid var(--ink);border-radius:4px;
+    padding:5px 10px;background:var(--paper);
+    position:relative;padding-left:20px;
+  }
+  .chip::before{
+    content:"";position:absolute;left:8px;top:50%;transform:translateY(-50%);
+    width:6px;height:6px;border-radius:50%;background:var(--safety);
+  }
+  .plist{list-style:none;}
+  .plist li{
+    padding:8px 0 8px 26px;position:relative;font-size:14.5px;
+    border-top:1px dashed var(--rule);
+  }
+  .plist li:first-child{border-top:none;}
+  .plist li::before{
+    position:absolute;left:0;top:8px;font-family:var(--mono);font-weight:600;
+  }
+  .panel.in .plist li::before{content:"✓";color:var(--live);}
+  .panel.out .plist li::before{content:"✕";color:var(--safety);}
+  .dial{
+    margin-top:16px;padding:12px 14px;border-left:4px solid var(--blue);
+    background:var(--blue-soft);font-size:13.5px;color:var(--ink);border-radius:0 4px 4px 0;
+  }
+
+  /* desks */
+  .desks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+  .desk{
+    background:var(--white);border:1.5px solid var(--rule);border-radius:6px;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .desk-top{
+    padding:14px 18px 12px;border-bottom:1.5px solid var(--rule);
+    display:flex;align-items:baseline;gap:10px;background:var(--paper-2);
+  }
+  .desk-top .who{font-weight:700;font-size:15.5px;}
+  .desk-top .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-left:auto;text-align:right;}
+  .desk-body{padding:14px 18px 18px;display:flex;flex-direction:column;gap:9px;flex:1;}
+  .ask{
+    font-family:var(--mono);font-size:12.5px;line-height:1.45;
+    background:var(--paper);border:1px solid var(--rule);border-radius:4px;
+    padding:9px 11px 9px 26px;position:relative;color:var(--ink);
+  }
+  .ask::before{content:"▸";position:absolute;left:10px;color:var(--safety);font-weight:600;}
+  .desk-foot{
+    padding:10px 18px 14px;font-size:12.5px;color:var(--steel);
+    border-top:1px dashed var(--rule);
+  }
+
+  /* 10x */
+  .bench{background:var(--white);border:1.5px solid var(--rule);border-radius:6px;overflow:hidden;}
+  .bench-row{
+    display:grid;grid-template-columns:230px 1fr;gap:18px;
+    padding:16px 22px;border-top:1px solid var(--rule);
+  }
+  .bench-row:first-child{border-top:none;}
+  .bench-row .bt{font-weight:700;font-size:14.5px;line-height:1.3;}
+  .bench-row .bt small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--safety);font-weight:600;margin-bottom:2px;}
+  .bench-row p{font-size:14px;color:var(--steel);}
+  .bench-row p b{color:var(--ink);}
+  .bench-note{
+    margin-top:14px;font-size:14px;color:var(--steel);max-width:72ch;
+  }
+  .bench-note b{color:var(--ink);}
+
+  /* roadmap */
+  .road{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:step;}
+  .stage{
+    background:var(--white);border:1.5px solid var(--rule);border-radius:6px;padding:20px 20px 18px;
+    position:relative;counter-increment:step;
+  }
+  .stage::before{
+    content:counter(step,decimal-leading-zero);
+    font-family:var(--display);font-size:30px;color:var(--paper-2);
+    -webkit-text-stroke:1.2px var(--steel);
+    position:absolute;top:12px;right:16px;
+  }
+  .stage .st{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    display:inline-block;padding:3px 8px;border-radius:3px;margin-bottom:10px;
+  }
+  .stage.now .st{background:var(--live);color:var(--white);}
+  .stage.next .st{background:var(--blue);color:var(--white);}
+  .stage.then .st{background:var(--paper-2);color:var(--steel);border:1px solid var(--rule);}
+  .stage h3{font-size:16.5px;margin-bottom:6px;line-height:1.3;}
+  .stage p{font-size:13.5px;color:var(--steel);}
+  .stage ul{margin:8px 0 0 16px;font-size:13.5px;color:var(--steel);}
+  .stage li{margin-top:4px;}
+
+  /* guardrails */
+  .rails{display:flex;flex-wrap:wrap;gap:10px;}
+  .rail{
+    flex:1 1 180px;background:var(--ink);color:var(--paper);
+    border-radius:6px;padding:14px 16px;
+  }
+  .rail b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--safety-soft);margin-bottom:5px;}
+  .rail span{font-size:13px;line-height:1.45;color:#CBD4DE;display:block;}
+
+  footer{
+    margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;
+    display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--steel);
+  }
+  footer b{color:var(--ink);}
+  footer .spark{color:var(--safety);font-weight:600;}
+
+  /* responsive */
+  @media(max-width:860px){
+    .scope{grid-template-columns:1fr;}
+    .road{grid-template-columns:1fr;}
+    .bench-row{grid-template-columns:1fr;gap:6px;}
+    .conveyor{flex-direction:column;gap:6px;}
+    .arrow{transform:rotate(90deg);padding:2px 0;align-self:center;}
+    .stamp{position:static;display:inline-block;margin-top:16px;}
+    header.manifest,.line-card{padding-left:22px;padding-right:22px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hazard" role="presentation"></div>
+
+<div class="wrap">
+
+  <!-- ============ HEADER / MANIFEST ============ -->
+  <header class="manifest">
+    <div class="eyebrow">SPARK ALLIANCE, INC. <span>▸ prepared for</span> <b>ALLEGIANCE INDUSTRIAL SUPPLY, LLC.</b></div>
+    <h1>NetSuite AI Connector<br><span class="thin">System Manifest</span></h1>
+    <p class="sub">Claude is now wired directly into AISL's NetSuite. Anyone with a seat and an authorized role can ask questions of the live system — and get answers, records, and drafts back — in plain English.</p>
+
+    <div class="stamp">● Live<small>07·17·2026</small></div>
+
+    <div class="fields">
+      <div class="field"><label>NetSuite account</label><div class="v orange">8304604 · PRODUCTION</div></div>
+      <div class="field"><label>Access role (the ceiling)</label><div class="v orange">ClaudeMCP</div></div>
+      <div class="field"><label>Connected via</label><div class="v blue">NetSuite AI Connector Service (MCP)</div></div>
+      <div class="field"><label>Tool source</label><div class="v">MCP Standard Tools SuiteApp · Oracle · 13 tools</div></div>
+      <div class="field"><label>Endpoint</label><div class="v">…suitetalk.api.netsuite.com/services/mcp/v1/suiteapp/com.netsuite.mcpstandardtools</div></div>
+      <div class="field"><label>Sign-in</label><div class="v">Per-user OAuth 2.0 — no shared passwords</div></div>
+    </div>
+  </header>
+
+  <!-- ============ CONNECTION LINE ============ -->
+  <div class="line-card">
+    <div class="line-title">How the line runs</div>
+    <div class="conveyor">
+      <div class="node claude"><span class="k">Your side</span><span class="n">Claude</span><div class="d">each person's own seat &amp; login</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><span class="k">Handshake</span><span class="n">OAuth 2.0</span><div class="d">user signs in, NetSuite approves</div></div>
+      <div class="arrow">→</div>
+      <div class="node gate"><span class="k">Permission gate</span><span class="n">ClaudeMCP role</span><div class="d">nothing passes that the role can't see</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><span class="k">Service</span><span class="n">AI Connector (MCP)</span><div class="d">Oracle's standard tools</div></div>
+      <div class="arrow">→</div>
+      <div class="node ns"><span class="k">System of record</span><span class="n">AISL NetSuite</span><div class="d">live production data</div></div>
+    </div>
+    <div class="line-caption">
+      <span><b>The role is the ceiling.</b> Claude can never do more than the ClaudeMCP role allows.</span>
+      <span><b>Every call is logged</b> in NetSuite's Execution Log, under the user's own email.</span>
+    </div>
+  </div>
+
+  <!-- ============ 01 SCOPE ============ -->
+  <section id="scope">
+    <div class="sec-head">
+      <span class="tag">01</span>
+      <h2>What it sees &amp; does</h2>
+      <span class="note">governed by role: ClaudeMCP</span>
+    </div>
+    <div class="scope">
+      <div class="panel in">
+        <h3>In scope today</h3>
+        <div class="chips">
+          <span class="chip">Sales Orders</span>
+          <span class="chip">Quotes</span>
+          <span class="chip">Invoices</span>
+          <span class="chip">Purchase Orders</span>
+          <span class="chip">Item Fulfillments</span>
+          <span class="chip">Item Receipts</span>
+        </div>
+        <ul class="plist">
+          <li><b>Look up</b> any of the above — by number, customer, item, date, or status.</li>
+          <li><b>Query</b> across records with saved searches and SuiteQL — "all open SOs past ship date," "top items this quarter."</li>
+          <li><b>Create and update</b> those records — draft a quote, enter an order, note a receipt — with a human approving in the chat.</li>
+          <li><b>Summarize and report</b> — turn raw transactions into digests, exception lists, and answers.</li>
+        </ul>
+      </div>
+      <div class="panel out">
+        <h3>Out of reach</h3>
+        <ul class="plist">
+          <li>Payroll, HR, and employee records</li>
+          <li>Banking, payments &amp; company financial setup</li>
+          <li>User accounts, roles &amp; admin settings</li>
+          <li>Anything not granted to the ClaudeMCP role</li>
+        </ul>
+        <div class="dial"><b>The scope is a dial, not a switch.</b> Any record type can be flipped to view-only, removed, or added by editing one role — no reinstall, no re-setup.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 DESKS ============ -->
+  <section id="desks">
+    <div class="sec-head">
+      <span class="tag">02</span>
+      <h2>Daily work, by desk</h2>
+      <span class="note">real prompts your team can type today</span>
+    </div>
+    <div class="desks">
+      <div class="desk">
+        <div class="desk-top"><span class="who">Sales</span><span class="role">Joshua · Matt</span></div>
+        <div class="desk-body">
+          <div class="ask">Where's the [customer] order? Pull the SO status and expected ship date.</div>
+          <div class="ask">Draft a quote for 40 cases of item 16-00072 at standard pricing.</div>
+          <div class="ask">What has [customer] ordered in the last two quarters?</div>
+        </div>
+        <div class="desk-foot">Answer the phone with the answer — no tab-hopping while the customer waits.</div>
+      </div>
+      <div class="desk">
+        <div class="desk-top"><span class="who">Warehouse</span><span class="role">Jimmy</span></div>
+        <div class="desk-body">
+          <div class="ask">What's fulfilling today? List open item fulfillments by order.</div>
+          <div class="ask">Which open sales orders are past their ship date?</div>
+          <div class="ask">Show receipts still pending against open POs this week.</div>
+        </div>
+        <div class="desk-foot">The floor's morning questions, answered before the first pallet moves — and it pairs with the bin-QR project.</div>
+      </div>
+      <div class="desk">
+        <div class="desk-top"><span class="who">Accounting</span><span class="role">Todd</span></div>
+        <div class="desk-body">
+          <div class="ask">List invoices 30+ days past due with open balances.</div>
+          <div class="ask">Which orders shipped this month but haven't been invoiced yet?</div>
+          <div class="ask">Total invoiced vs. collected for June — quick summary.</div>
+        </div>
+        <div class="desk-foot">Billing gaps and aging surfaced on demand instead of at month-end.</div>
+      </div>
+      <div class="desk">
+        <div class="desk-top"><span class="who">Leadership</span><span class="role">Steve</span></div>
+        <div class="desk-body">
+          <div class="ask">Morning digest: new orders, shipped, invoiced, and anything stuck.</div>
+          <div class="ask">Top 10 customers by revenue this quarter vs. last.</div>
+          <div class="ask">Any order over $10k sitting unfulfilled more than 5 days?</div>
+        </div>
+        <div class="desk-foot">The state of the business in one question — no report request queue.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 10X ============ -->
+  <section id="tenx">
+    <div class="sec-head">
+      <span class="tag">03</span>
+      <h2>The 10X ERP migration workbench</h2>
+      <span class="note">most useful exactly when systems are in motion</span>
+    </div>
+    <div class="bench">
+      <div class="bench-row">
+        <div class="bt"><small>Before cutover</small>Data-quality sweeps</div>
+        <p>Query for <b>duplicates, incomplete records, and stale open transactions</b> so 10X imports clean data instead of inheriting years of clutter.</p>
+      </div>
+      <div class="bench-row">
+        <div class="bt"><small>During mapping</small>Field &amp; mapping validation</div>
+        <p>Pull exact SuiteQL extracts of what NetSuite holds — item by item, field by field — to <b>verify what 10X says it imported</b> against the source of truth.</p>
+      </div>
+      <div class="bench-row">
+        <div class="bt"><small>Before it changes</small>Current-state documentation</div>
+        <p>Interrogate real transactions to <b>write down how order-to-cash actually works today</b> — the runbook that usually lives only in people's heads walks out the door otherwise.</p>
+      </div>
+      <div class="bench-row">
+        <div class="bt"><small>During parallel run</small>Reconciliation on demand</div>
+        <p>While both systems are live, ask for <b>side-by-side checks</b> — orders, balances, counts — and catch drift in minutes instead of at month-end.</p>
+      </div>
+      <div class="bench-row">
+        <div class="bt"><small>Throughout</small>Answers without the old-system expert</div>
+        <p>Every "how did we handle X in NetSuite?" gets answered from the data itself — <b>institutional knowledge stays queryable</b> for as long as the account exists.</p>
+      </div>
+    </div>
+    <p class="bench-note"><b>The window is the point.</b> A migration is when questions multiply and the people who can answer them are busiest. This connector keeps the old system legible while the new one lands — and it took zero custom development to switch on.</p>
+  </section>
+
+  <!-- ============ 04 ROADMAP ============ -->
+  <section id="road">
+    <div class="sec-head">
+      <span class="tag">04</span>
+      <h2>Where this goes</h2>
+      <span class="note">02 and 03 are proposed — your call on pace</span>
+    </div>
+    <div class="road">
+      <div class="stage now">
+        <span class="st">Live today</span>
+        <h3>Ask the system anything</h3>
+        <p>Individual seats, connected through the ClaudeMCP role. On-demand answers, drafts, and reports from live NetSuite data.</p>
+      </div>
+      <div class="stage next">
+        <span class="st">Next · proposed</span>
+        <h3>Company-wide rollout</h3>
+        <p>Every AISL user connects with their <b>own</b> NetSuite login and a role sized to their job:</p>
+        <ul>
+          <li>Sales sees sales; warehouse sees warehouse</li>
+          <li>Per-user audit trail, per-user ceiling</li>
+          <li>One Claude subscription covers the team</li>
+        </ul>
+      </div>
+      <div class="stage then">
+        <span class="st">Then · proposed</span>
+        <h3>Agents on the line</h3>
+        <p>Custom tools at the three insertion points flagged on your order-to-cash map — order intake, fulfillment exceptions, invoice follow-up — plus scheduled digests and alerts delivered automatically.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUARDRAILS ============ -->
+  <section id="rails">
+    <div class="sec-head">
+      <span class="tag">◆</span>
+      <h2>Guardrails</h2>
+    </div>
+    <div class="rails">
+      <div class="rail"><b>Role ceiling</b><span>Access is exactly the ClaudeMCP role — nothing more, ever.</span></div>
+      <div class="rail"><b>Per-user sign-in</b><span>OAuth 2.0 with each person's own NetSuite login. No shared credentials.</span></div>
+      <div class="rail"><b>Full audit trail</b><span>Every request logged in NetSuite with user, time, and result.</span></div>
+      <div class="rail"><b>Kill switch</b><span>Disable one integration record and the whole line goes dark instantly.</span></div>
+      <div class="rail"><b>Read-only dial</b><span>Write access can be turned to view-only per record type, any time.</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Prepared by <b class="spark">Spark Alliance, Inc.</b> · Oakdale, CA</span>
+    <span>for <b>Allegiance Industrial Supply, LLC.</b></span>
+    <span>Connector verified live <b>July 17, 2026</b></span>
+  </footer>
+
+</div>
+</body>
+</html>
