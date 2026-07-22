@@ -44,7 +44,7 @@
         <a href="/work.html">Work</a>
         <a href="/services.html">Services &amp; Pricing</a>
         <a href="/contact.html" aria-current="page">Contact</a>
-        <a class="nav-cta" href="mailto:drew@drewb-it.com?subject=Free%20discovery%20call&amp;body=Hi%20Drew%2C%0A%0AMy%20business%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0ABest%20days%2Ftimes%20for%20a%20call%3A%20%0A%0AThanks%21">Book a free call</a>
+        <a class="nav-cta" href="#quote">Book a free call</a>
       </nav>
     </div>
   </header>
@@ -59,8 +59,8 @@
           <h1>Send one link. I&rsquo;ll send <em>three fixes</em>.</h1>
           <p class="hero__lede">Email me the URL of your website or your Instagram, and I&rsquo;ll reply with the three specific things I&rsquo;d fix first — free, no strings, usually within one business day. Or skip ahead and book the free 30-minute call.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:drew@drewb-it.com?subject=Three%20things%20to%20fix&amp;body=Hi%20Drew%2C%20here%27s%20my%20link%3A%20">Email one link &rarr; get 3 fixes</a>
-            <a class="btn btn-ghost" href="mailto:drew@drewb-it.com?subject=Free%20discovery%20call&amp;body=Hi%20Drew%2C%0A%0AMy%20business%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0ABest%20days%2Ftimes%20for%20a%20call%3A%20%0A%0AThanks%21">Book the free 30-min call</a>
+            <a class="btn btn-primary" href="#quote">Start a quote request &rarr;</a>
+            <a class="btn btn-ghost" href="mailto:drew@drewb-it.com?subject=Three%20things%20to%20fix&amp;body=Hi%20Drew%2C%20here%27s%20my%20link%3A%20">Email one link &rarr; get 3 fixes</a>
           </div>
         </div>
         <figure>
@@ -72,9 +72,89 @@
     </div>
   </section>
 
+  <section class="section" id="quote">
+    <div class="wrap">
+      <div class="ledger-line"><span class="ledger-line__label"><strong>&#8470; 01</strong> &middot; The Quote Request</span></div>
+      <div class="split split--7-5 reveal">
+        <div>
+          <h2>Tell me what you need. I&rsquo;ll price it straight.</h2>
+          <p>Fill this out and it lands directly with me &mdash; same as an email, minus the blank-page problem. You&rsquo;ll get a real answer with real numbers within one business day. Prefer to talk first? Pick &ldquo;free 30-minute call&rdquo; below and give me a couple of time windows.</p>
+          <form class="quote-form" novalidate>
+            <div class="quote-form__grid">
+              <div class="quote-form__field">
+                <label for="qf-name">Your name <span class="quote-form__req">*</span></label>
+                <input type="text" id="qf-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="quote-form__field">
+                <label for="qf-email">Email <span class="quote-form__req">*</span></label>
+                <input type="email" id="qf-email" name="email" autocomplete="email" required>
+              </div>
+              <div class="quote-form__field">
+                <label for="qf-business">Business name</label>
+                <input type="text" id="qf-business" name="business" autocomplete="organization">
+              </div>
+              <div class="quote-form__field">
+                <label for="qf-service">What do you need?</label>
+                <select id="qf-service" name="service">
+                  <option value="">Choose one&hellip;</option>
+                  <option>Website build</option>
+                  <option>Website care plan</option>
+                  <option>Marketing automation</option>
+                  <option>Claude AI for business</option>
+                  <option>Managed IT</option>
+                  <option>Free 30-minute call first</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="quote-form__field">
+                <label for="qf-budget">Budget ballpark</label>
+                <select id="qf-budget" name="budget">
+                  <option value="">Not sure yet</option>
+                  <option>Under $500</option>
+                  <option>$500&ndash;$1,500</option>
+                  <option>$1,500&ndash;$5,000</option>
+                  <option>$5,000+</option>
+                </select>
+              </div>
+              <div class="quote-form__field">
+                <label for="qf-timeline">Timeline / best call times</label>
+                <input type="text" id="qf-timeline" name="timeline" placeholder="&ldquo;yesterday&rdquo; is an acceptable answer">
+              </div>
+              <div class="quote-form__field quote-form__field--full">
+                <label for="qf-message">What hurts? <span class="quote-form__req">*</span></label>
+                <textarea id="qf-message" name="message" rows="5" required placeholder="The outdated site, the unanswered DMs, the AI subscription nobody uses&hellip;"></textarea>
+              </div>
+              <div class="quote-form__hp" aria-hidden="true">
+                <label for="qf-website">Website</label>
+                <input type="text" id="qf-website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+            </div>
+            <p class="quote-form__status" role="status" aria-live="polite"></p>
+            <button class="btn btn-primary" type="submit">Send the request &rarr;</button>
+            <p class="quote-form__note">No newsletter, no drip campaign. Your info goes to exactly one inbox: mine.</p>
+          </form>
+          <div class="quote-form__success" hidden>
+            <h3>Request received. &#10003;</h3>
+            <p>It&rsquo;s in my inbox &mdash; not a ticket queue. I&rsquo;ll reply within one business day, usually much faster. If it&rsquo;s urgent, say so in a follow-up email and I&rsquo;ll bump it to the top.</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <h2>What happens next</h2>
+          <ul class="contact-list">
+            <li><strong>Within one business day</strong> &mdash; a personal reply from me, not an autoresponder.</li>
+            <li><strong>If it&rsquo;s a build</strong> &mdash; a straight quote with the same public pricing as the <a href="/services.html">services page</a>.</li>
+            <li><strong>If you picked the call</strong> &mdash; two or three time options that fit the windows you gave me.</li>
+            <li><strong>If I&rsquo;m not the right fit</strong> &mdash; I&rsquo;ll say so and point you at someone who is.</li>
+          </ul>
+          <p class="work-card__meta">&middot; Every price listed &middot; Everything accounted for &middot;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
-      <div class="ledger-line"><span class="ledger-line__label"><strong>&#8470; 01</strong> &middot; The Direct Line</span></div>
+      <div class="ledger-line"><span class="ledger-line__label"><strong>&#8470; 02</strong> &middot; The Direct Line</span></div>
       <div class="contact-grid reveal">
         <div class="contact-card">
           <h2>The direct line</h2>
@@ -103,7 +183,7 @@
 
   <section class="personal-band">
     <div class="wrap">
-      <div class="ledger-line"><span class="ledger-line__label"><strong>&#8470; 02</strong> &middot; The Person</span></div>
+      <div class="ledger-line"><span class="ledger-line__label"><strong>&#8470; 03</strong> &middot; The Person</span></div>
       <div class="split split--5-7 reveal">
         <img src="family.jpeg" alt="Drew Babbitt with his wife and children" width="1070" height="1200" loading="lazy">
         <div>
@@ -117,7 +197,7 @@
   <section class="section section--tight">
     <div class="wrap text-center reveal">
       <p>Thirty minutes, zero pressure. Worst case, you leave with a punch list you can hand to anyone.</p>
-      <a class="btn btn-primary" href="mailto:drew@drewb-it.com?subject=Free%20discovery%20call&amp;body=Hi%20Drew%2C%0A%0AMy%20business%3A%20%0AWhat%20I%20need%20help%20with%3A%20%0ABest%20days%2Ftimes%20for%20a%20call%3A%20%0A%0AThanks%21">Book the free call</a>
+      <a class="btn btn-primary" href="#quote">Book the free call</a>
     </div>
   </section>
 
