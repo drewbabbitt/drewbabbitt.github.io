@@ -2,7 +2,7 @@
    DREW B IT — shared site behavior (v2 "The Ledger")
    Responsibilities (nothing else): reveal observer, nav toggle,
    live-frame facade loader (click-to-load, 2-active cap, Dickerson
-   auto-load on index), footer year.
+   auto-load on index), footer year, quote-request form submit.
    ========================================================================== */
 (function () {
   'use strict';
@@ -113,5 +113,65 @@
     } else {
       activateFrame(autoFrame);
     }
+  }
+
+  /* ---------- Quote request form (contact.html #quote) ----------
+     POSTs to the n8n intake webhook; the workflow validates, emails Drew
+     (Reply-To = requester), and logs to the drewbit_quote_requests table. */
+  var QUOTE_ENDPOINT = 'https://sparkalliance.app.n8n.cloud/webhook/drewbit-quote-c67bdda2-a210-4a79-94e8-9782fb40a3d6';
+  var quoteForm = document.querySelector('.quote-form');
+  if (quoteForm) {
+    var statusEl = quoteForm.querySelector('.quote-form__status');
+    var submitBtn = quoteForm.querySelector('button[type="submit"]');
+    var successEl = document.querySelector('.quote-form__success');
+
+    quoteForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var field = function (name) {
+        var el = quoteForm.elements[name];
+        return el ? el.value.trim() : '';
+      };
+      var payload = {
+        name: field('name'),
+        email: field('email'),
+        business: field('business'),
+        service: field('service'),
+        budget: field('budget'),
+        timeline: field('timeline'),
+        message: field('message'),
+        website: field('website'),
+        page: location.pathname
+      };
+
+      if (!payload.name || !/^\S+@\S+\.\S{2,}$/.test(payload.email) || !payload.message) {
+        statusEl.textContent = 'Please fill in your name, a valid email, and what hurts.';
+        return;
+      }
+
+      statusEl.textContent = '';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      fetch(QUOTE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.error || 'rejected');
+          quoteForm.hidden = true;
+          if (successEl) {
+            successEl.hidden = false;
+            successEl.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' });
+          }
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send the request →';
+          statusEl.textContent = 'That didn’t go through. Try again, or email drew@drewb-it.com directly.';
+        });
+    });
   }
 })();
