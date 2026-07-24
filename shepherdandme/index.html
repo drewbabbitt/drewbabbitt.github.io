@@ -789,14 +789,14 @@ footer a:hover{color:var(--sage)}
       <div class="form-card reveal">
         <h3 style="margin-bottom:18px">Give today</h3>
         <div class="amounts" role="group" aria-label="Donation amount">
-          <button class="amt" data-amount="10" onclick="selAmt(this)">$10</button>
-          <button class="amt sel" data-amount="20" onclick="selAmt(this)">$20</button>
-          <button class="amt" data-amount="30" onclick="selAmt(this)">$30</button>
-          <button class="amt" data-amount="custom" onclick="selAmt(this)">Custom</button>
+          <button class="amt" data-amount="10" aria-pressed="false" onclick="selAmt(this)">$10</button>
+          <button class="amt sel" data-amount="20" aria-pressed="true" onclick="selAmt(this)">$20</button>
+          <button class="amt" data-amount="30" aria-pressed="false" onclick="selAmt(this)">$30</button>
+          <button class="amt" data-amount="custom" aria-pressed="false" aria-expanded="false" aria-controls="g-custom-wrap" onclick="selAmt(this)">Custom</button>
         </div>
-        <div class="f-group" id="g-custom-wrap" style="display:none"><label for="g-custom">Custom amount (USD)</label><input id="g-custom" type="number" min="1" step="1" inputmode="decimal" placeholder="50"></div>
+        <div class="f-group" id="g-custom-wrap" style="display:none"><label for="g-custom">Custom amount (USD)</label><input id="g-custom" type="number" min="1" step="0.01" inputmode="decimal" placeholder="50"></div>
         <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="paypalDonate()">Donate with PayPal</button>
-        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:14px;text-align:center">Secure checkout on PayPal · one-time or monthly · receipt emailed automatically</p>
+        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:14px;text-align:center">Secure checkout on PayPal</p>
         <p style="font-size:.82rem;color:var(--ink-soft);margin-top:6px;text-align:center">Tax-deductible · 501(c)(3) nonprofit</p>
       </div>
     </div>
@@ -824,8 +824,8 @@ footer a:hover{color:var(--sage)}
         <div style="margin-top:28px;display:flex;flex-direction:column;gap:16px">
           <a href="tel:+16615058159" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">📞</span> (661) 505-8159</a>
           <a href="mailto:info@shepherdandme.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> info@shepherdandme.com</a>
-          <a href="mailto:asegovia@shepherdandme.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> asegovia@shepherdandme.com <span style="font-weight:400;color:var(--ink-soft)">(Andrew)</span></a>
-          <a href="mailto:msegovia@shepherdandme.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> msegovia@shepherdandme.com <span style="font-weight:400;color:var(--ink-soft)">(Maria)</span></a>
+          <a href="mailto:asegovia@shepherdandme.com" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-width:0;overflow-wrap:anywhere;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> asegovia@shepherdandme.com <span style="font-weight:400;color:var(--ink-soft)">(Andrew)</span></a>
+          <a href="mailto:msegovia@shepherdandme.com" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-width:0;overflow-wrap:anywhere;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> msegovia@shepherdandme.com <span style="font-weight:400;color:var(--ink-soft)">(Maria)</span></a>
           <span style="display:flex;align-items:center;gap:14px;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">📍</span> Serving La Crescenta, Santa Clarita &amp; greater Los Angeles · sessions available remotely</span>
         </div>
         <div class="scripture" style="margin-top:34px">“For I know the plans I have for you… plans to give you hope and a future.”<cite>Jeremiah 29:11</cite></div>
@@ -1110,7 +1110,11 @@ footer a:hover{color:var(--sage)}
      PayPal: once Maria's ministry PayPal Business account is confirmed, paste the
      Donate button's hosted_button_id here (preferred); until then the button falls
      back to a donate link addressed to PAYPAL_BUSINESS_EMAIL, which must exactly
-     match the email on the ministry's PayPal account. */
+     match the email on the ministry's PayPal account. With a hosted_button_id,
+     PayPal ignores URL amount params: preset amounts and the monthly-giving toggle
+     are configured on the button at paypal.com, so either mirror the presets there
+     or hide the on-page amount chips. At that point also restore the donate-card
+     line "one-time or monthly · receipt emailed automatically". */
   var BOOKING_URL = 'https://calendar.google.com/calendar/u/3/r?pli=1';
   var PAYPAL_HOSTED_BUTTON_ID = '';
   var PAYPAL_BUSINESS_EMAIL = 'msegovia@shepherdandme.com';
@@ -1134,13 +1138,19 @@ footer a:hover{color:var(--sage)}
       if (sel.getAttribute('data-amount') === 'custom'){
         var input = document.getElementById('g-custom');
         var v = parseFloat(input.value);
-        if (!v || v <= 0){ input.focus(); return; }
+        if (!v || v < 1){
+          input.setAttribute('aria-invalid','true');
+          input.focus();
+          showToast('Please enter a donation amount of $1 or more.');
+          return;
+        }
+        input.removeAttribute('aria-invalid');
         amt = v;
       } else {
         amt = parseFloat(sel.getAttribute('data-amount'));
       }
     }
-    if (amt) url += '&amount=' + amt.toFixed(2);
+    if (!PAYPAL_HOSTED_BUTTON_ID && amt) url += '&amount=' + amt.toFixed(2);
     window.open(url, '_blank', 'noopener');
   };
 
@@ -1183,20 +1193,31 @@ footer a:hover{color:var(--sage)}
   };
 
   var toastTimer = null;
-  window.demoToast = function(){
+  function showToast(msg){
     var t = document.getElementById('toast');
+    t.textContent = msg;
     t.classList.add('show');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2600);
+  }
+  window.showToast = showToast;
+  window.demoToast = function(){
+    showToast('This is a design demo. Forms are not connected yet.');
   };
 
   window.selAmt = function(btn){
-    btn.parentNode.querySelectorAll('.amt').forEach(function(b){ b.classList.remove('sel'); });
+    btn.parentNode.querySelectorAll('.amt').forEach(function(b){
+      b.classList.remove('sel');
+      b.setAttribute('aria-pressed','false');
+    });
     btn.classList.add('sel');
+    btn.setAttribute('aria-pressed','true');
     var wrap = document.getElementById('g-custom-wrap');
     if (wrap){
       var isCustom = btn.getAttribute('data-amount') === 'custom';
       wrap.style.display = isCustom ? '' : 'none';
+      var customBtn = btn.parentNode.querySelector('[data-amount="custom"]');
+      if (customBtn) customBtn.setAttribute('aria-expanded', isCustom ? 'true' : 'false');
       if (isCustom) document.getElementById('g-custom').focus();
     }
   };
