@@ -789,20 +789,15 @@ footer a:hover{color:var(--sage)}
       <div class="form-card reveal">
         <h3 style="margin-bottom:18px">Give today</h3>
         <div class="amounts" role="group" aria-label="Donation amount">
-          <button class="amt" onclick="selAmt(this)">$10</button>
-          <button class="amt sel" onclick="selAmt(this)">$20</button>
-          <button class="amt" onclick="selAmt(this)">$30</button>
-          <button class="amt" onclick="selAmt(this)">Custom</button>
+          <button class="amt" data-amount="10" aria-pressed="false" onclick="selAmt(this)">$10</button>
+          <button class="amt sel" data-amount="20" aria-pressed="true" onclick="selAmt(this)">$20</button>
+          <button class="amt" data-amount="30" aria-pressed="false" onclick="selAmt(this)">$30</button>
+          <button class="amt" data-amount="custom" aria-pressed="false" aria-expanded="false" aria-controls="g-custom-wrap" onclick="selAmt(this)">Custom</button>
         </div>
-        <div class="f-row">
-          <div class="f-group"><label for="g-fn">First name *</label><input id="g-fn" type="text" autocomplete="given-name"></div>
-          <div class="f-group"><label for="g-ln">Last name *</label><input id="g-ln" type="text" autocomplete="family-name"></div>
-        </div>
-        <div class="f-group"><label for="g-em">Email *</label><input id="g-em" type="email" autocomplete="email"></div>
-        <div class="f-group"><label for="g-ph">Phone</label><input id="g-ph" type="tel" autocomplete="tel"></div>
-        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="demoToast()">Donate</button>
-        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:14px;text-align:center">Tax-deductible · 501(c)(3) nonprofit</p>
-        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:6px;text-align:center">Demo form. Connect to Wix Pay, Zeffy, or Tithe.ly in production.</p>
+        <div class="f-group" id="g-custom-wrap" style="display:none"><label for="g-custom">Custom amount (USD)</label><input id="g-custom" type="number" min="1" step="0.01" inputmode="decimal" placeholder="50"></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="paypalDonate()">Donate with PayPal</button>
+        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:14px;text-align:center">Secure checkout on PayPal</p>
+        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:6px;text-align:center">Tax-deductible · 501(c)(3) nonprofit</p>
       </div>
     </div>
   </section>
@@ -822,10 +817,15 @@ footer a:hover{color:var(--sage)}
       <div>
         <span class="kicker">Connect for your breakthrough</span>
         <h2>Start with a free 30-minute session</h2>
-        <p class="lead">Send us a message below, or reach out directly. We’d love to walk together toward your purpose.</p>
+        <p class="lead">Book a time on our calendar, send us a message below, or reach out directly. We’d love to walk together toward your purpose.</p>
+        <div style="margin-top:24px">
+          <a class="btn btn-primary" data-booking href="#contact" target="_blank" rel="noopener">Book a Free 30-Minute Session <span class="arrow">→</span></a>
+        </div>
         <div style="margin-top:28px;display:flex;flex-direction:column;gap:16px">
           <a href="tel:+16615058159" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">📞</span> (661) 505-8159</a>
           <a href="mailto:info@shepherdandme.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> info@shepherdandme.com</a>
+          <a href="mailto:asegovia@shepherdandme.com" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-width:0;overflow-wrap:anywhere;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> asegovia@shepherdandme.com <span style="font-weight:400;color:var(--ink-soft)">(Andrew)</span></a>
+          <a href="mailto:msegovia@shepherdandme.com" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;min-width:0;overflow-wrap:anywhere;text-decoration:none;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">✉️</span> msegovia@shepherdandme.com <span style="font-weight:400;color:var(--ink-soft)">(Maria)</span></a>
           <span style="display:flex;align-items:center;gap:14px;color:var(--ink);font-weight:600"><span class="vp-ico" style="margin:0">📍</span> Serving La Crescenta, Santa Clarita &amp; greater Los Angeles · sessions available remotely</span>
         </div>
         <div class="scripture" style="margin-top:34px">“For I know the plans I have for you… plans to give you hope and a future.”<cite>Jeremiah 29:11</cite></div>
@@ -848,7 +848,7 @@ footer a:hover{color:var(--sage)}
         </div>
         <div class="f-group"><label for="c-msg">Message *</label><textarea id="c-msg" rows="4" placeholder="Tell us more about your goals..."></textarea></div>
         <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="demoToast()">Send Message</button>
-        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:14px;text-align:center">Demo form. Connect to Wix Forms or a scheduler (Wix Bookings / Calendly) in production.</p>
+        <p style="font-size:.82rem;color:var(--ink-soft);margin-top:14px;text-align:center">Demo form. Message delivery gets connected before launch; use the booking button or email in the meantime.</p>
       </div>
     </div>
   </section>
@@ -1079,7 +1079,9 @@ footer a:hover{color:var(--sage)}
         <h4>Contact</h4>
         <a href="tel:+16615058159">(661) 505-8159</a>
         <a href="mailto:info@shepherdandme.com">info@shepherdandme.com</a>
-        <a href="#contact">Book a Free Session</a>
+        <a href="mailto:asegovia@shepherdandme.com">asegovia@shepherdandme.com</a>
+        <a href="mailto:msegovia@shepherdandme.com">msegovia@shepherdandme.com</a>
+        <a data-booking href="#contact" target="_blank" rel="noopener">Book a Free Session</a>
       </div>
       <div>
         <h4>Legal</h4>
@@ -1102,7 +1104,55 @@ footer a:hover{color:var(--sage)}
 
 <script>
 (function(){
+  /* Launch config. BOOKING_URL: replace with the public Google appointment-schedule
+     share link (calendar.app.google/...) before go-live; the current URL opens the
+     calendar owner's own view and is a staging placeholder.
+     PayPal: once Maria's ministry PayPal Business account is confirmed, paste the
+     Donate button's hosted_button_id here (preferred); until then the button falls
+     back to a donate link addressed to PAYPAL_BUSINESS_EMAIL, which must exactly
+     match the email on the ministry's PayPal account. With a hosted_button_id,
+     PayPal ignores URL amount params: preset amounts and the monthly-giving toggle
+     are configured on the button at paypal.com, so either mirror the presets there
+     or hide the on-page amount chips. At that point also restore the donate-card
+     line "one-time or monthly · receipt emailed automatically". */
+  var BOOKING_URL = 'https://calendar.google.com/calendar/u/3/r?pli=1';
+  var PAYPAL_HOSTED_BUTTON_ID = '';
+  var PAYPAL_BUSINESS_EMAIL = 'msegovia@shepherdandme.com';
+
   var routes = ['home','coaching','about','andrew','maria','testimonials','give','contact','terms','privacy','refund','accessibility','disclaimer'];
+
+  document.querySelectorAll('a[data-booking]').forEach(function(a){ a.href = BOOKING_URL; });
+
+  window.paypalDonate = function(){
+    var url;
+    if (PAYPAL_HOSTED_BUTTON_ID){
+      url = 'https://www.paypal.com/donate/?hosted_button_id=' + encodeURIComponent(PAYPAL_HOSTED_BUTTON_ID);
+    } else {
+      url = 'https://www.paypal.com/donate/?business=' + encodeURIComponent(PAYPAL_BUSINESS_EMAIL)
+          + '&item_name=' + encodeURIComponent('The Shepherd and Me Ministries')
+          + '&currency_code=USD';
+    }
+    var sel = document.querySelector('#page-give .amt.sel');
+    var amt = null;
+    if (sel){
+      if (sel.getAttribute('data-amount') === 'custom'){
+        var input = document.getElementById('g-custom');
+        var v = parseFloat(input.value);
+        if (!v || v < 1){
+          input.setAttribute('aria-invalid','true');
+          input.focus();
+          showToast('Please enter a donation amount of $1 or more.');
+          return;
+        }
+        input.removeAttribute('aria-invalid');
+        amt = v;
+      } else {
+        amt = parseFloat(sel.getAttribute('data-amount'));
+      }
+    }
+    if (!PAYPAL_HOSTED_BUTTON_ID && amt) url += '&amount=' + amt.toFixed(2);
+    window.open(url, '_blank', 'noopener');
+  };
 
   function show(route){
     if (routes.indexOf(route) === -1) route = 'home';
@@ -1143,16 +1193,33 @@ footer a:hover{color:var(--sage)}
   };
 
   var toastTimer = null;
-  window.demoToast = function(){
+  function showToast(msg){
     var t = document.getElementById('toast');
+    t.textContent = msg;
     t.classList.add('show');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2600);
+  }
+  window.showToast = showToast;
+  window.demoToast = function(){
+    showToast('This is a design demo. Forms are not connected yet.');
   };
 
   window.selAmt = function(btn){
-    btn.parentNode.querySelectorAll('.amt').forEach(function(b){ b.classList.remove('sel'); });
+    btn.parentNode.querySelectorAll('.amt').forEach(function(b){
+      b.classList.remove('sel');
+      b.setAttribute('aria-pressed','false');
+    });
     btn.classList.add('sel');
+    btn.setAttribute('aria-pressed','true');
+    var wrap = document.getElementById('g-custom-wrap');
+    if (wrap){
+      var isCustom = btn.getAttribute('data-amount') === 'custom';
+      wrap.style.display = isCustom ? '' : 'none';
+      var customBtn = btn.parentNode.querySelector('[data-amount="custom"]');
+      if (customBtn) customBtn.setAttribute('aria-expanded', isCustom ? 'true' : 'false');
+      if (isCustom) document.getElementById('g-custom').focus();
+    }
   };
 
   show(current());
