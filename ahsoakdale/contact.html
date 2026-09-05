@@ -21,18 +21,14 @@
 <link rel="stylesheet" href="styles.css" />
 
 <script>
-document.documentElement.classList.add('js-nav');
 document.addEventListener('DOMContentLoaded',function(){
-  var h=document.querySelector('.site-head');if(!h)return;
-  var t=h.querySelector('.nav-toggle'),n=document.getElementById('site-nav');if(!t||!n)return;
-  function set(o){h.classList.toggle('nav-open',o);t.setAttribute('aria-expanded',o?'true':'false');}
-  t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});
-  h.addEventListener('focusout',function(e){
-    if(!e.relatedTarget||!h.contains(e.relatedTarget))set(false);});
-  document.addEventListener('click',function(e){if(!h.contains(e.target))set(false);});
-  addEventListener('resize',function(){if(innerWidth>=1040)set(false);});
+var h=document.querySelector('.site-head');if(!h)return;
+var c=h.querySelector('.nav-cb');if(!c)return;
+function shut(){c.checked=false;}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&c.checked){shut();c.focus();}});
+document.addEventListener('click',function(e){if(c.checked&&!h.contains(e.target))shut();});
+h.querySelectorAll('.nav a').forEach(function(a){a.addEventListener('click',shut);});
+addEventListener('resize',function(){if(innerWidth>=1040)shut();});
 });
 </script>
 </head>
@@ -43,10 +39,8 @@ document.addEventListener('DOMContentLoaded',function(){
         <img src="assets/logo.png" alt="" />
         <span>Advanced Hair<br />Specialists</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-bars" aria-hidden="true"></span>
-        <span class="nav-toggle-t">Menu</span>
-      </button>
+      <input class="nav-cb" type="checkbox" id="nav-cb" aria-label="Show navigation menu" />
+      <label class="nav-toggle" for="nav-cb"><span class="nav-bars" aria-hidden="true"></span><span class="nav-toggle-t">Menu</span></label>
       <nav class="nav" id="site-nav">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>

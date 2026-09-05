@@ -42,6 +42,7 @@ h1,h2,h3,.serif{font-family:Cinzel,Georgia,serif;font-weight:500;color:#fff}
 .nav a:hover{background:rgba(255,255,255,.06);color:#fff}
 .nav a[aria-current="page"]{color:#fff}
 .head-call{padding:11px 20px;font-size:13px;white-space:nowrap}
+.nav-cb{display:none}
 .nav-toggle{display:none;font:600 14px/1 "Source Sans 3",system-ui,-apple-system,sans-serif}
 
 /* sections */
@@ -205,85 +206,90 @@ h2.big{font-size:clamp(28px,4vw,40px)}
 }
 
 @media (max-width:1039px){
-  html{scroll-padding-top:72px}
+  html{scroll-padding-top:64px}
 
-  /* --- the bar itself: 44px of tap target plus 8px above and below --- */
-  .head-in{flex-wrap:wrap;gap:10px;padding:8px 14px}
-  .brand{order:1;gap:10px}
-  .brand img{width:44px;height:44px}
-  .brand span{font-size:12px;line-height:1.2;letter-spacing:.06em}
-  .head-call{order:3;margin-left:auto;min-height:44px;display:inline-flex;
-             align-items:center;padding:0 18px;font-size:14px}
+  /* ---------------------------------------------------------------
+     Mobile bar. One row, never wraps, and it does not depend on
+     JavaScript: the checkbox holds the open state, so the bar looks
+     and behaves identically with scripting off.
+     --------------------------------------------------------------- */
+  .head-in{flex-wrap:nowrap;gap:10px;padding:9px 16px}
 
-  /* --- no-JS baseline: links wrap onto their own full-width row --- */
-  .nav{order:4;flex-basis:100%;margin-left:0;justify-content:flex-start;gap:2px}
-  .nav a:not(.btn){display:flex;align-items:center;min-height:44px;
-                   padding:0 12px;font-size:14px}
+  .brand{order:1;gap:10px;min-width:0;min-height:44px}
+  .brand img{width:38px;height:38px}
+  .brand span{font-size:11.5px;line-height:1.25;letter-spacing:.08em;white-space:nowrap}
 
-  /* --- the toggle: only ever revealed when the script ran, so a
-         JS-off visitor never meets a dead button --- */
-  .js-nav .nav-toggle{
-    order:2;margin-left:auto;
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    min-height:44px;padding:0 13px;
-    background:none;border:1px solid var(--line-2);border-radius:2px;
+  /* phone stays visible: it is the conversion action on this site */
+  .head-call{order:2;margin-left:auto;flex:none;
+             min-height:44px;display:inline-flex;align-items:center;
+             padding:0 14px;font-size:13px;letter-spacing:.04em;
+             color:#fff;border-radius:3px;white-space:nowrap}
+
+  /* the toggle is a label, so it works with no script at all */
+  .nav-cb{display:block;position:absolute;width:1px;height:1px;margin:0;padding:0;
+          border:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;
+          white-space:nowrap}
+  .nav-toggle{order:3;flex:none;
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    width:44px;min-height:44px;padding:0;
+    background:none;border:1px solid var(--line-2);border-radius:3px;
     color:var(--ink-2);cursor:pointer;
+    font:600 11px/1 "Source Sans 3",system-ui,-apple-system,sans-serif;
     letter-spacing:.14em;text-transform:uppercase;
-  }
-  .js-nav .nav-toggle:hover{border-color:var(--accent);color:#fff}
-  .js-nav .nav-toggle:focus-visible{outline:2px solid var(--accent-hi);outline-offset:2px}
-  .js-nav .head-call{margin-left:0}
+    -webkit-tap-highlight-color:transparent}
+  .nav-toggle-t{display:none}
+  .nav-cb:focus-visible + .nav-toggle{outline:2px solid var(--accent-hi);outline-offset:2px}
 
-  .nav-bars{position:relative;display:block;width:17px;height:2px;background:currentColor}
+  .nav-bars{position:relative;display:block;width:16px;height:2px;
+            background:currentColor;transition:background .12s}
   .nav-bars::before,.nav-bars::after{content:"";position:absolute;left:0;
-    width:17px;height:2px;background:currentColor}
-  .nav-bars::before{top:-6px}
-  .nav-bars::after{top:6px}
-  .nav-open .nav-bars{background:transparent}
-  .nav-open .nav-bars::before{top:0;transform:rotate(45deg)}
-  .nav-open .nav-bars::after{top:0;transform:rotate(-45deg)}
+    width:16px;height:2px;background:currentColor;transition:transform .16s,top .16s}
+  .nav-bars::before{top:-5px}
+  .nav-bars::after{top:5px}
+  .nav-cb:checked + .nav-toggle{border-color:var(--accent);color:#fff}
+  .nav-cb:checked + .nav-toggle .nav-bars{background:transparent}
+  .nav-cb:checked + .nav-toggle .nav-bars::before{top:0;transform:rotate(45deg)}
+  .nav-cb:checked + .nav-toggle .nav-bars::after{top:0;transform:rotate(-45deg)}
 
-  /* --- the panel. .site-head is position:sticky, so it is already
-         the containing block for this absolute child. --- */
-  .js-nav .nav{
-    position:absolute;top:100%;left:0;right:0;
-    display:none;flex-basis:auto;
+  /* the panel. .site-head is sticky, so it is this child's containing block. */
+  .nav{
+    order:4;position:absolute;top:100%;left:0;right:0;
+    display:none;flex-basis:auto;margin-left:0;
     padding:4px 0 8px;
     background:var(--bg);
     border-bottom:1px solid var(--line);
     box-shadow:0 24px 48px rgba(0,0,0,.6);
-    max-height:calc(100vh - 61px);
-    max-height:calc(100dvh - 61px);
-    overflow-y:auto;
-  }
-  .js-nav .nav-open .nav{display:block}
-  .js-nav .nav a:not(.btn){
+    max-height:calc(100vh - 62px);
+    max-height:calc(100dvh - 62px);
+    overflow-y:auto}
+  .nav-cb:checked ~ .nav{display:block}
+  .nav a:not(.btn){
     display:flex;align-items:center;min-height:50px;
-    padding:0 16px;border-radius:0;font-size:15px;letter-spacing:.1em;
-    color:var(--ink-2);border-bottom:1px solid var(--line);
+    padding:0 18px;border-radius:0;font-size:15px;letter-spacing:.1em;
+    color:var(--ink-2);border-bottom:1px solid var(--line)}
+  .nav a:not(.btn):last-child{border-bottom:0}
+  .nav a[aria-current="page"]{color:#fff;box-shadow:inset 3px 0 0 var(--accent)}
+
+  /* room for the label once there is width for it */
+  @media (min-width:430px){
+    .nav-toggle{width:auto;padding:0 13px}
+    .nav-toggle-t{display:inline}
   }
-  .js-nav .nav a:not(.btn):last-child{border-bottom:0}
-  .js-nav .nav a[aria-current="page"]{color:#fff;box-shadow:inset 3px 0 0 var(--accent)}
+  /* the wordmark is the first thing to go on a small phone */
+  @media (max-width:359px){
+    .head-in{gap:8px;padding:9px 12px}
+    .head-call{padding:0 12px;font-size:12px}
+  }
 }
 
-/* Measured: brand-with-wordmark 164 + toggle 101 + CTA 160 + gaps 20 +
-   padding 28 = 473px of bar, so the wordmark does not fit on a phone
-   alongside the toggle and the digits. Below 500px the 44px logo mark
-   carries identity and the CTA keeps its digits, because the digits are
-   the conversion. The wordmark stays in the accessibility tree, so the
-   brand link is still named "Advanced Hair Specialists". */
-@media (max-width:499px){
+/* The wordmark rides its own <br> as two short lines, about 95px, which fits
+   the bar from 360px up: 32 padding + 38 mark + 95 wordmark + 115 digits +
+   44 toggle + 30 gaps = 354. Below that it goes screen-reader-only rather
+   than display:none, because it is the brand link's only accessible name. */
+@media (max-width:359px){
   .brand span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 }
 
-/* At 320px the labelled toggle pushes the bar to 353px and it wraps to
-   two rows. Below 360px the word Menu is visually hidden, staying the
-   button's accessible name, and the toggle becomes a 44px square. */
-@media (max-width:359px){
-  .nav-toggle-t{position:absolute;width:1px;height:1px;overflow:hidden;
-                clip-path:inset(50%);white-space:nowrap}
-  .js-nav .nav-toggle{min-width:44px;padding:0;gap:0}
-}
 
 /* ============================================================
    PHONE AND TABLET: type scale, tap targets, vertical rhythm.
