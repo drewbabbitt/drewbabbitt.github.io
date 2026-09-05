@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://drewb-it.com/ahsoakdale/sitemap.xml
