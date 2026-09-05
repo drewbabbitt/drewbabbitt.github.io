@@ -263,6 +263,13 @@ h2.big{font-size:clamp(28px,4vw,40px)}
     max-height:calc(100dvh - 62px);
     overflow-y:auto}
   .nav-cb:checked ~ .nav{display:block}
+  /* Compatibility during the cache window: a visitor holding the previous
+     markup has a <button> that toggles .nav-open instead of a checkbox.
+     Honour both so a stale page is never left with a dead hamburger. */
+  .nav-open .nav{display:block}
+  .nav-open .nav-bars{background:transparent}
+  .nav-open .nav-bars::before{top:0;transform:rotate(45deg)}
+  .nav-open .nav-bars::after{top:0;transform:rotate(-45deg)}
   .nav a:not(.btn){
     display:flex;align-items:center;min-height:50px;
     padding:0 18px;border-radius:0;font-size:15px;letter-spacing:.1em;

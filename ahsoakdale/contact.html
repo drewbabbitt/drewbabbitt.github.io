@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..600&family=Source+Sans+3:ital,wght@0,300..600;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.css?v=4" />
 
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -39,7 +39,8 @@ addEventListener('resize',function(){if(innerWidth>=1040)shut();});
         <img src="assets/logo.png" alt="" />
         <span>Advanced Hair<br />Specialists</span>
       </a>
-      <input class="nav-cb" type="checkbox" id="nav-cb" aria-label="Show navigation menu" />
+      <input class="nav-cb" type="checkbox" id="nav-cb" aria-label="Show navigation menu"
+             style="position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden" />
       <label class="nav-toggle" for="nav-cb"><span class="nav-bars" aria-hidden="true"></span><span class="nav-toggle-t">Menu</span></label>
       <nav class="nav" id="site-nav">
         <a href="index.html">Home</a>
