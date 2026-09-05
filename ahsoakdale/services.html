@@ -17,9 +17,24 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..600&family=Source+Sans+3:ital,wght@0,300..600;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 
+<script>
+document.documentElement.classList.add('js-nav');
+document.addEventListener('DOMContentLoaded',function(){
+  var h=document.querySelector('.site-head');if(!h)return;
+  var t=h.querySelector('.nav-toggle'),n=document.getElementById('site-nav');if(!t||!n)return;
+  function set(o){h.classList.toggle('nav-open',o);t.setAttribute('aria-expanded',o?'true':'false');}
+  t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});
+  h.addEventListener('focusout',function(e){
+    if(!e.relatedTarget||!h.contains(e.relatedTarget))set(false);});
+  document.addEventListener('click',function(e){if(!h.contains(e.target))set(false);});
+  addEventListener('resize',function(){if(innerWidth>=1040)set(false);});
+});
+</script>
 </head>
 <body>
   <header class="site-head">
@@ -28,19 +43,23 @@
         <img src="assets/logo.png" alt="" />
         <span>Advanced Hair<br />Specialists</span>
       </a>
-      <nav class="nav">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-t">Menu</span>
+      </button>
+      <nav class="nav" id="site-nav">
         <a href="index.html">Home</a>
         <a href="services.html" aria-current="page">Services</a>
         <a href="about.html">About</a>
         <a href="results.html">What to expect</a>
         <a href="contact.html">Contact</a>
-        <a class="btn" href="tel:2095517060">(209) 551-7060</a>
       </nav>
+      <a class="btn head-call" href="tel:2095517060">(209) 551-7060</a>
     </div>
   </header>
   <main>
     <section>
-      <div class="wrap" style="padding-block:72px 24px">
+      <div class="wrap pb-a">
         <p class="eyebrow">Services</p>
         <h1 style="margin:0 0 22px;font-size:clamp(32px,4.6vw,52px);line-height:1.12">Non-surgical hair replacement</h1>
         <p class="lede" style="margin:0;max-width:60ch">No surgery, no downtime. Every solution is chosen and fitted in the studio, then maintained on a schedule that suits you.</p>
@@ -48,7 +67,7 @@
     </section>
 
     <section>
-      <div class="wrap" style="padding-block:40px 80px">
+      <div class="wrap pb-b">
         <div class="rows">
           <div class="row">
             <div class="lbl"><p>01</p><h2>Hair Systems</h2></div>
@@ -83,7 +102,7 @@
     </section>
 
     <section>
-      <div class="wrap center" style="padding-block:70px 90px">
+      <div class="wrap center pb-c">
         <a class="btn" href="contact.html">Book a free consultation</a>
       </div>
     </section>
@@ -118,7 +137,9 @@
         <p class="cap">Subscribe</p>
         <p style="margin-bottom:14px;line-height:1.55">Stay up-to-date by signing up for our newsletter!</p>
         <form class="sub" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="email" name="email" placeholder="Email" required />
+          <input type="email" name="email" placeholder="Email" required
+                 aria-label="Email address" autocomplete="email"
+                 autocapitalize="none" spellcheck="false" />
           <button class="btn btn-sm sub-btn" type="submit">Sign up</button>
         </form>
       </div>

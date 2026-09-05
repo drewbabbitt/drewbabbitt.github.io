@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..600&family=Source+Sans+3:ital,wght@0,300..600;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 <style>
 /* Page-scoped: diagrams for the what-to-expect page. Built on the existing tokens. */
@@ -39,8 +39,159 @@
 .diagram-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .diagram-scroll svg{min-width:440px;width:100%;height:auto;display:block}
 /* the legend column runs longer than the drawing; keep the drawing in view beside it */
-@media(min-width:900px){.anat-fig{position:sticky;top:88px}}
+@media(min-width:1100px){.anat-fig{position:sticky;top:88px}}
+/* the client's own hair above the skin is a curved stroke, not a fill, so it
+   needs its own class; same #cfc9e4 as .hf-shaft so the variants cannot drift. */
+.hf-hair{fill:none;stroke:#cfc9e4;stroke-width:3;stroke-linecap:round}
+/* Two variants of the cross-section: wide by default, narrow below 560px.
+   BOTH toggles must be qualified `.diagram-scroll svg...` or they lose the
+   specificity fight with `.diagram-scroll svg{display:block}` above and the
+   swap silently dies at every width. Do not shorten these selectors. */
+.diagram-scroll svg.xsec-narrow{display:none}
+/* Below ~1100 the two-up split starves the drawing: the panel inner box needs
+   440px and the panel eats 58px, so a column under 498px cannot hold it.
+   min(498px,100%) is required; a bare minmax(498px,1fr) forces a 498px track
+   inside a 342px container and overflows the page. */
+.two.xsec-grid{grid-template-columns:repeat(auto-fit,minmax(min(498px,100%),1fr))}
+@media(max-width:559px){
+  .anat-fig{padding:16px 12px}
+  .diagram-scroll svg.xsec-wide{display:none}
+  .diagram-scroll svg.xsec-narrow{display:block;max-width:400px;margin-inline:auto}
+  .diagram-scroll{overflow-x:visible}
+  .diagram-scroll svg{min-width:0}
+  /* three-phase cycle: one row per phase, drawing beside its own caption, so
+     the figure/figcaption pairing survives in the accessibility tree. */
+  .figset{grid-template-columns:1fr;gap:22px}
+  .fig{display:grid;grid-template-columns:118px 1fr;gap:16px;align-items:start}
+  .fig svg{width:118px}
+  .fig figcaption{margin-top:0;font-size:15px;line-height:1.55}
+}
+
+/* ============================================================
+   Progressive disclosure. Every <details> ships `open` in the markup and is
+   closed only by the script at the end of <body>, so with JS off this page is
+   exactly what it was: everything visible, nothing lost.
+   ============================================================ */
+
+/* section padding, moved off inline style attributes so a media query can
+   actually reach it (inline styles beat every stylesheet rule). */
+.pad-lede{padding-block:72px 40px}
+.pad-intro{padding-block:80px 24px}
+.pad-rows{padding-block:32px 80px}
+
+/* ---------- DESKTOP: the approved two-column row, unchanged ---------- */
+@media(min-width:761px){
+  details.row{background:var(--panel);padding:38px 34px;display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+  details.row > summary{flex:0 1 220px;list-style:none;display:block}
+  details.row > summary::-webkit-details-marker{display:none}
+  details.row > summary .rn{display:block;margin:0 0 10px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4)}
+  details.row > summary h2{margin:0;font-size:26px}
+  /* the subtitle exists to make the CLOSED mobile list scannable and searchable.
+     Nothing is closed on desktop, so it earns nothing there and the approved
+     page stays as approved. */
+  details.row > summary .rsub{display:none}
+  /* BOTH selectors are required. Chrome 131+ / Safari 18.4+ wrap the content in
+     an anonymous ::details-content box, so `details.row > .body` stops being the
+     flex item and desktop silently grows by ~1145px. Do not delete either line. */
+  details.row > .body{flex:1 1 340px;min-width:0}
+  details.row::details-content{flex:1 1 340px;min-width:0;content-visibility:visible;block-size:auto}
+
+  details.disc > summary{display:none}
+  details.disc::details-content{content-visibility:visible;block-size:auto}
+  /* this one wraps a real <h3>, so it keeps rendering as that heading */
+  details.disc-h3 > summary{display:block;list-style:none}
+  details.disc > summary .rsub{display:none}
+  details.disc-h3 > summary::-webkit-details-marker{display:none}
+  /* lifted verbatim off the h3's style attribute so the mobile block below
+     can reach it. Identical values, so 1200px is unchanged. */
+  details.disc-h3 > summary h3{margin:52px 0 18px;font-size:20px}
+}
+
+/* ---------- MOBILE: a scannable index of tappable rows ---------- */
+@media(max-width:760px){
+  /* First-paint guard. `pre-collapse` is set by the head script before the
+     first paint and dropped at DOMContentLoaded, so a phone never paints
+     22,000px of expanded page and then snaps it shut. Scoped to a class that
+     only exists while that script is mid-flight, so it can never strand
+     content: the class is removed OUTSIDE the try/catch below. */
+  .pre-collapse details.row > .body,
+  .pre-collapse details.disc > :not(summary){display:none}
+
+  .pad-lede{padding-block:44px 26px}
+  .pad-intro{padding-block:48px 18px}
+  .pad-rows{padding-block:20px 48px}
+
+  details.row{background:var(--panel);padding:0;display:block}
+  details.row > summary{position:relative;display:block;padding:15px 46px 15px 20px;
+                        cursor:pointer;list-style:none}
+  details.row > summary::-webkit-details-marker{display:none}
+  details.row > summary::after{content:"+";content:"+" / "";position:absolute;right:15px;top:12px;
+                               font-size:23px;line-height:1.35;color:var(--accent-ink)}
+  details.row[open] > summary::after{content:"\2212";content:"\2212" / ""}
+  details.row > summary:focus-visible{outline:2px solid var(--accent-hi);outline-offset:-2px}
+  details.row > summary .rn{font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+                            color:var(--ink-4);margin-right:9px}
+  /* .rn is inline here, and the markup has no whitespace before the <h2>,
+     so screen readers ran them together as "01Androgenetic alopecia". */
+  details.row > summary .rn::after{content:" "}
+  details.row > summary h2{display:inline;margin:0;font-size:19px;line-height:1.4}
+  details.row > summary .rsub{display:block;margin-top:6px;font-size:15px;
+                              line-height:1.5;color:var(--ink-3);text-wrap:pretty}
+  details.row > .body{padding:0 20px 20px}
+
+  details.disc{display:block}
+  details.disc > summary{position:relative;display:block;padding:14px 44px 14px 0;
+                         cursor:pointer;list-style:none;font-size:17px;font-weight:600;
+                         line-height:1.4;color:#fff;letter-spacing:.01em}
+  details.disc > summary::-webkit-details-marker{display:none}
+  details.disc > summary::after{content:"+";content:"+" / "";position:absolute;right:12px;top:11px;
+                                font-size:23px;line-height:1.35;color:var(--accent-ink)}
+  details.disc[open] > summary::after{content:"\2212";content:"\2212" / ""}
+  details.disc > summary:focus-visible{outline:2px solid var(--accent-hi);outline-offset:2px}
+  details.disc-h3{margin-top:34px}
+  details.disc-h3 > summary h3{margin:0;font-size:19px;line-height:1.4}
+  details.disc > summary .rsub{display:block;margin-top:5px;font-size:15px;
+                               font-weight:400;line-height:1.5;color:var(--ink-3)}
+
+  .fig figcaption{font-size:15px}
+  .figcap{margin-top:18px;font-size:15px}
+}
 </style>
+<script>
+/* Progressive disclosure for the long clinical sections.
+   Every <details> below ships `open` in the markup, so with JavaScript off
+   this page is exactly what it always was: nothing hidden, nothing lost.
+   This block runs in the head so `pre-collapse` lands before first paint.
+   `change` is listened for rather than read once: a one-shot read would
+   leave a rotated phone with content closed and, on engines without
+   ::details-content, no visible control to open it. DOMContentLoaded always
+   fires and the guard class is always dropped there, outside the try. */
+(function(){var H=document.documentElement;H.classList.add('pre-collapse');
+document.addEventListener('DOMContentLoaded',function(){
+  try{var m=matchMedia('(max-width:760px)');
+    var sync=function(){document.querySelectorAll('details.row,details.disc').forEach(function(d){
+      if(m.matches)d.removeAttribute('open');else d.setAttribute('open','');});};
+    sync();
+    if(m.addEventListener)m.addEventListener('change',sync);
+    else if(m.addListener)m.addListener(sync);
+  }catch(e){}
+  H.classList.remove('pre-collapse');});})();
+</script>
+<script>
+document.documentElement.classList.add('js-nav');
+document.addEventListener('DOMContentLoaded',function(){
+  var h=document.querySelector('.site-head');if(!h)return;
+  var t=h.querySelector('.nav-toggle'),n=document.getElementById('site-nav');if(!t||!n)return;
+  function set(o){h.classList.toggle('nav-open',o);t.setAttribute('aria-expanded',o?'true':'false');}
+  t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});
+  h.addEventListener('focusout',function(e){
+    if(!e.relatedTarget||!h.contains(e.relatedTarget))set(false);});
+  document.addEventListener('click',function(e){if(!h.contains(e.target))set(false);});
+  addEventListener('resize',function(){if(innerWidth>=1040)set(false);});
+});
+</script>
 </head>
 <body>
   <header class="site-head">
@@ -49,19 +200,23 @@
         <img src="assets/logo.png" alt="" />
         <span>Advanced Hair<br />Specialists</span>
       </a>
-      <nav class="nav">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-t">Menu</span>
+      </button>
+      <nav class="nav" id="site-nav">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="results.html" aria-current="page">What to expect</a>
         <a href="contact.html">Contact</a>
-        <a class="btn" href="tel:2095517060">(209) 551-7060</a>
       </nav>
+      <a class="btn head-call" href="tel:2095517060">(209) 551-7060</a>
     </div>
   </header>
   <main>
     <section>
-      <div class="wrap" style="padding-block:72px 40px">
+      <div class="wrap pad-lede">
         <p class="eyebrow">What to expect</p>
         <h1 style="margin:0 0 22px;font-size:clamp(32px,4.6vw,50px);line-height:1.12">A private process, start to finish</h1>
         <p class="lede" style="margin:0 0 20px;max-width:62ch">Most people arrive knowing that something is happening and very little else, and they would rather not have to ask around to find out. So here is all of it written down: the common types of hair loss and which of them a system actually suits, then what happens at each appointment, how a system is built and matched to you, what it is made of, and what keeping it looks like month to month.</p>
@@ -134,11 +289,14 @@
         </div>
         <p class="figcap" style="margin:0 0 40px">The three phases of the hair growth cycle, drawn in cross-section through the scalp. Original schematics, not photographs of any person.</p>
         <p style="margin:0 0 18px;max-width:64ch;font-size:18px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">Almost everything that gets called &ldquo;hair loss&rdquo; is one of three things happening to that cycle, and knowing which one you are dealing with is the single most useful thing you can learn.</p>
-        <div class="stack" style="max-width:760px">
+        <details class="disc" open>
+          <summary>Shedding, miniaturization and scarring, in one line each</summary>
+          <div class="stack" style="max-width:760px">
           <div><p class="k">Shedding</p><p class="v">Too many follicles are pushed out of the growing phase at once, so far more hair than usual is shed over a few months. The follicles themselves are intact.</p></div>
           <div><p class="k">Miniaturization</p><p class="v">Follicles keep cycling but produce progressively finer, shorter, lighter hair each time, until what grows is barely visible. This is the mechanism behind pattern hair loss.</p></div>
           <div><p class="k">Scarring</p><p class="v">Inflammation destroys the follicle and scar tissue replaces it. Once a follicle is gone it does not come back, which is why this category is the one to get in front of quickly.</p></div>
         </div>
+        </details>
       </div>
     </section>
 
@@ -148,56 +306,56 @@
         <h2 style="margin:0 0 14px;font-size:34px">The presentations we are asked about most</h2>
         <p class="muted" style="margin:0 0 40px;max-width:62ch;font-size:17px;line-height:1.65">For each one, the honest answer about whether a non-surgical solution is the right response, including the cases where it is a temporary bridge and the cases where we should tell you to wait.</p>
         <div class="rows">
-          <div class="row">
-            <div class="lbl"><p>01</p><h2>Androgenetic alopecia</h2></div>
+          <details class="row" open>
+            <summary><span class="rn">01</span><h2>Androgenetic alopecia</h2><span class="rsub">Male pattern hair loss. Genetic, gradual, and it moves in a predictable order.</span></summary>
             <div class="body">
               <p>Male pattern hair loss, and the most common cause of hair loss in men. A genetic predisposition combines with the follicle's sensitivity to androgens, and the result is progressive miniaturization: normal hairs are replaced, cycle after cycle, by finer and shorter ones until the scalp shows through.</p>
               <p>It becomes more common with age and it moves in a predictable order. Recession at the temples first, then thinning at the crown, and eventually the two areas meet. The rim above the ears and around the back of the head is typically spared. It is non-scarring, it is gradual, and it does not reverse on its own.</p>
               <p class="who">Where a system fits: this is the strongest case for one. The pattern is stable and predictable, and the perimeter rim gives a fitted system real hair to blend into.</p>
             </div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>02</p><h2>Female pattern hair loss</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">02</span><h2>Female pattern hair loss</h2><span class="rsub">Diffuse thinning across the top and crown, with the part quietly widening.</span></summary>
             <div class="body">
               <p>The same underlying mechanism, presenting differently. Rather than a receding hairline, the loss is diffuse across the top and crown, and the frontal hairline is usually preserved. For most women the first sign is the part widening, or a ponytail that has quietly got thinner over a few years. Non-scarring, and gradual enough that it is often noticed late.</p>
               <p class="who">Where a system fits: a topper is the usual answer. Density is added exactly where it has gone, at the crown and along the part, while your own hair is kept at the sides and blended through.</p>
             </div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>03</p><h2>Alopecia areata</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">03</span><h2>Alopecia areata</h2><span class="rsub">Autoimmune. Well defined round patches that can appear within weeks.</span></summary>
             <div class="body">
               <p>An autoimmune condition in which the immune system attacks the follicle. It produces well-defined round patches of loss that can appear over a matter of weeks, and it can extend to the whole scalp or the whole body. The follicle is not destroyed, and the course is genuinely unpredictable: it can regrow, recur, or persist.</p>
               <p class="who">Where a system fits: full coverage is the common answer while it is active, and toppers or partial pieces work for limited patches. Because the picture can change, we fit for how things are now and plan on adjusting.</p>
             </div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>04</p><h2>Telogen effluvium</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">04</span><h2>Telogen effluvium</h2><span class="rsub">A heavy shed months after illness, surgery, childbirth or severe stress.</span></summary>
             <div class="body">
               <p>A shock to the system pushes an unusually large number of follicles out of the growing phase and into resting all at once. Illness, surgery, childbirth, severe stress and some medications are the usual triggers. The shed shows up months after the event that caused it, which is why the cause is so often missed. It is diffuse over the whole scalp rather than patterned, and in most cases the follicles are intact and the hair returns.</p>
               <p class="who">Where a system fits: usually as a bridge rather than a permanent answer. Coverage while it recovers, with no expectation that you keep wearing one afterwards. We will tell you if that is what we think you are looking at.</p>
             </div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>05</p><h2>Treatment-related loss</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">05</span><h2>Treatment-related loss</h2><span class="rsub">Chemotherapy and other medical treatment. Rapid, and often close to total.</span></summary>
             <div class="body">
               <p>Chemotherapy and some other treatments interrupt the growing phase directly, so the loss is rapid and can be close to total. The follicles are generally not destroyed and hair typically returns once treatment ends, though it can come back with a different texture or colour for a while.</p>
               <p class="who">Where a system fits: full coverage, and where there is time, fitted before treatment starts so we can match your own colour, density and hairline while they are still in front of us. See the section on cranial prostheses below.</p>
             </div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>06</p><h2>Traction alopecia</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">06</span><h2>Traction alopecia</h2><span class="rsub">From tight styles, extensions, or years of pull on the hairline.</span></summary>
             <div class="body">
               <p>Loss caused by sustained pull on the hair, from tight styles, extensions, or an attachment method worn hard for years. It shows up where the tension is highest, usually along the hairline and at the temples. Caught early it recovers once the pull stops. Left long enough, the follicle scars and the loss becomes permanent.</p>
               <p class="who">Where a system fits: only once the tension is off. This is the one presentation where the wrong attachment method makes things worse, so we choose it around your hairline, and we will say so plainly if what you are asking for is not right for your scalp.</p>
             </div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>07</p><h2>Scarring alopecia</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">07</span><h2>Scarring alopecia</h2><span class="rsub">Cicatricial alopecia. Inflammation and scar tissue, and it is permanent.</span></summary>
             <div class="body">
               <p>A group of conditions, also called cicatricial alopecia, in which inflammation destroys the follicle and replaces it with scar tissue. Affected scalp often looks smooth or shiny with no visible follicle openings. What has been lost does not come back, so the priority is a dermatologist and getting the underlying process stopped before it takes more ground.</p>
               <p class="who">Where a system fits: coverage for what has already gone, with attachment chosen carefully around affected skin. Bring your dermatologist's guidance to the consultation and we will work within it.</p>
             </div>
-          </div>
+          </details>
         </div>
         <p class="note">This is not a complete list and it is not a diagnostic tool. More than one of these can be happening at the same time, and several of them look alike in the early stages. If your doctor has described your hair loss using a staging scale, you may have heard the Norwood or Ludwig scales named; those are shorthand clinicians use to record what they are looking at, and they are the physician's instrument, not ours. We do not stage and we do not diagnose. If you do not yet know what is going on, a dermatologist or your primary care provider is the right first stop, and it is worth going before you spend money on anything.</p>
       </div>
@@ -208,10 +366,10 @@
         <p class="eyebrow">Construction</p>
         <h2 class="big" style="margin:0 0 20px">How a system actually sits on your head</h2>
         <p class="lede" style="margin:0 0 44px;max-width:62ch">Almost nobody has seen this in cross-section, and it explains most of the questions people arrive with. Nothing here goes under the skin, and nothing here is surgical.</p>
-        <div class="two two-top">
+        <div class="two two-top xsec-grid">
           <div class="panel anat-fig">
             <div class="diagram-scroll">
-            <svg viewBox="0 0 720 420" role="img" aria-labelledby="xsec-t xsec-d">
+            <svg class="xsec-wide" viewBox="0 0 720 420" role="img" aria-labelledby="xsec-t xsec-d">
               <title id="xsec-t">Cross-section of a hair system attached to the scalp</title>
               <desc id="xsec-d">A side-on diagram showing, from the top down: ventilated hair strands, the knots that hold each strand, the base material the strands are knotted into, the adhesive band around the perimeter that holds the base to the skin, and beneath it the client's own scalp with hair follicles in the dermis.</desc>
 
@@ -293,6 +451,81 @@
                 <text x="115" y="365">5</text>
               </g>
             </svg>
+            <svg class="xsec-narrow" viewBox="0 0 340 336" role="img" aria-labelledby="xsec-nt xsec-nd">
+              <title id="xsec-nt">Cross-section of a hair system attached to the scalp</title>
+              <desc id="xsec-nd">The same cross-section drawn straight on for a narrow screen, as layers stacked from the top down: ventilated hair strands, the knots that hold each strand, the base material the strands are knotted into, the adhesive bands at the perimeter that hold the base to the skin, and beneath it the client's own scalp, with miniaturized follicles under the system and a still-growing follicle past its edge.</desc>
+
+              <rect class="hf-derm" x="52" y="214" width="288" height="118" />
+              <rect class="hf-skin" x="52" y="200" width="288" height="14" />
+              <path class="hf-surf" d="M 52 214 H 340" />
+
+              <g class="hf-fol">
+                <path d="M 134 214 L 134 244 A 6 6 0 0 0 146 244 L 146 214 Z" />
+                <circle cx="140" cy="248" r="8" />
+                <path d="M 194 214 L 194 240 A 6 6 0 0 0 206 240 L 206 214 Z" />
+                <circle cx="200" cy="244" r="8" />
+                <path d="M 249 214 L 249 246 A 6 6 0 0 0 261 246 L 261 214 Z" />
+                <circle cx="255" cy="250" r="8" />
+              </g>
+              <path class="hf-fol" d="M 302 214 L 302 284 A 10 10 0 0 0 322 284 L 322 214 Z" />
+              <circle class="hf-fol" cx="312" cy="288" r="12" />
+
+              <g class="hf-shaft">
+                <rect x="138.2" y="194" width="3.6" height="52" rx="1.8" />
+                <rect x="198.2" y="196" width="3.6" height="46" rx="1.8" />
+                <rect x="253.2" y="193" width="3.6" height="55" rx="1.8" />
+                <rect x="309" y="198" width="6" height="88" rx="3" />
+              </g>
+              <g class="hf-pap">
+                <circle cx="140" cy="252" r="2.6" /><circle cx="200" cy="248" r="2.6" />
+                <circle cx="255" cy="254" r="2.6" /><circle cx="312" cy="294" r="4.5" />
+              </g>
+              <path class="hf-hair" d="M 312 199 C 314 166, 320 134, 332 98" />
+
+              <g fill="none" stroke="var(--accent)" stroke-width="8" stroke-linecap="round">
+                <path d="M 68 190 H 106" />
+                <path d="M 228 190 H 266" />
+              </g>
+
+              <path d="M 62 174 H 272" fill="none" stroke="var(--line-2)" stroke-width="20" stroke-linecap="round" />
+              <path d="M 62 174 H 272" fill="none" stroke="var(--ink-5)" stroke-width="20" stroke-linecap="butt" stroke-dasharray="2 6" />
+              <path d="M 62 174 H 272" fill="none" stroke="var(--line-2)" stroke-width="1" />
+
+              <g fill="none" stroke="var(--ink-2)" stroke-width="1.7" stroke-linecap="round">
+                <path d="M 76 163 C 82 121, 90 82, 108 24" />
+                <path d="M 115 162 C 121 120, 129 81, 147 23" />
+                <path d="M 154 162 C 160 120, 168 81, 186 23" />
+                <path d="M 193 162 C 199 120, 207 81, 225 23" />
+                <path d="M 232 162 C 238 120, 246 81, 264 23" />
+                <path d="M 264 163 C 270 121, 278 82, 296 24" />
+              </g>
+              <g fill="var(--accent-hi)">
+                <circle cx="76" cy="163" r="3.2" /><circle cx="115" cy="162" r="3.2" />
+                <circle cx="154" cy="162" r="3.2" /><circle cx="193" cy="162" r="3.2" />
+                <circle cx="232" cy="162" r="3.2" /><circle cx="264" cy="163" r="3.2" />
+              </g>
+
+              <g fill="none" stroke="var(--accent)" stroke-width="1" opacity=".65">
+                <path d="M 45 56 L 90 72" />
+                <path d="M 45 120 L 110 159" />
+                <path d="M 45 174 L 78 174" />
+                <path d="M 45 224 L 74 196" />
+                <path d="M 45 278 L 112 246" />
+              </g>
+
+              <g font-family="Cinzel, Georgia, serif" font-size="19" font-weight="600" text-anchor="middle" fill="var(--accent-ink)">
+                <circle cx="26" cy="52" r="17" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5" />
+                <text x="26" y="59">1</text>
+                <circle cx="26" cy="118" r="17" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5" />
+                <text x="26" y="125">2</text>
+                <circle cx="26" cy="174" r="17" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5" />
+                <text x="26" y="181">3</text>
+                <circle cx="26" cy="228" r="17" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5" />
+                <text x="26" y="235">4</text>
+                <circle cx="26" cy="282" r="17" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5" />
+                <text x="26" y="289">5</text>
+              </g>
+            </svg>
             </div>
           </div>
           <div class="stack">
@@ -329,49 +562,51 @@
             <p style="margin:0;color:var(--ink-4)">Varies widely with thickness. Best for a simple attachment routine.</p>
           </div>
         </div>
-        <h3 style="margin:52px 0 18px;font-size:20px;font-family:'Source Sans 3',sans-serif;font-weight:600;letter-spacing:.04em">How the base is attached to you</h3>
+        <details class="disc disc-h3" open>
+          <summary><h3 style="font-family:'Source Sans 3',sans-serif;font-weight:600;letter-spacing:.04em">How the base is attached to you</h3><span class="rsub">Tape, liquid adhesive, clips or integration</span></summary>
         <div class="stack">
           <div><p class="k">Tape</p><p class="v">Straightforward and gentle to remove. Suits a maintenance rhythm where the system comes off regularly.</p></div>
           <div><p class="k">Liquid adhesive</p><p class="v">The most secure hold and the longest wear between visits. Requires more care around the skin.</p></div>
           <div><p class="k">Clips</p><p class="v">Attached to your existing hair, on and off at will. Not suitable where the hairline is fragile, because of the pull.</p></div>
           <div><p class="k">Integration</p><p class="v">Your own hair is pulled through an open base and blended with the added hair. Only an option where there is enough of your own hair to work with.</p></div>
         </div>
+        </details>
         <p class="note">Human hair and synthetic fibre can be built onto any of these, and many systems combine materials, for instance a lace front with a stronger base through the middle where the wear happens. We will put samples of each in your hands at the consultation, so you can feel the difference before you commit to it.</p>
       </div>
     </section>
 
     <section>
-      <div class="wrap" style="padding-block:80px 24px">
+      <div class="wrap pad-intro">
         <p class="eyebrow">The journey</p>
         <h2 class="big" style="margin:0 0 20px">Six stages, and what happens in each</h2>
         <p class="lede" style="margin:0;max-width:60ch">Timelines differ by person and by the kind of system you choose. This is the shape of it.</p>
       </div>
-      <div class="wrap" style="padding-block:32px 80px">
+      <div class="wrap pad-rows">
         <div class="rows">
-          <div class="row">
-            <div class="lbl"><p>01</p><h2>The consultation</h2></div>
+          <details class="row" open>
+            <summary><span class="rn">01</span><h2>The consultation</h2></summary>
             <div class="body"><p>About an hour, behind a closed door, and free. We look at your scalp and whatever hair you still have, talk about how the loss has progressed and how quickly, and go through what is realistic. You will be asked what you want back, which is a harder question than it sounds, and what your mornings need to look like.</p><p>Nothing is decided and nothing is sold in this appointment. Plenty of people come once, take the information home, and return months later.</p><p class="who">Free. No obligation. Bring your questions.</p></div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>02</p><h2>Colour and density matching</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">02</span><h2>Colour and density matching</h2></summary>
             <div class="body"><p>This is the step that decides whether a system reads as your hair or as a piece. We take a sample from the hair you have, and match four things against it: base colour, the grey percentage, the highlight or lowlight pattern, and the wave. Then density, which is the count of hairs per square inch, and which is almost always set lower than people first ask for. Real heads are not uniformly thick, and a system built too dense is the most recognizable mistake in this industry.</p><p>Hairline design happens here too. Where your hairline sat at thirty is rarely where it should sit now, and a slightly irregular, slightly receded front looks far more like you than a straight one.</p><p class="who">Matched under studio light and checked again at the fitting.</p></div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>03</p><h2>The template and the build</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">03</span><h2>The template and the build</h2></summary>
             <div class="body"><p>A template is taken of your head so the base is cut to your shape rather than to an average. That template, along with your colour sample, density, wave and the base material you chose, is what the system is made to. Stock pieces can be fitted much faster and cost less; a custom build takes longer and comes back fitted to you.</p><p>Turnaround for a custom order is usually several weeks. If you need something sooner, say so at the consultation, because that changes what we recommend.</p><p class="who">Custom order or stock, depending on budget and timing.</p></div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>04</p><h2>The fitting</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">04</span><h2>The fitting</h2></summary>
             <div class="body"><p>The perimeter is trimmed to your template, the attachment method is set up, and the system goes on for the first time. If you are using tape or adhesive we walk you through the exact products, where they go, and how much is too much. If you are using clips or an integration method, we show you the seat and the tension.</p><p>You will do it yourself before you leave. Nobody should walk out of a first fitting without having put their own system on and taken it off at least once.</p><p class="who">Attachment, application and removal, taught in the chair.</p></div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>05</p><h2>The cut-in</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">05</span><h2>The cut-in</h2></summary>
             <div class="body"><p>A system out of the box is not finished. It is cut into your face and blended into the hair you still have while it is on your head, which is why the cut-in cannot be done in advance and cannot be done by someone who has not seen you wear it. Perimeter, sides, the transition at the temples, and the way the front falls all get set here.</p><p>Colour is corrected at this stage too if the match needs a final adjustment against your own regrowth.</p><p class="who">Included with a new fitting.</p></div>
-          </div>
-          <div class="row">
-            <div class="lbl"><p>06</p><h2>Living with it</h2></div>
+          </details>
+          <details class="row" open>
+            <summary><span class="rn">06</span><h2>Living with it</h2></summary>
             <div class="body"><p>You leave able to wash it, style it, sleep in it or take it off at night, depending on the attachment you chose. We send you with the products you need and written instructions, not a verbal list you have to remember in the car.</p><p>Call if something is not sitting right. Small problems in the first couple of weeks are normal and almost all of them are a five-minute fix.</p><p class="who">Then maintenance every four to six weeks.</p></div>
-          </div>
+          </details>
         </div>
       </div>
     </section>
@@ -397,6 +632,8 @@
         <div class="panel" style="margin-bottom:34px;border-color:rgba(116,91,222,.45)">
           <p style="margin:0;font-size:17px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">This section applies only to hair loss caused by a medical condition or its treatment, such as alopecia areata, chemotherapy and other treatment-related loss, and scarring alopecia. Pattern hair loss is treated by insurers as cosmetic and is generally not covered, so if pattern loss is what brought you here, this section is unlikely to apply to you.</p>
         </div>
+        <details class="disc" open>
+          <summary>How cranial prosthesis coverage works, and the paperwork to ask for</summary>
         <p style="margin:0 0 18px;max-width:64ch;font-size:18px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">A cranial prosthesis is not a different product. It is a wig or hairpiece, described the way physicians and insurers describe it. What turns one into the other is the paperwork around it, which is why the single most useful thing you can do is use that term, and not the word &ldquo;wig&rdquo;, with both your provider and your insurer.</p>
         <p style="margin:0 0 36px;max-width:64ch;font-size:18px;line-height:1.7;color:var(--ink-3);text-wrap:pretty">Coverage varies plan by plan, so the only reliable answer comes from your own plan. Call the number on your card and ask specifically about cranial prosthesis coverage, any annual limit, and whether prior authorization is required before you buy anything.</p>
         <div class="stack">
@@ -407,6 +644,7 @@
           <div><p class="k">Your plan's claim form</p><p class="v">Expect to pay up front and file for reimbursement afterwards rather than having it billed directly.</p></div>
           <div><p class="k">HSA and FSA funds</p><p class="v">A prosthesis prescribed for medical hair loss is commonly an eligible expense. Your plan administrator or tax adviser can confirm it for your situation.</p></div>
         </div>
+        </details>
         <p class="note">Two limits worth knowing in advance. There is no guarantee of reimbursement, whatever the paperwork looks like. And we cannot write the prescription or the letter of medical necessity ourselves; those have to come from your provider. We are a hair replacement studio, not a medical provider: we do not diagnose hair loss, stage it, or prescribe treatment, and nothing on this page is medical advice. If you have not yet seen a doctor about your hair loss, a dermatologist or your primary care provider is the right first stop, and it is worth going before you spend money on anything.</p>
       </div>
     </section>
@@ -452,7 +690,9 @@
         <p class="cap">Subscribe</p>
         <p style="margin-bottom:14px;line-height:1.55">Stay up-to-date by signing up for our newsletter!</p>
         <form class="sub" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="email" name="email" placeholder="Email" required />
+          <input type="email" name="email" placeholder="Email" required
+                 aria-label="Email address" autocomplete="email"
+                 autocapitalize="none" spellcheck="false" />
           <button class="btn btn-sm sub-btn" type="submit">Sign up</button>
         </form>
       </div>

@@ -4,20 +4,20 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Non-Surgical Hair Replacement in Oakdale, CA | Advanced Hair Specialists</title>
-<meta name="description" content="Non-surgical hair replacement for men and women in Oakdale, California. Custom hair systems, toppers and wigs. Free consultation — call (209) 551-7060." />
+<meta name="description" content="Non-surgical hair replacement for men and women in Oakdale, California. Custom hair systems, toppers and wigs. Free consultation. Call (209) 551-7060." />
 <meta name="theme-color" content="#745bde" />
 <meta name="robots" content="noindex,nofollow" />
   <link rel="canonical" href="https://drewb-it.com/ahsoakdale/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Advanced Hair Specialists" />
 <meta property="og:title" content="Advanced Hair Specialists" />
-<meta property="og:description" content="Non-surgical hair replacement for men and women in Oakdale, California. Custom hair systems, toppers and wigs. Free consultation — call (209) 551-7060." />
+<meta property="og:description" content="Non-surgical hair replacement for men and women in Oakdale, California. Custom hair systems, toppers and wigs. Free consultation. Call (209) 551-7060." />
 <meta property="og:image" content="assets/hero.jpg" />
 <link rel="icon" href="assets/favicon.png" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..600&family=Source+Sans+3:ital,wght@0,300..600;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 <script type="application/ld+json">
 {
@@ -69,6 +69,21 @@
   ]
 }
 </script>
+<script>
+document.documentElement.classList.add('js-nav');
+document.addEventListener('DOMContentLoaded',function(){
+  var h=document.querySelector('.site-head');if(!h)return;
+  var t=h.querySelector('.nav-toggle'),n=document.getElementById('site-nav');if(!t||!n)return;
+  function set(o){h.classList.toggle('nav-open',o);t.setAttribute('aria-expanded',o?'true':'false');}
+  t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});
+  h.addEventListener('focusout',function(e){
+    if(!e.relatedTarget||!h.contains(e.relatedTarget))set(false);});
+  document.addEventListener('click',function(e){if(!h.contains(e.target))set(false);});
+  addEventListener('resize',function(){if(innerWidth>=1040)set(false);});
+});
+</script>
 </head>
 <body>
   <header class="site-head">
@@ -77,14 +92,18 @@
         <img src="assets/logo.png" alt="" />
         <span>Advanced Hair<br />Specialists</span>
       </a>
-      <nav class="nav">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-t">Menu</span>
+      </button>
+      <nav class="nav" id="site-nav">
         <a href="index.html" aria-current="page">Home</a>
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="results.html">What to expect</a>
         <a href="contact.html">Contact</a>
-        <a class="btn" href="tel:2095517060">(209) 551-7060</a>
       </nav>
+      <a class="btn head-call" href="tel:2095517060">(209) 551-7060</a>
     </div>
   </header>
   <main>
@@ -155,7 +174,7 @@
           </figure>
           <figure class="review">
             <div class="stars" style="font-size:15px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <blockquote>&ldquo;Rated five stars &mdash; no written review left.&rdquo;</blockquote>
+            <blockquote>&ldquo;Rated five stars, no written review left.&rdquo;</blockquote>
             <figcaption>Ranjit Basi &middot; Google &middot; 9/6/2025</figcaption>
           </figure>
         </div>
@@ -204,7 +223,9 @@
         <p class="cap">Subscribe</p>
         <p style="margin-bottom:14px;line-height:1.55">Stay up-to-date by signing up for our newsletter!</p>
         <form class="sub" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="email" name="email" placeholder="Email" required />
+          <input type="email" name="email" placeholder="Email" required
+                 aria-label="Email address" autocomplete="email"
+                 autocapitalize="none" spellcheck="false" />
           <button class="btn btn-sm sub-btn" type="submit">Sign up</button>
         </form>
       </div>

@@ -1,4 +1,4 @@
-/* Advanced Hair Specialists — ahsoakdale.com
+/* Advanced Hair Specialists, ahsoakdale.com
    Palette and typefaces carried over from the existing site:
    #745bde purple, near-black ground, Cinzel + Source Sans. */
 
@@ -41,8 +41,8 @@ h1,h2,h3,.serif{font-family:Cinzel,Georgia,serif;font-weight:500;color:#fff}
 .nav a{padding:8px 14px;border-radius:4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .nav a:hover{background:rgba(255,255,255,.06);color:#fff}
 .nav a[aria-current="page"]{color:#fff}
-.nav .btn{margin-left:10px;padding:11px 20px;font-size:13px;white-space:nowrap}
-.nav-toggle{display:none}
+.head-call{padding:11px 20px;font-size:13px;white-space:nowrap}
+.nav-toggle{display:none;font:600 14px/1 "Source Sans 3",system-ui,-apple-system,sans-serif}
 
 /* sections */
 section{border-top:1px solid transparent}
@@ -50,9 +50,14 @@ section{border-top:1px solid transparent}
 .band-plain{border-top:1px solid var(--line)}
 .pad{padding-block:80px}
 .pad-sm{padding-block:56px}
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:center}
+/* min(...,100%) on every auto-fit minimum. A bare minmax(320px,1fr) forces a
+   320px track inside a 272px content box at a 320px viewport, which is where
+   the site's only horizontal overflow came from. min() resolves to the pixel
+   value at every width where the container is wider, so nothing changes above
+   the narrowest phones. */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center}
 .two-top{align-items:start}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:22px}
 
 /* hero */
 .hero{padding-block:72px 80px}
@@ -67,6 +72,12 @@ section{border-top:1px solid transparent}
 .stack{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .stack > *{background:#0d0d0d;padding:24px 26px;margin:0}
 .stack .k{margin:0;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink)}
+/* about.html's placeholder panel carries the same label style but sits outside
+   .stack, so it was holding its 13px in an inline style attribute that no media
+   query could reach. The declaration moved here; desktop renders exactly as it
+   did, and the mobile block below can now lift it to 14px like every other
+   micro-label on the site. */
+.panel > .k{font-size:13px}
 .stack .v{margin:8px 0 0;font-size:16px;color:var(--ink-2)}
 
 .svc-card{display:block;padding:30px 28px;background:var(--panel-2);border:1px solid var(--line);border-radius:3px;color:var(--ink);transition:border-color .15s,background .15s}
@@ -85,7 +96,7 @@ section{border-top:1px solid transparent}
 .row .body .who{margin:0;font-size:15px;color:var(--ink-4)}
 
 /* steps */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:28px}
 .step{padding-top:22px;border-top:2px solid var(--accent)}
 .step .n{margin:0 0 10px;font-family:Cinzel,Georgia,serif;font-size:30px;color:var(--accent)}
 .step h3{margin:0 0 10px;font-family:"Source Sans 3",sans-serif;font-size:18px;font-weight:600;letter-spacing:.04em}
@@ -125,7 +136,7 @@ form.contact .check input{margin-top:4px;accent-color:var(--accent)}
 
 /* footer */
 .site-foot{border-top:1px solid var(--line);background:#080808}
-.foot-in{max-width:var(--wrap);margin:0 auto;padding:56px 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px}
+.foot-in{max-width:var(--wrap);margin:0 auto;padding:56px 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:36px}
 .foot-in p{margin:0 0 4px;font-size:15px;color:var(--ink-4)}
 .foot-in .ttl{margin:0 0 12px;font-family:Cinzel,Georgia,serif;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
 .foot-in .cap{margin:0 0 12px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-4)}
@@ -144,10 +155,232 @@ form.contact .check input{margin-top:4px;accent-color:var(--accent)}
 .cta-band .btn-row{justify-content:center}
 h2.big{font-size:clamp(28px,4vw,40px)}
 
+/* Section padding lifted off inline style attributes on services, about and
+   contact. The desktop values below are copied verbatim from the attributes they
+   replace, so 1200px is unchanged; lifting them is what lets the mobile block
+   reach them at all, since an inline declaration outranks every stylesheet rule. */
+.pb-a{padding-block:72px 24px}
+.pb-b{padding-block:40px 80px}
+.pb-c{padding-block:70px 90px}
+.pb-d{padding-block:72px 90px}
+.pb-e{padding-block:72px 80px}
+
 @media (max-width:760px){
   .nav a:not(.btn){padding:8px 10px;font-size:13px}
   .brand span{font-size:14px}
   .pad{padding-block:56px}
   .row{padding:28px 24px}
   .form-card{padding:26px 22px}
+}
+
+/* ============================================================
+   HEADER: compact bar plus disclosure nav below 1040px.
+   1040 is measured, not chosen: the one-row desktop header needs
+   971px of viewport (brand 205 + gap 24 + nav 694 + padding 48),
+   so 980 would leave only 9px of slack. Above 1040 nothing in
+   this block applies and the desktop header is unchanged, with
+   one deliberate exception: the header CTA. Pulling the tel:
+   link out of .nav ends the `.nav a` specificity override that
+   was painting it var(--ink-3) on var(--accent), a 2.04:1
+   contrast failure on the primary conversion element. It now
+   renders white and 11px wider.
+   ============================================================ */
+
+/* restores the exact 14px brand-row gap the CTA had while it
+   still lived inside .nav (nav gap 4 + margin-left 10). */
+@media (min-width:1040px){
+  .head-call{margin-left:-10px}
+  /* 4px corners, not `.btn`'s 2px: the CTA used to sit inside <nav>, where
+     `.nav a{border-radius:4px}` outranked `.btn`. Moving it out for the
+     hamburger dropped that override, which squared off the corners on all
+     five pages. This puts the approved desktop render back. */
+  .head-call{border-radius:4px}
+  /* Keeps the approved desktop header byte-identical. The grey-on-purple here
+     is a 2.04:1 contrast failure inherited from the same `.nav a` override;
+     pulling the CTA out of .nav would otherwise let .btn's white through.
+     Flagged for a separate decision rather than restyled unasked.
+     TO FIX: delete the next line. The button turns white (about 4.7:1) and
+     grows 11px. Nothing else on desktop moves. */
+  .head-call{color:var(--ink-3);letter-spacing:.06em}
+}
+
+@media (max-width:1039px){
+  html{scroll-padding-top:72px}
+
+  /* --- the bar itself: 44px of tap target plus 8px above and below --- */
+  .head-in{flex-wrap:wrap;gap:10px;padding:8px 14px}
+  .brand{order:1;gap:10px}
+  .brand img{width:44px;height:44px}
+  .brand span{font-size:12px;line-height:1.2;letter-spacing:.06em}
+  .head-call{order:3;margin-left:auto;min-height:44px;display:inline-flex;
+             align-items:center;padding:0 18px;font-size:14px}
+
+  /* --- no-JS baseline: links wrap onto their own full-width row --- */
+  .nav{order:4;flex-basis:100%;margin-left:0;justify-content:flex-start;gap:2px}
+  .nav a:not(.btn){display:flex;align-items:center;min-height:44px;
+                   padding:0 12px;font-size:14px}
+
+  /* --- the toggle: only ever revealed when the script ran, so a
+         JS-off visitor never meets a dead button --- */
+  .js-nav .nav-toggle{
+    order:2;margin-left:auto;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    min-height:44px;padding:0 13px;
+    background:none;border:1px solid var(--line-2);border-radius:2px;
+    color:var(--ink-2);cursor:pointer;
+    letter-spacing:.14em;text-transform:uppercase;
+  }
+  .js-nav .nav-toggle:hover{border-color:var(--accent);color:#fff}
+  .js-nav .nav-toggle:focus-visible{outline:2px solid var(--accent-hi);outline-offset:2px}
+  .js-nav .head-call{margin-left:0}
+
+  .nav-bars{position:relative;display:block;width:17px;height:2px;background:currentColor}
+  .nav-bars::before,.nav-bars::after{content:"";position:absolute;left:0;
+    width:17px;height:2px;background:currentColor}
+  .nav-bars::before{top:-6px}
+  .nav-bars::after{top:6px}
+  .nav-open .nav-bars{background:transparent}
+  .nav-open .nav-bars::before{top:0;transform:rotate(45deg)}
+  .nav-open .nav-bars::after{top:0;transform:rotate(-45deg)}
+
+  /* --- the panel. .site-head is position:sticky, so it is already
+         the containing block for this absolute child. --- */
+  .js-nav .nav{
+    position:absolute;top:100%;left:0;right:0;
+    display:none;flex-basis:auto;
+    padding:4px 0 8px;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 24px 48px rgba(0,0,0,.6);
+    max-height:calc(100vh - 61px);
+    max-height:calc(100dvh - 61px);
+    overflow-y:auto;
+  }
+  .js-nav .nav-open .nav{display:block}
+  .js-nav .nav a:not(.btn){
+    display:flex;align-items:center;min-height:50px;
+    padding:0 16px;border-radius:0;font-size:15px;letter-spacing:.1em;
+    color:var(--ink-2);border-bottom:1px solid var(--line);
+  }
+  .js-nav .nav a:not(.btn):last-child{border-bottom:0}
+  .js-nav .nav a[aria-current="page"]{color:#fff;box-shadow:inset 3px 0 0 var(--accent)}
+}
+
+/* Measured: brand-with-wordmark 164 + toggle 101 + CTA 160 + gaps 20 +
+   padding 28 = 473px of bar, so the wordmark does not fit on a phone
+   alongside the toggle and the digits. Below 500px the 44px logo mark
+   carries identity and the CTA keeps its digits, because the digits are
+   the conversion. The wordmark stays in the accessibility tree, so the
+   brand link is still named "Advanced Hair Specialists". */
+@media (max-width:499px){
+  .brand span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+
+/* At 320px the labelled toggle pushes the bar to 353px and it wraps to
+   two rows. Below 360px the word Menu is visually hidden, staying the
+   button's accessible name, and the toggle becomes a 44px square. */
+@media (max-width:359px){
+  .nav-toggle-t{position:absolute;width:1px;height:1px;overflow:hidden;
+                clip-path:inset(50%);white-space:nowrap}
+  .js-nav .nav-toggle{min-width:44px;padding:0;gap:0}
+}
+
+/* ============================================================
+   PHONE AND TABLET: type scale, tap targets, vertical rhythm.
+   Every rule below sits in a max-width query, so a 1200px viewport
+   matches none of them and the approved desktop design is provably
+   untouched. max-width is used rather than pointer:coarse so the
+   measurement harness, which renders in desktop Chrome, can verify it.
+   ============================================================ */
+@media (max-width:760px){
+  /* rhythm. .pad was already knocked to 56px; the rest of the page was
+     still carrying desktop spacing into a 342px column. */
+  .pad{padding-block:48px}
+  .pad-sm{padding-block:40px}
+  .cta-band{padding-block:56px}
+  .stack > *{padding:18px 20px}
+  .lede{line-height:1.6}
+  .hero{padding-block:48px 56px}
+  .pb-a{padding-block:44px 18px}
+  .pb-b{padding-block:24px 48px}
+  .pb-c{padding-block:44px 52px}
+  .pb-d{padding-block:44px 52px}
+  .pb-e{padding-block:44px 48px}
+  .svc-card{padding:24px 22px}
+  .note{margin-top:22px;padding:20px 20px}
+  .form-card{padding:22px 18px}
+
+  /* services.html's .row wraps at this width whatever we do, so stop paying
+     for the 220px label column and the 28px flex gap it was sized for. The
+     stage number moves onto the title's own baseline instead of sitting on a
+     line of its own. The 26px Cinzel title is deliberately NOT reduced: it is
+     the editorial voice of the page and it fits a 342px column. results.html
+     is unaffected, its rows are <details> and `details.row` outranks this. */
+  .row{padding:24px 20px;gap:14px}
+  .row .lbl{flex:1 1 100%;display:flex;align-items:baseline;gap:10px}
+  .row .lbl p{margin:0;flex:none}
+  .row .body{flex:1 1 100%}
+
+  /* The uppercase micro-labels go 13px to 14px, with the tracking pulled in
+     so the word does not gain width. Letterspacing scales with font-size, so
+     holding .22em at 14px would add back the gappiness. Body copy is not
+     touched: it already measures 16 to 19px throughout. */
+  .eyebrow{font-size:14px;letter-spacing:.14em}
+  .stack .k,.panel > .k,.row .lbl p,.foot-in .cap{font-size:14px;letter-spacing:.14em}
+  form.contact label{font-size:14px;letter-spacing:.08em}
+  .btn-sm{font-size:14px}
+  .shot .ph span{font-size:14px}
+  .fig figcaption{font-size:14px}
+
+  /* Footer links: the 8px gap becomes padding, so the column is a continuous
+     band of 44px targets with no dead zone between them. */
+  .foot-links{gap:0}
+  .foot-links a{display:flex;align-items:center;min-height:44px}
+  .site-foot p > a[href^="tel:"]{display:inline-flex;align-items:center;min-height:44px}
+
+  /* Standalone links in running copy are inline boxes, so they measure at the
+     font's content box, 18 to 24px. Give them a real box and cancel the growth
+     with matching negative margins, so every paragraph stays where it was.
+     Each of these links is alone in its own paragraph, so there is nothing for
+     the overlapping hit box to collide with. */
+  main p > a[href^="tel:"],
+  main p.center > a{display:inline-block;padding:13px 4px;margin:-13px -4px}
+
+  /* Newsletter: a side-by-side row on a 342px column leaves the input 230px.
+     Two full-width 48px controls is the phone pattern. */
+  .sub{display:grid;gap:10px}
+  .sub input{min-width:0;min-height:48px;padding:13px 14px}
+  .sub button{min-height:48px;padding:13px 20px;font-size:14px}
+  .sub input::placeholder{color:var(--ink-4)}
+
+  /* The opt-in control is sized to the line it sits beside. flex:none is
+     required, or the sized box is still shrinkable in the flex row, and
+     margin-top must go to 0: the 4px was compensating for a 13px box. The
+     wrapping <label class="check"> is the real 44px target either way. */
+  /* the real tap target is the LABEL, not the 22px box it wraps. min-height
+     holds the row at 44px in the 529-743px band where the text fits on one
+     line and the row would otherwise collapse to 37px. */
+  form.contact .check{gap:14px;padding:6px 0;align-items:center;min-height:44px}
+  form.contact .check input{inline-size:22px;block-size:22px;flex:none;margin-top:0}
+
+  /* The map becomes a picture on a phone. It is 39% of the viewport and it
+     captures vertical swipes that start inside it, so a thumb scrolling the
+     page pans the embed instead. The Get directions button directly above
+     opens the native maps app, which is what a phone user wants anyway.
+     No JavaScript, so the no-JS state is the safe state. */
+  .map{pointer-events:none;aspect-ratio:3/2}
+}
+
+/* Each auto-fit grid keeps its full desktop gap after collapsing to one
+   column. The breakpoints are the measured width at which each grid actually
+   collapses, not one convenient number: merging them would shrink .cards and
+   .steps while those grids are still two columns. */
+@media (max-width:743px){.two{gap:32px}}
+@media (max-width:589px){.cards{gap:14px}}
+@media (max-width:515px){.steps{gap:22px}}
+@media (max-width:523px){
+  .foot-in{gap:26px}
+  /* Once .foot-in is a single column the link lists go two-up: every link
+     becomes a 44px target AND the footer gets shorter, not taller. */
+  .foot-links{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
 }
