@@ -427,6 +427,20 @@ h2.big{font-size:clamp(28px,4vw,40px)}
   .hero-full .hero-in{padding:8px 24px 72px}
 }
 
+/* A credibility aside, in the manner of the client mockup. It sits on solid
+   ground rather than over the photograph: a scan of the hero backdrop returned
+   5.7:1 at best for pale text on the right side and 1.0:1 across most of it,
+   and dark text there peaked at 4.7:1 in one spot before collapsing. Neither
+   survives the photo reflowing at other widths. */
+.hero-note{
+  margin:30px 0 0;padding-left:16px;
+  border-left:1px solid var(--line-2);
+  font-family:"Source Sans 3",system-ui,sans-serif;
+  font-size:12px;letter-spacing:.2em;line-height:2;
+  text-transform:uppercase;color:var(--ink-3);
+}
+@media (max-width:860px){ .hero-note{margin-top:26px} }
+
 /* ---------- value strip ---------- */
 .valuestrip{display:grid;grid-template-columns:repeat(4,1fr);padding-block:48px}
 .vs{text-align:center;padding:0 22px;border-left:1px solid var(--line)}
