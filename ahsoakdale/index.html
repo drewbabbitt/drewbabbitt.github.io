@@ -130,20 +130,51 @@ addEventListener('resize',function(){if(innerWidth>=1040)shut();});
     </div>
   </header>
   <main>
-    <section>
-      <div class="wrap hero two">
-        <div>
+    <section class="hero-full">
+      <div class="hero-media">
+        <picture>
+          <source media="(max-width:860px)" srcset="assets/hero-mobile.jpg" width="900" height="1150" />
+          <img src="assets/elsie.jpg" alt="Elsie, owner of Advanced Hair Specialists, in her Oakdale studio" width="1200" height="1500" fetchpriority="high" decoding="async" />
+        </picture>
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-in">
+        <div class="hero-copy">
           <p class="eyebrow">Non-surgical hair replacement &middot; Oakdale, CA</p>
           <h1>Hair that looks like you.<br />Confidence that feels like you.</h1>
-          <p class="lede" style="margin-bottom:14px">Custom non-surgical hair replacement for men and women experiencing hair loss or thinning. Every system is personally customized, color matched, cut and styled for a natural result. All in a private, one-on-one studio.</p>
-          <p class="lede muted" style="font-size:17px">Complimentary consultations by appointment.</p>
+          <p class="lede" style="margin:0 0 14px">Custom non-surgical hair replacement for men and women experiencing hair loss or thinning. Every system is personally customized, color matched, cut and styled for a natural result. All in a private, one-on-one studio.</p>
+          <p class="lede muted" style="margin:0 0 34px;font-size:17px">Complimentary consultations by appointment.</p>
           <div class="btn-row">
-            <a class="btn" href="tel:2095517060">Call us Today!</a>
-            <a class="btn btn-ghost" href="contact.html">Book a consultation</a>
+            <a class="btn" href="contact.html">Book a free consultation</a>
+            <a class="btn btn-ghost" href="tel:2095517060">Call us today</a>
           </div>
-          <div class="rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>5.0 on Google</span></div>
+          <div class="rating" style="margin-top:26px"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>5.0 on Google</span></div>
         </div>
-        <div><img src="assets/elsie.jpg" alt="Elsie, owner of Advanced Hair Specialists, in her Oakdale studio" width="1200" height="1500" fetchpriority="high" decoding="async" /></div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap valuestrip">
+        <div class="vs">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17.5" cy="9" r="2.4"/><path d="M16 14.8c3 .2 5 2.3 5 5.2"/></svg>
+          <h3>For men &amp; women</h3>
+          <p>Customized solutions for thinning hair, pattern loss and medical hair loss.</p>
+        </div>
+        <div class="vs">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.1 16.2 19 4M15.9 16.2 5 4"/></svg>
+          <h3>Natural look &amp; feel</h3>
+          <p>Color matched and cut in to blend with the hair you already have.</p>
+        </div>
+        <div class="vs">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="5" width="17.6" height="15.5" rx="2"/><path d="M3.2 10h17.6M8 3v4M16 3v4"/></svg>
+          <h3>One-on-one appointments</h3>
+          <p>A private studio, one client at a time, by appointment only.</p>
+        </div>
+        <div class="vs">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.2s-7.4-4.6-7.4-9.6A4.1 4.1 0 0 1 12 7.9a4.1 4.1 0 0 1 7.4 2.7c0 5-7.4 9.6-7.4 9.6z"/></svg>
+          <h3>Support every step</h3>
+          <p>From the first consultation through fitting and ongoing maintenance.</p>
+        </div>
       </div>
     </section>
 
@@ -156,7 +187,7 @@ addEventListener('resize',function(){if(innerWidth>=1040)shut();});
           <p style="margin:0;font-size:18px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">We believe everyone deserves to feel like themselves again, and we&rsquo;re here to help.</p>
           <div class="btn-row" style="margin-top:28px">
             <a class="btn" href="contact.html">Book a free consultation</a>
-            <a class="btn btn-ghost" href="tel:2095517060">Call or text (209) 551-7060</a>
+            <a class="btn btn-ghost" href="tel:2095517060">Call (209) 551-7060</a>
           </div>
         </div>
         <div class="stack">
