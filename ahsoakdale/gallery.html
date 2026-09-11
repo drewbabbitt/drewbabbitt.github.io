@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..600&family=Source+Sans+3:ital,wght@0,300..600;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=7" />
+<link rel="stylesheet" href="styles.css?v=8" />
 
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -65,11 +65,22 @@ addEventListener('resize',function(){if(innerWidth>=1040)shut();});
   </header>
   <main>
     <section>
-      <div class="wrap pad" style="max-width:760px;text-align:center;padding-block:110px">
+      <div class="wrap pad" style="max-width:760px;text-align:center;padding-block:96px 0">
         <p class="eyebrow" style="justify-content:center">Gallery</p>
-        <h1 style="margin:0 0 22px;font-size:clamp(30px,4.4vw,46px);line-height:1.15">Photographs are coming soon</h1>
-        <p class="lede" style="margin:0 auto 22px;max-width:54ch">We are putting together a set of before and after photographs of work done in the studio. Every one of them will be shared with the client&rsquo;s permission, and never before.</p>
-        <p style="margin:0 auto 38px;max-width:54ch;font-size:17px;color:var(--ink-3)">Discretion is the reason most people choose a private studio in the first place, so this page is worth doing slowly and doing right.</p>
+        <h1 id="gal-title" style="margin:0 0 22px;font-size:clamp(30px,4.4vw,46px);line-height:1.15">Photographs are coming soon</h1>
+        <p class="lede" id="gal-lede" style="margin:0 auto 22px;max-width:54ch">We are putting together a set of before and after photographs of work done in the studio. Every one of them will be shared with the client&rsquo;s permission, and never before.</p>
+        <p id="gal-note" style="margin:0 auto;max-width:54ch;font-size:17px;color:var(--ink-3)">Discretion is the reason most people choose a private studio in the first place, so this page is worth doing slowly and doing right.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap pad" style="padding-block:56px 0">
+        <ul class="gal-grid" id="gal-grid" hidden></ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap pad" style="max-width:760px;text-align:center;padding-block:66px 110px">
         <div class="btn-row" style="justify-content:center">
           <a class="btn" href="contact.html">Book a free consultation</a>
           <a class="btn btn-ghost" href="tel:2095517060">Call (209) 551-7060</a>
@@ -77,6 +88,14 @@ addEventListener('resize',function(){if(innerWidth>=1040)shut();});
       </div>
     </section>
   </main>
+
+  <div class="gal-box" id="gal-box" hidden role="dialog" aria-modal="true" aria-label="Photograph">
+    <button class="gal-x" type="button" id="gal-x" aria-label="Close">&times;</button>
+    <figure>
+      <img id="gal-box-img" src="" alt="" />
+      <figcaption id="gal-box-cap"></figcaption>
+    </figure>
+  </div>
   <footer class="site-foot">
     <div class="foot-in">
       <div>
@@ -105,5 +124,99 @@ addEventListener('resize',function(){if(innerWidth>=1040)shut();});
     </div>
     <div class="copy"><p>Copyright &copy; 2026 Advanced Hair Specialists - All Rights Reserved.</p></div>
   </footer>
+<script>
+/* Gallery. Everything on this page comes from gallery.json, so adding a
+   photograph is a one line edit there and nothing here has to change. */
+(function(){
+  var grid = document.getElementById('gal-grid');
+  if(!grid || !window.fetch) return;
+
+  var box  = document.getElementById('gal-box'),
+      bImg = document.getElementById('gal-box-img'),
+      bCap = document.getElementById('gal-box-cap'),
+      bX   = document.getElementById('gal-x'),
+      last = null;
+
+  function openBox(src, alt, cap){
+    bImg.src = src; bImg.alt = alt || ''; bCap.textContent = cap || '';
+    box.hidden = false; document.body.style.overflow = 'hidden'; bX.focus();
+  }
+  function closeBox(){
+    box.hidden = true; bImg.removeAttribute('src'); document.body.style.overflow = '';
+    if(last) last.focus();
+  }
+  bX.addEventListener('click', closeBox);
+  box.addEventListener('click', function(e){ if(e.target === box) closeBox(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !box.hidden) closeBox(); });
+  grid.addEventListener('click', function(e){
+    var b = e.target.closest('[data-src]'); if(!b) return;
+    last = b; openBox(b.getAttribute('data-src'), b.getAttribute('data-alt'), b.getAttribute('data-cap'));
+  });
+
+  function el(tag, cls){ var n = document.createElement(tag); if(cls) n.className = cls; return n; }
+  function shot(src, alt, cap, tag){
+    var b = el('button', 'gal-half'); b.type = 'button';
+    b.setAttribute('data-src', src); b.setAttribute('data-alt', alt || ''); b.setAttribute('data-cap', cap || '');
+    var i = new Image(); i.src = src; i.alt = alt || ''; i.loading = 'lazy'; i.decoding = 'async';
+    b.appendChild(i);
+    if(tag){ var t = el('span', 'gal-tag'); t.textContent = tag; b.appendChild(t); }
+    return b;
+  }
+  function caption(text){ var p = el('p', 'gal-cap'); p.textContent = text; return p; }
+
+  function tile(it, n){
+    var li = el('li', 'gal-item');
+
+    if(it.placeholder || (!it.src && !it.after)){
+      var f = el('div', 'gal-frame is-empty'),
+          s = el('span', 'gal-slot'),
+          a = el('span', 'n'), b = el('span', 't');
+      a.textContent = ('0' + n).slice(-2);
+      b.textContent = 'Photograph to come';
+      s.appendChild(a); s.appendChild(b); f.appendChild(s); li.appendChild(f);
+      if(it.caption) li.appendChild(caption(it.caption));
+      return li;
+    }
+
+    if(it.before && it.after){
+      li.className = 'gal-item is-pair';
+      var pair = el('div', 'gal-frame gal-pair');
+      pair.appendChild(shot(it.before, it.alt, it.caption, 'Before'));
+      pair.appendChild(shot(it.after,  it.alt, it.caption, 'After'));
+      li.appendChild(pair);
+      if(it.caption) li.appendChild(caption(it.caption));
+      return li;
+    }
+
+    var one = shot(it.src || it.after, it.alt, it.caption, null);
+    one.className = 'gal-frame gal-single';
+    li.appendChild(one);
+    if(it.caption) li.appendChild(caption(it.caption));
+    return li;
+  }
+
+  fetch('gallery.json', {cache: 'no-cache'}).then(function(r){
+    if(!r.ok) throw 0; return r.json();
+  }).then(function(data){
+    var items = (data && data.items) || [];
+    var real  = items.filter(function(it){ return !it.placeholder && (it.src || it.after); });
+    var show  = real.length ? real : (data.show_placeholders === false ? [] : items);
+    if(!show.length) return;
+
+    if(real.length){
+      document.getElementById('gal-title').textContent = 'Before and after';
+      document.getElementById('gal-lede').textContent =
+        'Every photograph here is published with the written permission of the client in it, and never before.';
+      var note = document.getElementById('gal-note');
+      if(note) note.parentNode.removeChild(note);
+    }
+
+    var frag = document.createDocumentFragment();
+    show.forEach(function(it, k){ frag.appendChild(tile(it, k + 1)); });
+    grid.appendChild(frag);
+    grid.hidden = false;
+  }).catch(function(){ /* manifest unreadable: the coming soon copy stands on its own */ });
+})();
+</script>
 </body>
 </html>

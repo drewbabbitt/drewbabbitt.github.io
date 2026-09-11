@@ -1,0 +1,33 @@
+{
+  "_readme": "This file is the gallery. Put photographs in assets/gallery/, add an entry to items below, and the page builds itself. Delete an entry to pull it off the site. Nothing else needs editing. While every entry is still a placeholder the page shows the coming soon copy plus empty frames, so the layout can be reviewed. Set show_placeholders to false to hide the empty frames entirely.",
+  "show_placeholders": true,
+  "_specs": {
+    "aspect": "4:5 portrait, 1200 x 1500 works well",
+    "format": "jpg, quality 82, under 300KB each",
+    "naming": "client-01-before.jpg / client-01-after.jpg",
+    "consent": "Never publish a photograph without written permission from the client in it."
+  },
+  "_examples": {
+    "before_and_after_pair": {
+      "id": "client-01",
+      "before": "assets/gallery/client-01-before.jpg",
+      "after": "assets/gallery/client-01-after.jpg",
+      "caption": "Custom hair system, cut and color matched",
+      "alt": "Thinning through the crown before the fitting, and full coverage after"
+    },
+    "single_photograph": {
+      "id": "studio-01",
+      "src": "assets/gallery/studio-01.jpg",
+      "caption": "The fitting room at the Oakdale studio",
+      "alt": "A private styling chair and mirror"
+    }
+  },
+  "items": [
+    { "id": "slot-01", "placeholder": true, "caption": "Custom hair system, cut and color matched", "alt": "" },
+    { "id": "slot-02", "placeholder": true, "caption": "Topper for thinning at the part line", "alt": "" },
+    { "id": "slot-03", "placeholder": true, "caption": "Full system, medical hair loss", "alt": "" },
+    { "id": "slot-04", "placeholder": true, "caption": "Color match against natural regrowth", "alt": "" },
+    { "id": "slot-05", "placeholder": true, "caption": "Cut-in and styling after the fitting", "alt": "" },
+    { "id": "slot-06", "placeholder": true, "caption": "Maintenance and re-attachment", "alt": "" }
+  ]
+}
